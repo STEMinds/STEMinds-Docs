@@ -34,9 +34,12 @@ theme:
     logo: https://cdn.steminds.com/docs/images/icon.svg
   palette:
     primary: default
-    accent: yellow
-plugins:
-  #- with-pdf:
+    accent: amber
+
+extra_css:
+  - stylesheets/extra.css
+extra_javascript:
+  - javascripts/extra.js
 markdown_extensions:
   - meta
   - admonition
