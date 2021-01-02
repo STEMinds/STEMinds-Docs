@@ -6,7 +6,7 @@ description: STEMinds 12V submersible water pump will allow you to water your pl
 # Submersible 12V external pump
 
 <p align="center">
-  <img src="/kits/eduponics_mini/images/pump_illustration.png">
+  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/pump_illustration.png">
 </p>
 
 
@@ -53,7 +53,7 @@ Possible applications for pumps are:
 ## Relay principle explained
 
 <p align="center">
-  <img src="/kits/eduponics_mini/images/principle_of_relay.gif">
+  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/principle_of_relay.gif">
 </p>
 <center>Illustration by [omaron introduction](http://www.ia.omron.com/support/guide/36/introduction.html)</center>
 
@@ -73,7 +73,7 @@ The relay we use is HFD3/5, you can find more information here: [HFD3/5 datashee
 ## Connecting the pump to the kit
 
 <p align="center">
-  <img src="/kits/eduponics_mini/images/eduponics_mini_connecting_12v_pump.jpeg">
+  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/eduponics_mini_connecting_12v_pump.jpeg">
 </p>
 
 The pump interface is our standard XH2.54 interface with 2 pins.

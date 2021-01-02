@@ -6,7 +6,7 @@ description: No contact with liquid makes the module suitable for hazardous appl
 # Water liquid level sensor
 
 <p align="center">
-  <img src="/kits/eduponics_mini/images/water_liquid_level_sensor.jpg">
+  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/water_liquid_level_sensor.jpg">
 </p>
 
 No contact with liquid makes the module suitable for hazardous applications such as detecting toxic substances, strong acid, strong alkali and all kinds of liquid in an air tight container under high pressure. It's an industrial grade IP65 certified sensor that could be used for many industrial applications.
@@ -49,13 +49,13 @@ The sensor sensitivity can be adjust so the sensor can both sense through thick 
 our sensor should be able to sense beyond most common materials.
 
 <p align="center">
-  <img src="/kits/eduponics_mini/images/water_quantity_sensor_connection1.jpg">
+  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/water_quantity_sensor_connection1.jpg">
 </p>
 
 Another option would be to attach a silicon or glue on the front side of the sensor to attach it with a distance or directly to the plastic surface where metal surface is present.
 
 <p align="center">
-  <img src="/kits/eduponics_mini/images/water_quantity_sensor_connection2.jpg">
+  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/water_quantity_sensor_connection2.jpg">
 </p>
 
 In our kit, we've included a special glue circles that can be glued on the sensor itself so it can be attached with ease to any surface.
@@ -67,7 +67,7 @@ In our kit, we've included a special glue circles that can be glued on the senso
 ## Sensitivity adjustment
 
 <p align="center">
-  <img src="/kits/eduponics_mini/images/water_quantity_sensor_adjustment.jpg">
+  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/water_quantity_sensor_adjustment.jpg">
 </p>
 
 In some cases, sensitivity adjustment might be required. this is due to different material or different thickness of the water container. don't you worry, this can be easily done but taking off the cover where the indication LED is and softly using a screw driver to adjust the sensitivity of the sensor.
@@ -89,7 +89,7 @@ The sensor requires 5V input to operate and it will output 5V as well, as the ES
 ## Plugging-in the water quantity sensor
 
 <p align="center">
-  <img src="/kits/eduponics_mini/images/connecting_liquid_level_sensor.jpeg">
+  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/connecting_liquid_level_sensor.jpeg">
 </p>
 
 Plugging in the sensor is very straight forward, using the XH2.54 interface we can plug it right in. the sensor have 4 pins in total: GND, VCC, DATA and NO (natural pin that we connect to ground as well).

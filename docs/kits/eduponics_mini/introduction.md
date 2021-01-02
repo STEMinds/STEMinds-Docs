@@ -16,7 +16,7 @@ By having the basic manual and instructions here we can assure you that we will 
 ## Eduponics Mini Development board
 
 <p align="center">
-  <img src="/kits/eduponics_mini/images/eduponics_mini.png">
+  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/eduponics_mini.png">
 </p>
 
 Except for the sensors and modules included in the Eduponics mini kit, the main thing is our custom made Eduponics Mini Board.
@@ -68,7 +68,7 @@ All the code is available in our git repository: [STEMinds Eduponics Mini reposi
 ## Eduponics Mobile app
 
 <p align="left">
-  <img src="/kits/eduponics_mini/images/eduponics_featured.png">
+  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/eduponics_featured.png">
 </p>
 
 The Eduponics Mini kit can be integrated with Eduponics app that allows it to be controlled from anywhere in the world using the MQTT communication protocol.
@@ -77,7 +77,7 @@ This allows users and students to get sense of real life useful IoT applications
 ## Programing language
 
 <p align="center">
-  <img src="/kits/eduponics_mini/images/micropython.jpg">
+  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/micropython.jpg">
 </p>
 
 For this kit we've decided to use the MicroPython language which is based on Python3 but designed for microcontrollers.

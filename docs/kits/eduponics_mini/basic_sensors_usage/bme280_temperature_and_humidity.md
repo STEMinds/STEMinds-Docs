@@ -6,7 +6,7 @@ description: Bosch BME280 sensor is a humidity, temperature and barometric press
 # BME280 Temperature & Humidity sensor
 
 <p align="center">
-  <img src="/kits/eduponics_mini/images/bme280.png">
+  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/bme280.png">
 </p>
 
 The Bosch BME280 sensor is a humidity, temperature and barometric pressure sensor especially developed for mobile applications and wearables where size and low power consumption are key design parameters.
@@ -43,7 +43,7 @@ Some of the great possible applications we can use the BME280 for are:
 There is not much information on the inside of the BME280 IC (integrated circuit) we guess it's because its Bosch patented technology. what we do know is that the tiny IC integrates 3 features inside and we can use the I2C protocol to read data from it.
 
 <p align="center">
-  <img src="/kits/eduponics_mini/images/BME280_schematic.png">
+  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/BME280_schematic.png">
 </p>
 
 In the schematic above we can see how we've connected the BME280 to our Eduponics mini ESP32 board (MCU is where our ESP32 is). The BME280 requires only 1.8V voltage of operation, extremely low in power requirements as well as power consumption.

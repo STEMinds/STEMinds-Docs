@@ -43,7 +43,7 @@ Of course, you will need to change the number "14310" to the one that shows up o
 
 !!! info "Small tip for alternatives to screen"
     On Linux, "picocom" or "minicom" may be used instead of "screen". The USB serial address might also be listed as /dev/ttyUSB01 or a higher increment for ttyUSB. Additionally, the elevated permissions to access the device (e.g. group uucp/dialout or use sudo) may be required. This can be done by typing the following commands:
-    
+
 Sudo usermod -a -G dialout $user
 Sudo chmod a+rw /dev/ttyUSB0
 
@@ -66,7 +66,7 @@ We use PuTTY to communicate through UART with the Eduponics Mini, in OSX or Linu
 You can download Putty from here: [Putty official website](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
 
 <p align="center">
-  <img src="/kits/eduponics_mini/images/putty_example.png">
+  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/putty_example.png">
 </p>
 
 Once you have Putty installed, you can proceed to entering the COM port that we found earlier in the device manager (it may not necessarily be COM4, it could be a different number)
@@ -75,7 +75,7 @@ also make sure to set the baud rate as 115200 as we mentioned earlier.
 Tick the connection type checkbox as "Serial" once you are ready click the "Open" button to intialize the connection.
 
 !!! info "Thonny IDE detects the UART name automatically"
-    
+
 If you use the Thonny IDE for your programming needs, in the interpeter it will already show you the port name and device information without needing to look for it manually.
 
 ## Adafruit MicroPython Tool
@@ -242,6 +242,6 @@ That's all the Ampy commands that you'll need, make sure to practice by pushing,
 
 ## Coming up next
 
-Congratulations! you've made your first step in command line programming, hardware and the STEM world! 
+Congratulations! you've made your first step in command line programming, hardware and the STEM world!
 
 Next, we'll start by introducing each sensor that is available on top of the Eduponics mini kit. After you'll master the science behind the sensors and how to program them yourself. We'll then move on to more advanced examples, combining multiple sensors together to achieve a fully functional IoT plant monitoring system.

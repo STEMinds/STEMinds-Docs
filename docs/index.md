@@ -6,7 +6,7 @@ description: STEMinds wiki offers documentation and information about various pr
 # Welcome to STEMinds Wiki
 
 <p align="center">
-  <img src="images/wiki_intro.png">
+  <img src="https://cdn.steminds.com/docs/images/wiki_intro.png">
 </p>
 
 In this wiki platform you'll find all the tools, tutorials and guides you need to get started with STEMinds official products and kits.</br>
@@ -24,7 +24,7 @@ Our Github account can be accessed here: [github.com/STEMinds](https://github.co
 If you are using a mobile device to access this wiki you might not see it straight away but there is a small navigation icon on top:
 
 <p align="left">
-  <img src="images/navigation_icon.jpeg">
+  <img src="https://cdn.steminds.com/docs/images/navigation_icon.jpeg">
 </p>
 
 If you press the yellow button on the top right, you'll be able to see the navigation menu, under kits you'll see our available kits with their related curriculum and everything else you'll need inside.

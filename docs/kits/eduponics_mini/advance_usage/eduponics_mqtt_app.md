@@ -6,7 +6,7 @@ description: Learn how to integrate the Eduponics mini kit with Eduponics app to
 # Eduponics MQTT Powered Mobile APP
 
 <p align="left">
-  <img src="/kits/eduponics_mini/images/eduponics_featured.png">
+  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/eduponics_featured.png">
 </p>
 
 The Eduponics App is a special app we've developed in order to turn your kit into a complete autonomous smart watering solution.
@@ -972,7 +972,7 @@ Now once we have everything ready on our ESP32 Eduponics Mini hardware, it's tim
 Currently the app is only available on the Android store and should be able to work on most if not all Android phones. To download, search "Eduponics" in playstore app and you should find it right away.
 
 <p align="center">
-  <img src="/kits/eduponics_mini/images/eduponics_mini_android_store.png">
+  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/eduponics_mini_android_store.png">
 </p>
 
 Alternatively you can install it directly to your phone using the web browser playstore application: [Eduponics Playstore APP](https://play.google.com/store/apps/details?id=com.steminds.eduponics)
@@ -984,7 +984,7 @@ After downloading and launching the app successfully a popup window will show th
 In this window press "Let's go!" and it will take you automatically to the settings page to bind the Eduponics Mini hardware with the APP.
 
 <p align="center">
-  <img style="max-width:50%; height:auto;" src="/kits/eduponics_mini/images/eduponics_app_setup_step_1.jpeg">
+  <img style="max-width:50%; height:auto;" src="https://cdn.steminds.com/docs/kits/eduponics_mini/eduponics_app_setup_step_1.jpeg">
 </p>
 
 Once we've  been redirected successfully, it's time to bind the app with our hardware.
@@ -994,13 +994,13 @@ In order to do so - we'll need the UUID we've generated earlier and initialized 
       After you've typed the UUID completely, press the enter key on the virtual keyboard to confirm the UUID, this should complete the process.
 
 <p align="center">
-  <img style="max-width:50%; height:auto;" src="/kits/eduponics_mini/images/eduponics_app_setup_step_2.jpeg">
+  <img style="max-width:50%; height:auto;" src="https://cdn.steminds.com/docs/kits/eduponics_mini/eduponics_app_setup_step_2.jpeg">
 </p>
 
 Once the virtual key entered successfully, we are now successfully connected to the same channel (the topics) as our Eduponics Mini hardware! it's time to go back to the "Control" tab and see if we can get real time data from our device.
 
 <p align="center">
-  <img style="max-width:50%; height:auto;" src="/kits/eduponics_mini/images/eduponics_app_setup_step_3.jpeg">
+  <img style="max-width:50%; height:auto;" src="https://cdn.steminds.com/docs/kits/eduponics_mini/eduponics_app_setup_step_3.jpeg">
 </p>
 
 Now you can monitor your plant from everywhere, water it remotely and track the sensors data to make smarter decisions.

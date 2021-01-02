@@ -130,7 +130,7 @@ We'll use 3 colors: RED, YELLOW and GREEN. the red color will indicate the soil 
 Let's understand more about what is right or wrong temperature for the plants by the following chart made by the ministry of environment in Canada:
 
 <p align="center">
-  <img src="/kits/eduponics_mini/images/Humidex_Chart.jpg">
+  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/Humidex_Chart.jpg">
 </p>
 
 The X axis represents the temperature while the Y axis represents the humidity. We can match them both in order to find the optional temperature and humidity on how to behave during heat waves. Humidex provides a crucial information on how to behave during certain temperature and humidity situations to avoid damage to humans such as workers that work outdoors, kids at schools and more ...
@@ -156,7 +156,7 @@ But, we will need few more things which the sensor won't provide us directly. th
 Don't worry, we have a formulate to get this thing ready for us:
 
 <p align="center">
-  <img src="/kits/eduponics_mini/images/dewpoint_formula.jpeg">
+  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/dewpoint_formula.jpeg">
 </p>
 
 Where RH stands for "relative humidity" the humidity we get through our temperature and humidity sensor.
@@ -167,7 +167,7 @@ The results of this formula will be in celsius but to calculate humidex we'll ne
 Now when we have the depoint in Kavin, it's time to get the humidex value, the formula as follows:
 
 <p align="center">
-  <img src="/kits/eduponics_mini/images/humidex_formula.png">
+  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/humidex_formula.png">
 </p>
 
 Looks quite complicated right? no worries, we've implemented it in Python already in the example that will come up next.
