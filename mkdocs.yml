@@ -25,13 +25,13 @@ nav:
       - 'Basic MQTT client' : 'kits/eduponics_mini/advance_usage/basic_mqtt_client.md'
       - 'Eduponics MQTT APP' : 'kits/eduponics_mini/advance_usage/eduponics_mqtt_app.md'
 theme:
-  logo: /assets/images/icon.svg
-  favicon: /assets/images/icon.svg
+  logo: https://cdn.steminds.com/docs/images/icon.svg
+  favicon: https://cdn.steminds.com/docs/images/icon.svg
   name: material
   custom_dir: overrides
   language: en
   icon:
-    logo: /assets/images/icon
+    logo: https://cdn.steminds.com/docs/images/icon.svg
   palette:
     primary: default
     accent: yellow
