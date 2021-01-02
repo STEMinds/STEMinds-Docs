@@ -1,0 +1,60 @@
+site_name: STEMinds Documentation
+nav:
+  - Welcome: index.md
+  - 'Products':
+    - 'Extension board for Eduponics Mini' : 'products/eduponics_mini_extension_board.md'
+    - 'Minduino Uno' : 'products/minduino_uno.md'
+  - 'Kits':
+    - 'Eduponics Mini':
+      - 'Introduction' : 'kits/eduponics_mini/introduction.md'
+      - 'Getting started' : 'kits/eduponics_mini/eduponics_mini_getting_started.md'
+      - 'Advance manual tools' : 'kits/eduponics_mini/advance_tools.md'
+      - 'BME280 sensor' : 'kits/eduponics_mini/basic_sensors_usage/bme280_temperature_and_humidity.md'
+      - 'DHT11 sensor' : 'kits/eduponics_mini/basic_sensors_usage/dht11_temperature_and_humidity.md'
+      - 'BH1750 Light sensor' : 'kits/eduponics_mini/basic_sensors_usage/light_sensor.md'
+      - 'Water level sensor' : 'kits/eduponics_mini/basic_sensors_usage/water_quantity_sensor.md'
+      - 'Water pump' : 'kits/eduponics_mini/basic_sensors_usage/pump.md'
+      - 'RGB LED' : 'kits/eduponics_mini/basic_sensors_usage/rgb_led.md'
+      - 'EEPROM Module' : 'kits/eduponics_mini/basic_sensors_usage/eeprom_module.md'
+      - 'RTC Module' : 'kits/eduponics_mini/basic_sensors_usage/rtc_module.md'
+      - 'Soil moisture sensor' : 'kits/eduponics_mini/basic_sensors_usage/soil_moisture_sensor.md'
+      - 'Deep sleep wakeup' : 'kits/eduponics_mini/basic_sensors_usage/deep_sleep_wakeup.md'
+      - 'RGB based indicators' : 'kits/eduponics_mini/advance_usage/RGB_indicators.md'
+      - 'Water level based pump' : 'kits/eduponics_mini/advance_usage/water_level_based_water_pumping.md'
+      - 'Introduction to MQTT' : 'kits/eduponics_mini/advance_usage/introduction_to_mqtt.md'
+      - 'Basic MQTT client' : 'kits/eduponics_mini/advance_usage/basic_mqtt_client.md'
+      - 'Eduponics MQTT APP' : 'kits/eduponics_mini/advance_usage/eduponics_mqtt_app.md'
+theme:
+  logo: /assets/images/icon.svg
+  favicon: /assets/images/icon.svg
+  name: material
+  custom_dir: overrides
+  language: en
+  icon:
+    logo: /assets/images/icon
+  palette:
+    primary: default
+    accent: yellow
+plugins:
+  #- with-pdf:
+markdown_extensions:
+  - meta
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.highlight:
+      use_pygments: true
+      linenums: false
+      linenums_style: pymdownx.inline
+extra:
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/STEMinds
+    - icon: fontawesome/brands/facebook
+      link: https://facebook.com/STEMinds
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/STEMinds
+google_analytics:
+  - UA-165700957-1
+  - auto
