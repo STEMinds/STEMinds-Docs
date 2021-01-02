@@ -37,7 +37,7 @@ theme:
     accent: amber
 
 extra_css:
-  - stylesheets/extra.css
+  - stylesheets/style-starter.css
 extra_javascript:
   - javascripts/extra.js
 markdown_extensions:
