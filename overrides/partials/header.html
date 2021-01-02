@@ -24,63 +24,41 @@
 {% endif %}
 
 <!-- Application header -->
-<header class="md-header" data-md-component="header">
+<header class="w3l-bootstrap-header">
+    <link href="//fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style-starter.css">
+    <script
+    src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+    crossorigin="anonymous"></script>
+    <nav class="navbar navbar-expand-lg navbar-dark py-lg-2 py-2">
+      <div class="container">
+        <a class="navbar-brand" href="#index.html" style="color: #FFC51D;">
+            <img src="https://cdn.steminds.com/docs/images/icon.svg" alt="STEMinds" title="STEMinds" style="height:48px;" />
+            STEMinds
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-  <!-- Top-level navigation -->
-  <nav class="md-header-nav md-grid" aria-label="{{ lang.t('header.title') }}">
-
-    <!-- Link to home -->
-    <!--
-    <a
-      href="{{ site_url }}"
-      title="{{ config.site_name | e }}"
-      class="md-header-nav__button md-logo"
-      aria-label="{{ config.site_name }}"
-    >
-      {% include "partials/logo.html" %}
-    </a>
-    -->
-
-    <!-- Button to open drawer -->
-    <label class="md-header-nav__button md-icon" for="__drawer">
-      {% include ".icons/material/menu" ~ ".svg" %}
-    </label>
-
-    <!-- Header title -->
-    <div class="md-header-nav__title" data-md-component="header-title">
-      <div class="md-header-nav__ellipsis">
-        <div class="md-header-nav__topic">
-          <span class="md-ellipsis">
-            {{ config.site_name }}
-          </span>
-        </div>
-        <div class="md-header-nav__topic">
-          <span class="md-ellipsis">
-            {% if page and page.meta and page.meta.title %}
-              {{ page.meta.title }}
-            {% else %}
-              {{ page.title }}
-            {% endif %}
-          </span>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="https://steminds.com/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://shop.steminds.com/">Products</a>
+            </li>
+              <li class="nav-item">
+              <a class="nav-link" href="https://wiki.steminds.com/">Documentation</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://steminds.com/contact.html">Contact</a>
+            </li>
+          </ul>
         </div>
       </div>
-    </div>
 
-    <!-- Button to open search dialogue -->
-    {% if "search" in config["plugins"] %}
-      <label class="md-header-nav__button md-icon" for="__search">
-        {% include ".icons/material/magnify.svg" %}
-      </label>
-
-      <!-- Search interface -->
-      {% include "partials/search.html" %}
-    {% endif %}
-
-    <!-- Repository information -->
-    {% if config.repo_url %}
-      <div class="md-header-nav__source">
-        {% include "partials/source.html" %}
-      </div>
-    {% endif %}
-  </nav>
+    </nav>
 </header>
