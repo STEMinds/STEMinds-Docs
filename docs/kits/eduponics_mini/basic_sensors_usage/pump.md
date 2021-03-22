@@ -55,7 +55,7 @@ Possible applications for pumps are:
 <p align="center">
   <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/principle_of_relay.gif">
 </p>
-<center>Illustration by [omaron introduction](http://www.ia.omron.com/support/guide/36/introduction.html)</center>
+<center>Illustration by [omaron introduction](https://www.ia.omron.com/support/guide/36/introduction.html)</center>
 
 
 The 12V pump is operated using a 5V relay, we use 5V output signal to activate (open) the relay or to deactivate (close) the relay.
