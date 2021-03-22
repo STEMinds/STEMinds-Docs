@@ -54,6 +54,34 @@ Once you unpack the package, you will find it contains the following:
 All those words might sound like a foreign language to you but we can assure you that at the end of the course not only will you understand their meaning
 but you'll also be able to control those sensors, program them and make your inventions completely by yourself!
 
+## Comparison to other kits
+
+Eduponics is without doubt the best choice when it comes to price over value, our kit offer the best value for the same price as similar projects that exist in the market. Most importantly, most of the existing IoT agriculture kit offer no support for extension, the Eduponics Mini allows dozen of extension pins in order to integrate any sensor as you wish as well as Open source MicroPython + Arduino software and mobile IoT app.
+
+|                             | Eduponics Mini            | EcoDuino         | Watering kit             | Smart Plant Care      | Gardening Add-On Kit  |
+|-----------------------------|---------------------------|------------------|--------------------------|-----------------------|-----------------------|
+| **Manufacturer**            | STEMinds                  | DFRobot          | Elecrow                  | Seeed Studio          | STEMpedia             |
+| **Soil Moisture sensor**    | Yes (custom design)       | Yes              | Yes                      | Yes                   | Yes (Corrosive)       |
+| **Extension IO pins**       | Yes                       | No               | No                       | Yes                   | No                    |
+| **MCU**                     | ESP32                     | ATmega           | ATmega                   | None                  | None                  |
+| **WiFi**                    | Yes                       | No               | No                       | No                    | No                    |
+| **Bluetooth/BLE**           | Yes                       | No               | No                       | No                    | HC05 Bluetooth module |  
+| **Environmental sensors**   | BME280                    | DHT11            | No                       | DHT11                 | No                    |
+| **Low powered**             | Support deep-sleep        | No               | No                       | No                    | No                    |
+| **Protection enclosure**    | STL files provided        | Yes              | No                       | No                    | No                    |
+| **RTC Module**              | Yes                       | No               | Yes                      | No                    | No                    |
+| **Ambient light sensor**    | Yes                       | No               | No                       | Yes                   | Yes                   |
+| **Water quantity sensor**   | Yes                       | No               | No                       | No                    | No                    |
+| **IoT Mobile app**          | Yes, Eduponics APP        | No               | No                       | No                    | No                    |
+| **Indications**             | RGB LED                   | No               | OLED Display             | OLED Display          | Blue/Red LEDs         |
+| **EEPROM**                  | Yes                       | No               | No                       | No                    | No                    |
+| **Battery / solar powered** | External module           | External module  | No                       | No                    | No                    |
+| **Open Source**             | Schematic+SW+STL          | SW               | SW                       | HW+SW                 | SW                    |
+| **Programming languages**   | Arduino, MicroPython      | Arduino C        | Arduino C                | Arduino C             | Arduino C             |
+| **USB interface**           | Type-C                    | Micro-USB        | Micro-USB                | None                  | None                  |
+| **Supported extensions**    | Yes                       | No               | No                       | Arduino HATs or Grove | No                    |
+| **Documentation**           | Complete, Arduino+Python  | Minimal          | Minimal                  | Minimal               | Minimal               |
+
 ## Open source software
 
 All our code examples and drivers are completely open source, while our Eduponics mobile app is not open sourced for security reasons we do provide an MQTT library to control every aspect of the app remotely such as:
