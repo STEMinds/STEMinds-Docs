@@ -3,7 +3,6 @@ nav:
   - Welcome: index.md
   - 'Products':
     - 'Extension board for Eduponics Mini' : 'products/eduponics_mini_extension_board.md'
-    #- 'Minduino Uno' : 'products/minduino_uno.md'
   - 'Kits':
     - 'Eduponics Mini':
       - 'Introduction' : 'kits/eduponics_mini/introduction.md'
