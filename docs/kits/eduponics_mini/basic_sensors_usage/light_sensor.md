@@ -71,62 +71,50 @@ As we mentioned, our main component inside the IC is the PD which is photo-diode
 
 ## Software example
 
-In the following code example, we'll create a class called "LightSensor". in this class we will define some of the main functions that we need.
+!!! Info "Make sure micropython-eduponics is installed through upip"
+    For our Python code, we will need to import eduponics library, make sure you followed the introduction guide on installing the library on the ESP32 Eduponics Mini board.
 
-In the initializer, we will define the addresses that we'll need to communicate through I2C. The addresses are mentioned in the BH1750 script such as measurement resolutions and low power mode by turning off the sensor after successful measurement.
+In the following code example, we'll use a class called "LightSensor" from the micropython-eduponics library, this class we define some of the main functions that we need in order to interact with our light sensor.
 
-The next step will be to create a function called readLight() which will communicate through I2C to get the data from the BH1750 sensor. Last by not least, we will make a function called convertToNumber that will take the reading from readLight and convert it into a readable format - 2 bytes of data into a decimal.
-
-For the main code, we can either call this function from another file or use it as is by creating an object called sensor which will initialize LightSensor class and then call sensor.readLight() to get the value of Illuminance in the room in lx.
+The code is very straight forward: we'll create an object from the BH1750 library called "light" and execute a single "readLight" function on the object to recieve the light intensity in lux.
 
 === "MicroPython"
     ``` python linenums="1"
+    """
+    MicroPython BH1750 light sensor module
+    https://github.com/STEMinds/eduponics-mini
+    MIT License
+    Copyright (c) 2020 STEMinds
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+    """
+
+    from eduponics import bh1750
     import machine
+    import time
 
-    class LightSensor():
+    # initialize the bh1750 sensor
+    light = bh1750.BH1750()
 
-        def __init__(self):
-
-            # Define some constants from the datasheet
-
-            self.DEVICE = 0x5c # Default device I2C address
-
-            self.POWER_DOWN = 0x00 # No active state
-            self.POWER_ON = 0x01 # Power on
-            self.RESET = 0x07 # Reset data register value
-
-            # Start measurement at 4lx resolution. Time typically 16ms.
-            self.CONTINUOUS_LOW_RES_MODE = 0x13
-            # Start measurement at 1lx resolution. Time typically 120ms
-            self.CONTINUOUS_HIGH_RES_MODE_1 = 0x10
-            # Start measurement at 0.5lx resolution. Time typically 120ms
-            self.CONTINUOUS_HIGH_RES_MODE_2 = 0x11
-            # Start measurement at 1lx resolution. Time typically 120ms
-            # Device is automatically set to Power Down after measurement.
-            self.ONE_TIME_HIGH_RES_MODE_1 = 0x20
-            # Start measurement at 0.5lx resolution. Time typically 120ms
-            # Device is automatically set to Power Down after measurement.
-            self.ONE_TIME_HIGH_RES_MODE_2 = 0x21
-            # Start measurement at 1lx resolution. Time typically 120ms
-            # Device is automatically set to Power Down after measurement.
-            self.ONE_TIME_LOW_RES_MODE = 0x23
-            # setup I2C
-            self.i2c = machine.I2C(scl=machine.Pin(15), sda=machine.Pin(4))
-
-        def convertToNumber(self, data):
-
-            # Simple function to convert 2 bytes of data
-            # into a decimal number
-            return ((data[1] + (256 * data[0])) / 1.2)
-
-        def readLight(self):
-
-            data = self.i2c.readfrom_mem(self.DEVICE,self.ONE_TIME_HIGH_RES_MODE_1,2)
-            return self.convertToNumber(data)
-
-    sensor = LightSensor()
-    light = sensor.readLight()
-    print("Light in the room: %slx" % light)
+    # while true, print the light values in lux
+    while True:
+        print(light.readLight())
+        time.sleep(1)
     ```
 === "ESP32-Arduino"
     ``` C++ linenums="1"

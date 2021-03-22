@@ -44,9 +44,12 @@ There could be many reasons to use EEPROM, such as:
 
 ## Software explanation
 
+!!! Info "Make sure micropython-eduponics is installed through upip"
+    For our Python code, we will need to import eduponics library, make sure you followed the introduction guide on installing the library on the ESP32 Eduponics Mini board.
+
 The software library is written by Mike Causer, you can check the Github library [here](https://github.com/mcauser/micropython-tinyrtc)
 
-We have a class called AT24C32N where there are multiple functions such as read and write.
+In micropython-eduponics we have a class called AT24C32N where there are multiple functions such as read and write.
 The first thing to do will be to initialize our EEPROM using the I2C protocol which has 2 pins SCL and SDA.
 The SCL pin would be pin 15 while the SDA pin would be pin number 4.
 
@@ -62,6 +65,7 @@ finally, we'll read 11 bytes which is exactly the length of the string we've add
     https://github.com/mcauser/micropython-tinyrtc
     MIT License
     Copyright (c) 2018 Mike Causer
+                  2021 STEMinds
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
     in the Software without restriction, including without limitation the rights
@@ -72,7 +76,7 @@ finally, we'll read 11 bytes which is exactly the length of the string we've add
     copies or substantial portions of the Software.
     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
     IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
     AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
@@ -80,50 +84,23 @@ finally, we'll read 11 bytes which is exactly the length of the string we've add
     """
 
     # AT24C32A, 32K (32768 kbit / 4 KB), 128 pages, 32 bytes per page, i2c addr 0x50
+    from eduponics import at24c02
     import machine
     import time
 
-    class AT24C32N(object):
-        """Driver for the AT24C32N 32K EEPROM."""
-
-        def __init__(self, i2c, i2c_addr=0x50, pages=128, bpp=32):
-            self.i2c = i2c
-            self.i2c_addr = i2c_addr
-            self.pages = pages
-            self.bpp = bpp # bytes per page
-
-        def capacity(self):
-            """Storage capacity in bytes"""
-            return self.pages * self.bpp
-
-        def read(self, addr, nbytes):
-            """Read one or more bytes from the EEPROM starting from a specific address"""
-            return self.i2c.readfrom_mem(self.i2c_addr, addr, nbytes, addrsize=16)
-
-        def write(self, addr, buf):
-            """Write one or more bytes to the EEPROM starting from a specific address"""
-            offset = addr % self.bpp
-            partial = 0
-            # partial page write
-            if offset > 0:
-                partial = self.bpp - offset
-                self.i2c.writeto_mem(self.i2c_addr, addr, buf[0:partial], addrsize=16)
-                time.sleep_ms(5)
-                addr += partial
-            # full page write
-            for i in range(partial, len(buf), self.bpp):
-                self.i2c.writeto_mem(self.i2c_addr, addr+i-partial, buf[i:i+self.bpp], addrsize=16)
-                time.sleep_ms(5)
-
-    # configure i2c pin
+    # initialize i2c connection
     i2c = machine.I2C(scl=machine.Pin(15), sda=machine.Pin(4))
-    # configure eeprom using i2c
-    eeprom = AT24C32N(i2c)
-    # print the eeprom data
+
+    # define the EEPROM using the I2C
+    eeprom = at24c02.AT24C32N(i2c)
+
+    # print 32 bytes
     print(eeprom.read(0, 32))
-    # write "hello world" into eeprom
+
+    # write "hello world" starting from sector 0
     eeprom.write(0, 'hello world')
-    # print 11 bytes which is exactly the size of 'hello world'
+
+    # read 11 bytes from the EEPROM
     print(eeprom.read(0, 11))
     ```
 === "ESP32-Arduino"

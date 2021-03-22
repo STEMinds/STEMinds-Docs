@@ -122,3 +122,45 @@ Once you've typed the command and pressed "Enter" you should see "Hello world" o
     Once the "hello world" printing command was successfully executed, be aware that it was executed on the ESP32 Eduponics Mini board directly!
 
 Your machine may or may not have Python3 installed but the code through Thonny is running on the development board directly which means we can continue to code more exciting things and explore all the feature the Eduponics Mini prepared for us!
+
+## Installing micropython-eduponics Library
+
+In order to ease things up, we've created a special library MicroPython for the Eduponics Mini and the Eduponics Mini extension board.
+
+The library can be found on our Github account: [Micropython-Eduponics on github](https://github.com/STEMinds/micropython-eduponics)
+
+This library will allow us to use different type of functions with ease without the need to drag external dependencies and libs to the ESP32 board. If you are planning on using Arduino IDE environment, you can ignore the following steps.
+
+We will install the library through upip which is a MicroPython implementation of pip, python package manager. In order to do that, we first have to connect to the WiFi, we can do this by creating a file called **boot.py** on our Eduponics Mini device inside Thonny IDE and adding the following lines:
+
+``` python
+import network
+import esp
+esp.osdebug(None)
+import gc
+gc.collect()
+
+ssid = 'WIFI_NAME'
+password = 'WIFI_PASSWORD'
+
+station = network.WLAN(network.STA_IF)
+
+station.active(True)
+station.connect(ssid, password)
+
+while station.isconnected() == False:
+  pass
+
+print('Connected to WiFi successfully, IP: %s' % station.ifconfig()[0])
+```
+
+We need to make sure to change WIFI_NAME and WIFI_PASSWORD to your Access point at home (WiFI credentials), make sure that the WiFi is 2.4GhZ and not 5G as the ESP32 currently doesn't support 5G wireless networks.
+
+Once the ESP32 is successfully connected to the WiFi and received IP address, we can write the following commands:
+
+``` python
+import upip
+upip.install("micropython-eduponics")
+```
+
+This will import upip and using the command upip.install() we can install the micropython-eduponics library. Now once everything is ready, we can import eduponics library and time and use the API to ease our programming experience and tasks!

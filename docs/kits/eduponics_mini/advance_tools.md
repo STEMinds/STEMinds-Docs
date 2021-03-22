@@ -10,7 +10,7 @@ Previously we've discussed how to get started with Eduponics mini IDE, if you co
 
 !!! Warning "Manual work from now on"
     We strongly suggest you to start with Thonny IDE if you are a complete beginner
-    the following steps will explain about Ampy, Putty and some other tools that can help you install and run scripts manually on your Eduponcis kit
+    the following steps will explain about Ampy, Putty and some other tools that can help you install and run scripts manually on your Eduponics kit
     this might be very useful for advanced users but not so friendly for new users without previous experience.
 
 ## Connecting to the kit through UART
@@ -42,10 +42,12 @@ Now when we have the right UART name, we can easily run the following command in
 Of course, you will need to change the number "14310" to the one that shows up on your machine - it might look different. "115200" stands for the communication baud rate we use.
 
 !!! info "Small tip for alternatives to screen"
-    On Linux, "picocom" or "minicom" may be used instead of "screen". The USB serial address might also be listed as /dev/ttyUSB01 or a higher increment for ttyUSB. Additionally, the elevated permissions to access the device (e.g. group uucp/dialout or use sudo) may be required. This can be done by typing the following commands:
+    On Linux, "picocom" or "minicom" may be used instead of "screen". The USB serial address might also be listed as /dev/ttyUSB01 or a higher increment for ttyUSB. Additionally, the elevated permissions to access the device (e.g. group uucp/dialout or use sudo) may be required.
 
-Sudo usermod -a -G dialout $user
-Sudo chmod a+rw /dev/ttyUSB0
+This can be done by typing the following commands
+
+    sudo usermod -a -G dialout $user
+    sudo chmod a+rw /dev/ttyUSB0
 
 
 ### In Windows
