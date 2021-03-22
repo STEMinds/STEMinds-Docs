@@ -5,6 +5,10 @@ description: The soil moisture sensor is analog sensor, there are some pins on t
 
 # STEMinds Soil moisture sensor
 
+<p align="center">
+  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/eduponics-soil-moisture-sensors.jpeg">
+</p>
+
 Our sensor is one of a kind, we truly love that sensor and hope other people can use it as much as we do.
 We've been looking for quite some time for a soil moisture stable sensor for smart agriculture / smart plants related projects but couldn't find any.
 
@@ -18,6 +22,34 @@ During the process of testing and finding the perfect soil moisture sensor for o
 * Water-proof and dust-proof, self-tested submerged for 24 hours.
 * Powered by 5V input/output
 * Highly accurate, useful for industrial and real life applications.
+
+## Comparison to other sensors
+
+While looking for soil moisture sensors to use with our kit, we encountered a severe challenge - the sensors were just not good enough.
+We've purchased and tested multiple sensors till the decision was made to make our own.
+
+Take a look at the comparison below, our sensor has the highest voltage range and sensitivity between all the sensors we've tested,
+allowing you to create a stable and precise high resolution smart agriculture and IoT applications.
+
+|                           | STEMinds (Short) | STEMinds (Long) | DFRobot    | Grove Seeed studio | Generic v1.2 |
+|---------------------------|------------------|-----------------|------------|--------------------|--------------|
+| **Type of sensor**        | Capacitive       | Capacitive      | Capacitive | Capacitive         | Capacitive   |
+| **Operation voltage**     | 5V               | 5V              | 3.3~5.5V   | 3.3~5V             | 3.3-5V       |
+| **Min voltage output**    | 0.987V           | 0.561V          | 2.468V     | 2.378V             | 1.022V       |
+| **Max voltage output**    | 3.3V             | 3.3V            | 3.112V     | 3.570V             | 2.300V       |
+| **Min output value**      | 154              | 106             | 260        | 494                | 214          |
+| **Max output value**      | 668              | 683             | 517        | 745                | 480          |
+| **Operation current**     | 7mA              | 7mA             | 5mA        | 8mA                | 6mA          |
+| **Resolution (high-low)** | 514              | 577             | 257        | 251                | 266          |
+
+Please note the following regarding the testing of the soil moisture sensors **that belong to other brands** and the comparison between different type of sensors:
+
+* All the sensors tested with Genuine Arduino Uno device using the analog pins and 5V as input.
+* Generic v1.2 refers to generic sensors without Manufacturer or brand produced in China. (some Chinese companies sell it under their brand)
+* Maximum voltage and output stands for the voltage when the sensor is in the open air, minimum voltage and output stands for the voltage when the sensor is submersed under water.
+* For comparison we've purchased the original sensors from the authorized distributers.
+* Operation current measured using Fluke multimeter.
+* Soil moisture test results are for ***Educational reference only*** and should not be taken AS IS, different environments might bring different results, this meant to say that we can't control over other branded sensors while we can guarantee that our sensors will be at top quality and affordable price.
 
 ## Hardware explanation
 
