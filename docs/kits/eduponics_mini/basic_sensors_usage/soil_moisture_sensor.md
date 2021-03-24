@@ -1,5 +1,5 @@
 ---
-title: STEMinds - Waterproof soil moisture sensor
+title: STEMinds - Capacitive soil moisture sensor
 description: The soil moisture sensor is analog sensor, there are some pins on the board that can be converted from analog to digital (ADC) and we will need to work through the process of converting the pin to become analog pin so we could read the data from the sensor.
 ---
 
