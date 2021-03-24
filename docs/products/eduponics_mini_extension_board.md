@@ -10,17 +10,17 @@ description: The Eduponics mini extension board designed using ADS1115 for ADC s
 </p>
 
 The Eduponics mini extension board designed using ADS1115 for ADC support and MCP23017 for GPIO control with some advance functionalities such as interrupt on change and precise analog data reading, the board allows to connect extra 4 analog data sensors and 4 digital output devices with 12V support.
-
+<br/>
 While the Eduponics Mini ESP32 board allows to connect only one pump and one soil moisture sensor, we've decided to develop a custom HAT (Hardware Attached on Top) to enhance the Eduponics Mini functionalities by adding extra 4 soil moisture sensors and extra 4 pumps.
 
 ## Features
 
 If we use simple words: the extension board allows us to control extra 4 plants (total of 5 plants) at the same time.
-
+<br/>
 If we go with deeper explanation, the sensors aren't necessary need to be soil moisture sensors or pumps, it can be any analog or digital sensors that needs to be controlled using the Eduponics Mini (or any other micro-controller), giving you access to extra 4 relays and another 4 open IOs (input / output) and extra 4 analog sensors control.
-
+<br/>
 This is really great addition not just to the Eduponics Mini ESP32 board but also to other microcontrollers such as Raspberry Pi that needs extra IO pins or analog reading which it's lack of.
-
+<br/>
 Here is the detailed features that the Eduponics Mini extension board can offer you:
 
 * ADS1115 16 bit ADC chipset, precise analog data reading
@@ -42,7 +42,7 @@ Here is the detailed features that the Eduponics Mini extension board can offer 
 ## ADS1115 16-Bit ADC
 
 The Eduponics Mini Built-in ADC works pretty well but for the extension board we've decided to use ADS1115 to increase the precision, the ADS1115 provides 16-bit precision at 860 samples/second over the I2C protocol, the ADC includes a programmable gain amplifier, up to x16, to help boost up smaller single/differential signals to the full range
-
+<br/>
 A micro-computer like Raspberry Pi for example doesn't have built-in ADC (analog to digital converter) as well as the pins might be occupied or limited, by using I2C we only need 2 pins and using the ADS1115 we can add analog capabilities to boards that lack of it.
 
 ### Features
@@ -63,14 +63,14 @@ For the complete information, check the ADS1115 data sheet: [ADS1115 datasheet](
     For our Python code, we will need to import eduponics library, make sure you followed the introduction guide on installing the library on the ESP32 Eduponics Mini board.
 
 Below is the MicroPython library to control and configure the ADS1115 functionalities using the Eduponics Mini board and micropython-eduponics library, in the following example we are going to use a single soil moisture input in ADC(0).
-
+<br/>
 let's use it to to get the analog sensors data (both raw and voltage), voltage can be sometimes useful to create some other conversion techniques or use it for data collection purposes. We will configure I2C address on SCL pin 33 and SDA pin 32 as this is the pins the extension board connected to, then we will use the default 0x48 I2C address and set gain to 1 (default)
 
 !!! Info "When reading analog, current will flow. When not reading - current will not flow"
     a cool feature we have built-in inside the ADS1X15 library is to auto-control the MOSFETs, when we test data through the ADS the MOSFETs will open, when we finish testing the MOSFETs will close. this allows us to both save power and use sensors together that otherwise might have a conflict.
 
 We will read the analog data from the sensors every second and print them into the terminal screen.
-
+<br/>
 For the Arduino code, we need to download and install the following library: [ADS1115 Arduino Library](https://github.com/addicore/ADS1115)
 
 === "MicroPython"
@@ -263,7 +263,7 @@ For the Arduino code, we need to download and install the following library: [AD
 ## MCP23017 16-bit I/O Expander
 
 How can we control 4 relays without taking up 4 pins (excluding GND and VCC pins)? Simply use the MCP23017 I/O expander that uses I2C for communication (just 2 pins!)
-
+<br/>
 the MCP23017 can control up to 8 IO ports: 4 of the IO pins are reserved for the relays those cannot be re-wired as input or any other purposes, for the other 4 IO pins we've made pins available to connect any other extra sensors. Except that, the Eduponics Mini also has available IO ports for use which are not taken by any other application.
 
 ### Features
@@ -283,7 +283,7 @@ To learn more, feel free to refer to the data sheet: [MCP23017 data sheet](https
     For our Python code, we will need to import eduponics library, make sure you followed the introduction guide on installing the library on the ESP32 Eduponics Mini board.
 
 For the Arduino demo - you'll need to install the arduino-mcp23017 library: [arduino-mcp23017](https://github.com/blemasle/arduino-mcp23017)
-
+<br/>
 In order to test the following example, make sure you have micropython-eduponics library installed through uPip:
 
 === "MicroPython"
