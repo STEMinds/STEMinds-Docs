@@ -12,7 +12,7 @@ description: STEMinds 12V submersible water pump will allow you to water your pl
 
 With the Eduponics mini kit you'll find a small 12V submersible external pump as an accessory
 In this topic we'll learn about the pump, it's usage and possible applications and why we need a piece of hardware called "relay" to operate it.
-
+<br/><br/>
 At the end, we'll write a small Python code that will allow us to control the relay, activating the pump and delivering water from our water container to our plant.
 
 !!! Danger "Submersible usage only"
@@ -39,7 +39,7 @@ The pump is top quality product designed to live long and operate well under any
 ## Possible applications
 
 Pumps have many useful applications, our pump particularly is a Submersible pump which means it can only operate under water. there are other pumps that can operate in air but cannot be submersed under water such as air pumps.
-
+<br/><br/>
 Possible applications for pumps are:
 
 * Watering plants and flowers
@@ -61,13 +61,13 @@ Possible applications for pumps are:
 The 12V pump is operated using a 5V relay, we use 5V output signal to activate (open) the relay or to deactivate (close) the relay.
 when the relay is open, the circuit of the pump will close and allow current to flow thus activating the pump and letting us pump water through it.
 when we close the relay, the pump circuit is interrupted result in inactivating or disabling the pump.
-
+<br/><br/>
 A relay is an electrically operated switch. Many relays use an electromagnet to mechanically operate a switch, but other operating principles are also used, such as solid-state relays.
-
+<br/><br/>
 Our relay is based on the electromagnet principle, Relays are used where it is necessary to control a circuit by a separate low-power signal, or where several circuits must be controlled by one signal.
-
+<br/><br/>
 Without the relay, we won't be able to control the pump for the reason that our ESP32 development board IO pins can only supply 3.3v of output while our relay requires 12V of output.
-
+<br/><br/>
 The relay we use is HFD3/5, you can find more information here: [HFD3/5 datasheet](https://www.tme.eu/Document/34ac8bdc196985074ba301cdae9bb11c/HFD3.pdf)
 
 ## Connecting the pump to the kit
@@ -78,7 +78,7 @@ The relay we use is HFD3/5, you can find more information here: [HFD3/5 datashee
 
 The pump interface is our standard XH2.54 interface with 2 pins.
 to connect it, we'll simply plug the pump into the right port at the board, that should be easy because the board only contains single 2 pin interface which is dedicated for the pump.
-
+<br/><br/>
 Then, we'll need to take the hose and connect it directly to the top side of our pump, the water will go through it directly to our plant.
 
  Make sure to connect the hose to the <b>top</b> side of the pump, the left side is the water input direction while the top side is the output.
@@ -93,16 +93,16 @@ As our pump is submersible, we must put it inside of our water container. it can
 ## Software explained
 
 If we want to control the pump, we need to control the relay. the relay will behave as a "gate" that we open or close to allow the pump take water from the container and pump it through to our plant.
-
+<br/><br/>
 for this code we'll need to import 2 libraries: machine and time.
-
+<br/><br/>
 The machine library will allow us to control the IO pins while the time library will allow us to use the sleep function to take a small break between opening and closing the relay.
 
 The relay is connected to ESP32 IO pin number 23, because we "tell" the relay to either close or open, we'll set the pin as OUTPUT.
-
+<br/><br/>
 Then what left to do is turn on the pump (by opening the relay) using .value(1) command and closing it after a while using .value(0)
 The .value() function setting the IO output signal to either 1 which is "open" in our case or 0 which will be "close".
-
+<br/><br/>
 Check the complete code below and try it for yourself, you can change the sleep_interval variable with different number to let the program sleep for longer or shorter during the opening and closing of the relay.
 
 === "MicroPython"

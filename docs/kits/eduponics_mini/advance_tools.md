@@ -16,9 +16,9 @@ Previously we've discussed how to get started with Eduponics mini IDE, if you co
 ## Connecting to the kit through UART
 
 Once we have the necessary drivers installed, it's time to connect to our board through UART for the first time. Firstly, we'll need to find the UART port.
-
+<br/><br/>
 Baud rate also stands for bits per second and is a number related to the speed of data transmission in a system. The rate indicates the number of electrical oscillations per second that occurs within a data transmission. The higher the baud rate - the higher the transfer rate of bits per second.
-
+<br/><br/>
 In our Eduponics mini kit, the UART baud rate is <b>115200</b> which we will use by default to communicate with our ESP32 microcontroller.
 If we use a different baud rate we might get nonsense or "spaghetti" feedback instead of what we expect the board to print back to us in response.
 
@@ -34,7 +34,7 @@ the results should look similar to this:
     /dev/cu.usbserial-14310		/dev/tty.usbserial-14310
 
 In our example the UART name will be "tty.usbserial-14310" which we will use to connect to the Eduponics mini.
-
+<br/><br/>
 Now when we have the right UART name, we can easily run the following command in terminal to connect to the ESP32 MicroPython command-line interface:
 
     screen tty.usbserial-14310 115200
@@ -60,11 +60,11 @@ In Windows it's a little different, let's follow the steps below:
 4. Check for the com ports by expanding the COM menu option.
 
 Once you've located the right COM port, it's time to download putty to connect to the UART port.
-
+<br/><br/>
 PuTTY is an SSH and telnet client, developed originally by Simon Tatham for the Windows platform. PuTTY is an open-source software that is available with source code and is developed and supported by a group of volunteers.
-
+<br/><br/>
 We use PuTTY to communicate through UART with the Eduponics Mini, in OSX or Linux operation systems - a small piece of software called "screen" is already included, that allows us to communicate through UART without the need of external software
-
+<br/><br/>
 You can download Putty from here: [Putty official website](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
 
 <p align="center">
@@ -73,7 +73,7 @@ You can download Putty from here: [Putty official website](https://www.chiark.gr
 
 Once you have Putty installed, you can proceed to entering the COM port that we found earlier in the device manager (it may not necessarily be COM4, it could be a different number)
 also make sure to set the baud rate as 115200 as we mentioned earlier.
-
+<br/><br/>
 Tick the connection type checkbox as "Serial" once you are ready click the "Open" button to intialize the connection.
 
 !!! info "Thonny IDE detects the UART name automatically"
@@ -83,11 +83,11 @@ If you use the Thonny IDE for your programming needs, in the interpeter it will 
 ## Adafruit MicroPython Tool
 
 Adafruit MicroPython Tool (ampy) - Utility helps you to interact with a MicroPython board over a serial connection. This appreciable utility can be useful to send, read, and run files on our Eduponics mini board with ease.
-
+<br/><br/>
 Ampy is meant to be a simple command line tool to manipulate files and run code on a MicroPython board over its serial connection. With ampy you can send files from your computer to the board's file system, download files from a board to your computer, and even send a Python script to a board to be executed.
-
+<br/><br/>
 We can find the ampy github repository here: [https://github.com/scientifichackers/ampy](https://github.com/scientifichackers/ampy)
-
+<br/><br/>
 The installation is very straight forward, let's make sure we have all the pre-requisites such as pyhon-pip, pyserial and python3.
 
 ### on MacOS or Linux
@@ -149,7 +149,7 @@ You should see usage information displayed like below:
 
 To run files with ampy we first need to make a file.
 let's make a python script and call it <b>test.py</b> this file can be created in text editor or your IDE / Code editor.
-
+<br/><br/>
 inside the python script let's write the following:
 
 ``` python linenums="1"
@@ -193,7 +193,7 @@ Again, please do remember you need to change the COM port if you are on windows 
 ### Getting files
 
 Getting files is the process of taking a file we have previously pushed into our ESP32 board but for some reason we don't have it anymore or we changed our local file and want to get the file that is currently inside the board. To do that, we'll use the "get" command to get the file from the ESP32 board into our local machine.
-
+<br/><br/>
 In Mac OSX / Linux:
 
     ampy --port /dev/tty.usbserial-<NUMBER_GOES_HERE> get test.py
@@ -203,7 +203,7 @@ In Windows:
     ampy --port <COM_PORT_NAME_GOES_HERE> get test.py
 
 Please note that "get test.py" has nothing to do with your local file test.py on your machine, by running "get test.py" it will overwrite any existing files named test.py, if you want to name it differently add another line at the end to state the new file name as follows:
-
+<br/><br/>
 In Mac OSX / Linux:
 
     ampy --port /dev/tty.usbserial-<NUMBER_GOES_HERE> get test.py new_test.py
@@ -215,7 +215,7 @@ In Windows:
 ### Removing files
 
 Sometimes we don't need the files we pushed earlier into our board, they take up unnecessary flash space and therefore we should delete them. to do so, we can use the "rm" command which stands for removal of existing files on the board
-
+<br/><br/>
 In Mac OSX / Linux:
 
     ampy --port /dev/tty.usbserial-<NUMBER_GOES_HERE> rm test.py
@@ -229,7 +229,7 @@ Note, this will not affect any local file on your machine named "test.py" it wil
 ### Listing files
 
 The final step will be listing the files, let's say you previously pushed some files and removed some files and it's been some time or you've got confused what files we have in the ESP32 board and what files are missing ... all of this can be solved with one simple command "ls" which stands for list.
-
+<br/><br/>
 In Mac OSX / Linux:
 
     ampy --port /dev/tty.usbserial-<NUMBER_GOES_HERE> ls
@@ -239,11 +239,11 @@ In Windows:
     ampy --port <COM_PORT_NAME_GOES_HERE> ls
 
 As you can see, we don't need to mention any file that's because we just want to get the name of all the files that already exist on the ESP32 board.
-
+<br/><br/>
 That's all the Ampy commands that you'll need, make sure to practice by pushing, getting, removing and listing files before you move to your own project to avoid mistakes!
 
 ## Coming up next
 
 Congratulations! you've made your first step in command line programming, hardware and the STEM world!
-
+<br/><br/>
 Next, we'll start by introducing each sensor that is available on top of the Eduponics mini kit. After you'll master the science behind the sensors and how to program them yourself. We'll then move on to more advanced examples, combining multiple sensors together to achieve a fully functional IoT plant monitoring system.

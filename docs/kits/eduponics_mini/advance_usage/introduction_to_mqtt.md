@@ -14,9 +14,9 @@ MQTT is a standard for moving data between an IoT device and a server. Originall
 ## What is MQTT
 
 MQTT is a publish/subscribe protocol that is lightweight and requires a minimal footprint and bandwidth to connect an IoT device. Unlike HTTP’s request/response paradigm, MQTT is event driven and enables messages to be pushed to clients. This type of architecture decouples the clients from each other to enable a highly scalable solution without dependencies between data producers and data consumers.
-
+<br/><br/>
 When using HTTP/HTTPS you need to pull data at interval and check whenever there is new data waiting for you, the requests often contain headers and more info which make the task quite heavy for small IoT nodes that need a lightweight and fast solution.
-
+<br/><br/>
 By Using MQTT, an IoT device can subscribe to a channel or publish to it (or both) when publishing a message, all the subscribed devices will get it almost instantly.
 
 ## MQTT Benefits
@@ -51,6 +51,7 @@ There are a lot of very useful and interesting applications that MQTT can be use
 * Receiving message in real time from a central server
 
 If this applications don't tell you much, don't worry about it.
+<br/><br/>
 Later on in our tutorials we will focus on our Eduponics Mini kit and will learn how to send the sensors data from the ESP32 Eduponics mini board to our mobile app through a dedicated STEMinds broker we've prepared in advance.
 
 ## MQTT Software
@@ -60,7 +61,7 @@ Later on in our tutorials we will focus on our Eduponics Mini kit and will learn
 </p>
 
 While MQTT is the name of the protocol itself there are huge variety of softwares we can use to implement the MQTT protocol into our code, the most popular one called "Mosquitto", many services and broker providers use this software and in result it has the highest community support.
-
+<br/><br/>
 [Eclipse Mosquitto](https://mosquitto.org/) is the freely available broker software we use to connect the Eduponics mini to the cloud and communicate with it through our dedicated Eduponics mobile app.
 
 ## MQTT protocol
@@ -74,13 +75,13 @@ The MQTT protocol is deadly simple to use, as we've mentioned there are 2 main t
 ### MQTT Publish
 
 When we want to send data (it can be any data, such as: temperature and humidity, light, state etc ...) we use publish. The data we publish called "Message" and we publish it into a url like channel for example
-
+<br/><br/>
 Imagine we want to turn on the living light, we can publish message to sensors/living_room/ topic with the message '1':
 
     sensors/living_room/light/1
 
 Any other device that is subscribed to /sensors/living_room/light will receive the state 1 or 0 and will be able to process commands from there.
-
+<br/><br/>
 There are couple of things to mind when designing topics, Here is a good article from HiveMQ on best practices when designing MQTT topics:
 
 [MQTT Topics & Best Practices - MQTT Essentials](https://www.hivemq.com/blog/mqtt-essentials-part-5-mqtt-topics-best-practices/)

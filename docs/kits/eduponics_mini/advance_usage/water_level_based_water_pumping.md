@@ -6,9 +6,9 @@ description: Combining both functionalities - the pump and the the liquid sensor
 # Water level activated pump
 
 We've mentioned couple of times during our previous lessons that due to the characteristics of the pump - we cannot power it on outside of the water or it might get damaged.
-
+<br/><br/>
 Now imagine the following scenario: you control your pump while you are not at home to water your plants but you haven't combined the pump functionality with the water quantity sensor which results in the pump pumping water when no water is presented at all! That will eventually cause damage to the pump.
-
+<br/><br/>
 We are going to solve it by combining both functionalities - the pump and the the liquid sensor to determine whenever there is water or not then decide if we should allow or prevent water pumping.
 
 ## Getting the water level
@@ -36,7 +36,7 @@ First stage will be getting the amount of water from the liquid sensor, we did i
 ## Activating the relay
 
 Next step will be to activate the relay. we also learned it previously but let's take a look again at the code to make sure we know what we are doing.
-
+<br/><br/>
 Remember, the pump is powered by 12V DC adapter so make sure to plug it in when you want to use the pump functionality.
 
 === "MicroPython"

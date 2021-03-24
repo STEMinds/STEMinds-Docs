@@ -10,15 +10,15 @@ description: Learn how to integrate the Eduponics mini kit with Eduponics app to
 </p>
 
 The Eduponics App is a special app we've developed in order to turn your kit into a complete autonomous smart watering solution.
-
+<br/><br/>
 By using the app and pairing it with the Eduponics mini kit you'll be able to control your plants remotely by pumping water when needed, view sensors data in real time such as: temperature and humidity, light intensity, water quantity and off course monitoring soil moisture levels.
-
+<br/><br/>
 The app can work anywhere, whenever you are at home, at work or on vocation. it doesn't require a local server or port forwarding.
-
+<br/><br/>
 The app currently support the following languages:
-
+<br/><br/>
 English, Hebrew, Mandarin (Chinese), Spanish, German, Ukrainian, Russian, Hindi, Portuguese
-
+<br/><br/>
 The language is selected by your system language (your mobile phone language). If you'd like us to add extra translations and would like to help us translate the app for more languages, feel free to contact us!
 
 !!! Tip "For now, only Android app version is available"
@@ -31,7 +31,7 @@ Before we'll jump directly into our app, we need to prepare our Eduponics Mini E
 ### Connecting Eduponics Mini to WiFi
 
 Let's repeat the same process we've used in the basic MQTT client tutorial by creating <b>boot.py</b> file, this file will first load when our Eduponics Mini restart or the power plugged in, in this file we'll configure the WiFi credentials such as ESSID (WiFi name) and the WiFi password.
-
+<br/><br/>
 Once we've connected to the WiFi using the station.connect() command, we can print our ESP32 WiFi IP address into the console.
 
 === "MicroPython"
@@ -67,7 +67,7 @@ Now every time we restart or power the Eduponics Mini board it will automaticall
 ### Adding uMQTTSimple class
 
 As previously mentioned we'll need the umqttsimple client to communicate with the MQTT broker and use functionalities such as publishing data and subscribing to topics.
-
+<br/><br/>
 We should save this python code into file we'll call <b>umqttsimple.py</b> and we will import it using the import command every time we want to use the MQTT functionalities to communicate through the MQTT network.
 
 === "MicroPython"
@@ -283,11 +283,11 @@ We should save this python code into file we'll call <b>umqttsimple.py</b> and w
 ### Generating UUID
 
 As we've mentioned in the basic MQTT client tutorial, we could either head to [uuidgenerator.net](https://www.uuidgenerator.net/) and copy paste the automatically generated UUID for us or generate it by ourselves.
-
+<br/><br/>
 The UUID is used to identify our device from other devices on the MQTT network.
-
+<br/><br/>
 <b>it is crucial to generate a unique UUID and not re-use it</b>.
-
+<br/><br/>
 If we want to use the second option, here is a MicroPython example code to generate unique UUID, there are few kinds: unique based on host ID and current timestamp which is what we recommend, a UUID based on MD5 hash of a namespace (if you use this method, make sure to change steminds.com to something else, something random) and the last option to generate a random UUID.
 
 === "MicroPython"
@@ -309,7 +309,7 @@ If we want to use the second option, here is a MicroPython example code to gener
 ### Adding dependencies
 
 In our MQTT client we'll need to use sensors such as BME280, BH1750 light sensor and more. The main code for this sensors can be long and messy, it will be frustrating to create seperate files such as bme280.py and bh1750.py so we've added all those different classes into one file we call <b>dependencies.py</b>
-
+<br/><br/>
 Make sure to save it with the same name and we will use this file to import the BME280 temperature, humidity and air pressure sensor library as well as the BH1750 light sensor library.
 
 === "MicroPython"
@@ -691,9 +691,9 @@ Make sure to save it with the same name and we will use this file to import the 
 ### Adding main MQTT client
 
 The main MQTT client we will use now is very different from the previous basic MQTT example we've done.
-
+<br/><br/>
 In this example, we will integrate all our sensors and use them when needed, we will start by defining in our ode all the sensors such as ADC for the soil moisture sensor, light sensor, BME280 sensor and water quantity sensor.
-
+<br/><br/>
 Then we'll have multiple topics, the topics we will use are:
 
 * plants/soil
@@ -710,7 +710,7 @@ The plants/soil topic is used to publish soil moisture sensor data, take a look 
       }
 
 We can name the plant as we wish and it will show on our app, enabled can be changed between 1 or 0 which will describe if the plant can be used or not (watering functionality mainly) and inside moisture we add the soil moisture sensor values.
-
+<br/><br/>
 It's import to keep the ID 0 as we use only one soil moisture, if you use the IO extension pins to add more plants, you can change the ID from 0 to 1,2,3 .. as follows:
 
       plants = [{
@@ -726,9 +726,9 @@ It's import to keep the ID 0 as we use only one soil moisture, if you use the IO
         }]
 
 In the plants/environment topic we will publish temperature, humidity, sunlight and water quantity using the rest of the sensors that are integrated in the Eduponics Mini kit.
-
+<br/><br/>
 And finally plants/water will be used to subscribe instead of publishing, in our app we can press the watering icon which will water our plants, our ESP32 will receive the message from the plants/water topic and water the plants accordingly.
-
+<br/><br/>
 Note in water_plant() function the following lines:
 
       # check if soil moisture is bigger than 60
@@ -737,7 +737,7 @@ Note in water_plant() function the following lines:
           break;
 
 We've set default of allowing to give water only if the plant has less than 60% soil moisture or if the water quantity sensor says there is no more water left. this configuration can be played with as well as to add automatic watering and not manual operation through the app.
-
+<br/><br/>
 Here is the complete code, make sure to save it as <b>main.py</b> as this will be our main program:
 
 === "MicroPython"
@@ -980,7 +980,7 @@ Alternatively you can install it directly to your phone using the web browser pl
 ### Connecting Eduponics APP to Eduponics Mini
 
 After downloading and launching the app successfully a popup window will show that the hardware is not initialized, this is normal and will happen on first launch of the app or if we've pressed the "wipe data" button in settings to wipe the internal memory of the app.
-
+<br/><br/>
 In this window press "Let's go!" and it will take you automatically to the settings page to bind the Eduponics Mini hardware with the APP.
 
 <p align="center">

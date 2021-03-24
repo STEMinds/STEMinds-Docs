@@ -10,11 +10,11 @@ description: Deep sleep mode will reduce the power consumption and your batterie
 </p>
 
 Having the Eduponics Mini ESP32 board running on active mode with batteries it’s not ideal, since the power from batteries will drain very quickly.
-
+<br/><br/>
 If you put the board in deep sleep mode, it will reduce the power consumption and your batteries will last longer. Having the board in deep sleep mode means cutting with the activities that consume more power while operating but leave just enough activity to wake up the processor when something interesting happens.
-
+<br/><br/>
 When operating in deep sleep mode, the board have a current consumption on the μA range. With a custom and carefully designed board you can get a minimal consumption of about 5 μA.
-
+<br/><br/>
 This feature is very specific to the ESP32 other boards such as Arduino or Raspberry Pi don't have this deep sleep functionality thus not suitable for outdoor / battery powered applications.
 
 ## Wakeup sources
@@ -30,11 +30,11 @@ In our tutorial we'll focus on waking up by push of a button, this is useful if 
 ## Waking up by button press
 
 We've integrated a special button on the top right side of the Eduponics mini board, it's just a simple button that is connected to IO PIN number 36, technically this button can be used for anything but we've decided to dedicate it for a special use which is waking up from deep sleep.
-
+<br/><br/>
 Before we go into deep sleep <b>we must</b> set a wake up input, failing to do so will cause our board to go into infinite loop where it wakes up and goes back to sleep.
-
+<br/><br/>
 We can do it by the function called .wake_on_ext0() supply the wakeup pin which is IO PIN 36 which we configured as input and wakeup any high means any type of button touch (LOW OR HIGH) the board will wakeup.
-
+<br/><br/>
 After configuring the button, it's safe to continue writing the software and when we ready to put the board to sleep we can use machine.deepsleep() to enter deep sleeping state, once the button is pressed the board will restart and initialize the program again.
 
 === "MicroPython"

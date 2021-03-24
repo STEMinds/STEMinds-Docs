@@ -10,13 +10,13 @@ plus 56 bytes of NV SRAM. Address and data are transferred serially via a 2-wire
 The clock/calendar provides seconds, minutes, hours, day, date, month, and year information. The end of
 the month date is automatically adjusted for months with fewer than 31 days, including corrections for
 leap year.
-
+<br/><br/>
 The clock operates in either the 24-hour or 12-hour format with AM/PM indicator. The
 DS1307 has a built-in power sense circuit that detects power failures and automatically switches to the
 battery supply.
-
+<br/><br/>
 While the ESP32 have a built-in RTC inside, the RTC inside of the ESP32 is mostly used for counting (like a timer) but what if we need to know the exact time of the day or the date when our ESP32 wakeup in order to figure out if it's time to do something? for this purpose we've added extra component - our DS1307Z RTC module.
-
+<br/><br/>
 The Internal ESP32 RTC can be connected to a battery but this coin battery will power the entire ESP32 board and not just the RTC functionality which will force the ESP32 to constantly be in sleep mode in order not to waste energy which is something unreasonable to do in case of our application.
 
 !!! Warning "RTC Lithium coin cell battery not included in Eduponics Mini kit."
@@ -52,9 +52,9 @@ The RTC module is super useful, here are some of the possible applications you c
 </p>
 
 The simple circuit the two inputs X1 and X2 are connected to a 32.768 kHz crystal oscillator as the source of the chip. VBAT is connected to positive culture of a 3V battery chip. VCC power to the I2C interface is 3.3V which is given by the ESP32 board. If the power supply VCC is not granted read and writes are inhibited.
-
+<br/><br/>
 CN1 represents the IO connections for the I2C interfae which we use to control the module and read/write from it.
-
+<br/><br/>
 On the Eduponics Mini board the RTC module and the crystal oscillator is at the front while the coin battery cell is mounted at the back.
 
 
@@ -70,9 +70,9 @@ The RTC coin battery is <b>not included</b> with the kit due to logistics concer
   <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/eduponics_mini_plugging_rtc.png">
 </p>
 
-the battery case can be found on the bottom side of the Eduponics Mini development board.
+The battery case can be found on the bottom side of the Eduponics Mini development board.
 Make sure to plug the battery in the right direction (ground bottom side, positive side up).
-
+<br/><br/>
 Without the coin cell battery the RTC functionality will work but we won't be able to save any data after our device reboots or disconnect from power.
 
 ## Software explanation
@@ -81,16 +81,16 @@ Without the coin cell battery the RTC functionality will work but we won't be ab
     For our Python code, we will need to import eduponics library, make sure you followed the introduction guide on installing the library on the ESP32 Eduponics Mini board.
 
 The software library is written by Mike Causer, you can check the Github library [here](https://github.com/mcauser/micropython-tinyrtc)
-
+<br/><br/>
 The RTC communicates through I2C protocol that has multiple address for multiple functions such as halt (power on/off) register time and date and read data (control register).
-
+<br/><br/>
 First, we'll need to define the I2C device: The RTC connected to SCL IO PIN 15 and SDA IO PIN  4.
 After we've configured that successfully we can call the .halt() function with the argument "False" which means don't halt the device or in other words - turn it on.
-
+<br/><br/>
 Then, we need to set the timestamp (current time and date for our device to remember) this can be done only once or if we need to change it later on to something different we can repeat it as many times as we want but that won't be necessary in most applications.
-
+<br/><br/>
 A good resource to get exact time and date would be [epochconverter.com](https://www.epochconverter.com/) the last 2 zeroes in the time and date format can be left zeroed.
-
+<br/><br/>
 Finally, we can call .datetime() command to get the current time and date from the RTC module, it will update in real time even if we reboot or disconnect our device (as long as the coin battery lives)
 
 === "MicroPython"

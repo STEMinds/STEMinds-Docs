@@ -71,15 +71,15 @@ In our kit, we've included a special glue circles that can be glued on the senso
 </p>
 
 In some cases, sensitivity adjustment might be required. this is due to different material or different thickness of the water container. don't you worry, this can be easily done but taking off the cover where the indication LED is and softly using a screw driver to adjust the sensitivity of the sensor.
-
+<br/><br/>
 Rotate clockwise to reduce the sensitivity and to the opposite direction to increase it. you can use water inside of the container to see which one works best for you, when there is water the sensor LED should be turned on.
 
 ## Hardware explanation
 
 The Non-contact type liquid level sensor, utilizes advance signal processing technology by using a powerful chip with high-speed operation capacity to achieve non-contact liquid level detection.
-
+<br/><br/>
 The sensor itself have 4 pins: GND, VCC, DATA and Natural that we don't connect.
-
+<br/><br/>
 The sensor requires 5V input to operate and it will output 5V as well, as the ESP32 IO pins can only withstand 3.3V over the IO pins we added voltage step down from 5V to 3.3V, this is something you need to remember in case you want to use the sensor with different hardware and different applications.
 
 !!! Warning "5V to 3.3V step down is required for other usages"
@@ -93,7 +93,7 @@ The sensor requires 5V input to operate and it will output 5V as well, as the ES
 </p>
 
 Plugging in the sensor is very straight forward, using the XH2.54 interface we can plug it right in. the sensor have 4 pins in total: GND, VCC, DATA and NO (natural pin that we connect to ground as well).
-
+<br/><br/>
 If the Eduponics Mini board is powered on using either DC12V or USB Type-C or both and the sensor isn't connected to any surface the LED on top of the sensor should glow RED, once it touch a liquid surface such as bottle of water with water inside the LED will turn off.
 
 ## Software explanation
@@ -101,7 +101,7 @@ If the Eduponics Mini board is powered on using either DC12V or USB Type-C or bo
 The code is very straight forward, the water level sensor is connected to IO pin number 21.
 we'll set this pin as input and create a function called is_empty() the sensor will return 0 if he can detect water and 1 if there is no water detected.
 which means, the function is_empty() will return True if the water container is empty or False if the water container is full.
-
+<br/><br/>
 Finally, we'll use the function to print into the console if the state of our water container.
 
 === "MicroPython"

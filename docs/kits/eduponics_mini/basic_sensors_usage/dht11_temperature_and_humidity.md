@@ -6,7 +6,7 @@ description: DHT11 Temperature & Humidity Sensor features a temperature & humidi
 # DHT11 Temperature & Humidity sensor
 
 DHT11 Temperature & Humidity Sensor features a temperature & humidity sensor complex with a calibrated digital signal output.
-
+<br/><br/>
 By using the exclusive digital-signal-acquisition technique and temperature & humidity sensing technology, it ensures high reliability and
 excellent long-term stability. This sensor includes a resistive-type humidity measurement
 component and an NTC temperature measurement component, and connects to a high performance 8-bit microcontroller, offering excellent quality, fast response, anti-interference ability and cost-effectiveness
@@ -19,16 +19,16 @@ component and an NTC temperature measurement component, and connects to a high p
 
 When we've tested multiple temperature and humidity sensors to add to the kit we've decided to not let quality and performance down.
 The DHT11 is simple to use and easy to learn sensor but not suitable for applications that require high sensitivity and reliability.
-
+<br/><br/>
 We haven't included DHT11 with the kit but we left an available pins to connect one if you wish, BME280 is more sufficient, accurate and suitable for long term industrial real life applications.
 
 ## Specifications
 
 Each DHT11 sensor is calibrated in a special laboratory that is extremely accurate on humidity calibration.
-
+<br/><br/>
 The calibration coefficients are stored in the program OTP memory,
 which is used by the sensor’s internal signal detecting process. The single-wire serial interface makes system integration quick and easy. Its small size, low power consumption, and up-to-20 meter signal transmission making it the best choice for various applications, including those most demanding ones. The component is a 4-pin single row pin package.
-
+<br/><br/>
 Here are some of the main specifications you'll need to know about the DHT11 sensor:
 
 * 1% resolution, for example it's possible to get 25°C but not 25.3°C
@@ -36,7 +36,7 @@ Here are some of the main specifications you'll need to know about the DHT11 sen
 * Good for 0-50°C temperature readings ±2°C accuracy
 * No more than 1 Hz sampling rate (once every second)
 
- The complete data sheet for DHT11 can be found here: [Mouser.com DHT11 datasheet](https://www.mouser.com/datasheet/2/758/DHT11-Technical-Data-Sheet-Translated-Version-1143054.pdf)
+The complete data sheet for DHT11 can be found here: [Mouser.com DHT11 datasheet](https://www.mouser.com/datasheet/2/758/DHT11-Technical-Data-Sheet-Translated-Version-1143054.pdf)
 
 ## Possible applications
 
@@ -58,23 +58,23 @@ Regarding the humidity, multiple actions can be taken such as alert, automatic w
 
 
 The DHT11 sensor can measure both temperature and humidity.
-
+<br/><br/>
 The temperature is measured with the help of a NTC thermistor or negative temperature coefficient thermistor. These thermistors are usually made with semiconductors, ceramic and polymers. The resistance of the device is inversely proportional with temperature and follows a hyperbolic curve. Temperature using NTC often found out [Steinhart Hart equation](https://en.wikipedia.org/wiki/Steinhart%E2%80%93Hart_equation).
-
+<br/><br/>
 The sensor's humidity determined using a moisture dependent resistor.
 It has two electrodes with a moisture-holding substrate between them that holds the moisture. The result is the conductance and resistance change as the humidity changes.
-
+<br/><br/>
 Both these temperatures and humidity changes analyzed by an IC placed on the other side of the board. It calculates the values of both and can transmit those values to a microcontroller using only a single data line.
 
 ## Software explanation
 
 Controlling the DHT11 is very easy due to the internal MicroPython supported library DHT.
-
+<br/><br/>
 The only thing we need is to import the DHT library that is built-in in MicroPython and initialize it using dht.DHT11() with the PIN that we use.
 In our case, the Eduponics Mini uses IO PIN 19 for the DHT11 sensor.
-
+<br/><br/>
 Then, we'll use the measure function to measure the temperature and humidity, put them into variables, and finally print them on screen.
-
+<br/><br/>
 If you prefer Fahrenheit instead of Celcius, make sure to uncomment the conversion lines.
 
 === "MicroPython"

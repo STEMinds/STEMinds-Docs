@@ -59,12 +59,12 @@ in our program, we will control the WS2812B that is soldered on board, if you'd 
 
 The MicroPython includes a built-in library called "neopixel" which we can use to control our WS2812B RGB LED, the syntax is fairly simple.
 First, we'll need to define to which IO pin the neopixel is connected - in our case it's pin 14, as a second argument (where we see 1) we need to define how many neopixels (RGB LEDs) do we have, our board only includes one so we write 1 as argument.
-
+<br/><br/>
 Next, we'll define the color we want for pixel at place 0 which is the first (and in our case the only) LED we'll use.
 the colors are made from 3 arguments: red, green, blue. where the values goes from 0 to 255 which indicates the brightness of the color (0 empty and 255 is the brightest)
-
+<br/><br/>
 We can use a website such as [Rapidtables](https://www.rapidtables.com/web/color/RGB_Color.html) to find different RGB codes that we can use to change the color in our LED.
-
+<br/><br/>
 The example below will turn the LED into red (full brightness) then green and then blue, finally we'll set all colors to 0 in order to turn the LED off.
 
 === "MicroPython"

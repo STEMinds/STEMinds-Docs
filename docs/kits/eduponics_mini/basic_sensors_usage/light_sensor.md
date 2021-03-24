@@ -6,7 +6,7 @@ description: The BH1750 is integrated IC with photodiode that allows us to measu
 # BH1750 Light sensor
 
 The BH1750 is integrated IC with photodiode that allows us to measure the intensity and Illuminance of light and understanding whenever our environment is sufficient for our plant to live or it won't be able to survive due to lack of sunlight.
-
+<br/><br/>
 The BH1750 sensor is already integrated into the Eduponics Mini kit and we use I2C protocol to communicate with it.
 
 ## Sensor Specifications
@@ -54,6 +54,7 @@ From Wikipedia:
   Illustration borrowed from: [ElectronicsCoach.com](https://electronicscoach.com/photodiode.html")
 </center>
 
+<br/><br/>
 
 The BH1750 is a very sophisticated IC (integrated circuit) that includes multiple components. Let's walk through the data sheet shown in the picture below to understand the principles better.
 
@@ -75,7 +76,7 @@ As we mentioned, our main component inside the IC is the PD which is photo-diode
     For our Python code, we will need to import eduponics library, make sure you followed the introduction guide on installing the library on the ESP32 Eduponics Mini board.
 
 In the following code example, we'll use a class called "LightSensor" from the micropython-eduponics library, this class we define some of the main functions that we need in order to interact with our light sensor.
-
+<br/><br/>
 The code is very straight forward: we'll create an object from the BH1750 library called "light" and execute a single "readLight" function on the object to recieve the light intensity in lux.
 
 === "MicroPython"

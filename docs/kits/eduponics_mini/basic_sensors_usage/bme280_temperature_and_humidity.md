@@ -10,9 +10,9 @@ description: Bosch BME280 sensor is a humidity, temperature and barometric press
 </p>
 
 The Bosch BME280 sensor is a humidity, temperature and barometric pressure sensor especially developed for mobile applications and wearables where size and low power consumption are key design parameters.
-
+<br/><br/>
 The unit combines high linearity and high accuracy sensors and is perfectly feasible for low current consumption, long-term stability and high EMC robustness.
-
+<br/><br/>
 The combined sensor offers an extremely fast response time and therefore supports performance requirements for emerging applications such as context awareness, and high accuracy over a wide temperature range.
 
 ## Specifications
@@ -47,7 +47,7 @@ There is not much information on the inside of the BME280 IC (integrated circuit
 </p>
 
 In the schematic above we can see how we've connected the BME280 to our Eduponics mini ESP32 board (MCU is where our ESP32 is). The BME280 requires only 1.8V voltage of operation, extremely low in power requirements as well as power consumption.
-
+<br/><br/>
 Next, we'll learn by code example how we can read the data from the sensor and use it for our own needs.
 
 ## Software explanation
@@ -56,14 +56,14 @@ Next, we'll learn by code example how we can read the data from the sensor and u
     For our Python code, we will need to import eduponics library, make sure you followed the introduction guide on installing the library on the ESP32 Eduponics Mini board.
 
 For the following code create a new file and call it <b>bme.py</b> using Thonny IDE and copy paste the code into it. if we walk through the code, it's basically based on the BME280 Bosch schematics and communication methods using the I2C protocol, we have functions to read humidity, temperature and air pressure. all the functions in this code are commented and easy to understand what's going on.
-
+<br/><br/>
 In our main code we import the library (make sure you've installed micropython-eduponics through upip) by calling from eduponics import bme280.
-
+<br/><br/>
 Then we need to configure the I2C connection which in our case is SCL Pin 15 and SDA pin 4, we can initalize the bme280 sensor object using those I2C credentials, we don't need to supply address because the library already includes the default address which is 0x76.
-
+<br/><br/>
 Now what left to do is to loop every second and read the sensor values. We can get pretty interesting data such as: temperature, humidity, pressure, sea level and even altitude which is calculate using the air pressure!
-
-if you are wondering how, it's called [The Barometric Formula](https://en.wikipedia.org/wiki/Barometric_formula).
+<br/><br/>
+If you are wondering how, it's called [The Barometric Formula](https://en.wikipedia.org/wiki/Barometric_formula).
 
 === "MicroPython"
     ``` python linenums="1"

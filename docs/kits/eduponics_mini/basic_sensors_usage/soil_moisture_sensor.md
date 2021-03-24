@@ -11,7 +11,7 @@ description: The soil moisture sensor is analog sensor, there are some pins on t
 
 Our sensor is one of a kind, we truly love that sensor and hope other people can use it as much as we do.
 We've been looking for quite some time for a soil moisture stable sensor for smart agriculture / smart plants related projects but couldn't find any.
-
+<br/><br/>
 We've tested over 10 sensors available in the market till we've decided to make our own. let's go through the information to understand why our sensor is different and why it's better than other alternatives.
 
 ## Specifications
@@ -27,7 +27,7 @@ During the process of testing and finding the perfect soil moisture sensor for o
 
 While looking for soil moisture sensors to use with our kit, we encountered a severe challenge - the sensors were just not good enough.
 We've purchased and tested multiple sensors till the decision was made to make our own.
-
+<br/><br/>
 Take a look at the comparison below, our sensor has the highest voltage range and sensitivity between all the sensors we've tested,
 allowing you to create a stable and precise high resolution smart agriculture and IoT applications.
 
@@ -58,9 +58,9 @@ Please note the following regarding the testing of the soil moisture sensors **t
 </p>
 
 The soil moisture sensor is based on a very important component called "capacitor", the capacitor consist of three pieces.  A positive plate, a negative plate and the space in-between the plates, known as the dielectric. The physical form and construction of practical capacitors vary widely and many capacitor types are in common use. Most capacitors contain at least two electrical conductors often in the form of metallic plates or surfaces separated by a dielectric medium.
-
+<br/><br/>
 A capacitive moisture sensor works by measuring the changes in capacitance caused by the changes in the dielectric. It does not measure moisture directly (pure water does not conduct electricity well),  instead it measures the ions that are dissolved in the moisture.
-
+<br/><br/>
 These ions and their concentration can be affected by a number of factors, for example adding fertilizer for instance will decrease the resistance of the soil.  Capacitive measuring basically measures the dielectric that is formed by the soil and the water is the most important factor that affects the dielectric.
 
 
@@ -80,22 +80,21 @@ This sensor can be used in smart agriculture related projects such as:
 </p>
 
 Plugging in the sensor is deadly easy. as we use the XH2.54 interface we can simply plug and play the sensor as shown in the picture above.
-
-
+<br/><br/>
 The sensor itself includes 3 different wires: VCC, GND and SIG (signal which is the data cable), it's important to say that the sensor itself output 5V while the ESP32 or other boards usually accept only 3.3V, if you'd like to use it in some other applications with different development boards, make sure to include a step-down  circuit from 5V to 3.3V for your electronics safety.
 
 ## Software explanation
 
 Our soil moisture sensor is analog sensor, there are some pins on the ESP32 board that can be converted from analog to digital (ADC) and we will need to work through the process of converting the pin to become analog pin so we could read the data from the sensor.
-
+<br/><br/>
 The soil moisture sensor is connected to IO PIN 35, we'll call the ADC function from the machine library to set the PIN as analog input.
 then, we can run .read() function directly on the PIN after configuring it, that will give us the value of the pin.
-
+<br/><br/>
 In order to get accurate reading, we must tell our ESP32 what kind of voltage should it expect to get during the analog input, is it 0-1V or 0-3.3V?
 as we've mentioned earlier, our sensor is 0-5V sensor but in order not to damage the ESP32 board that can accept only 3.3V input into it's own IO pins we've used a step-down converted going from 5V to 3.3V.
-
+<br/><br/>
 As a result, we should tell the ESP32 that it should expect voltage range of roughly 0.0V - 3.6V by using the .atten(ADC.ATTN_11DB) function for configuration.
-
+<br/><br/>
 Next the final step will be to print the reading out into the terminal, try to put the sensor into the air and water and see the changes in the values.
 
 === "MicroPython"
@@ -128,7 +127,7 @@ Next the final step will be to print the reading out into the terminal, try to p
     }
     ```
 After trying the example above you might ask yourself what does this analog numbers even means, some might consider them to be "random generated numbers". In the following example we are going to make a little more sense out of it.
-
+<br/><br/>
 We'll take the maximum value of the analog sensor which can be determined by leaving the sensor dry in the air and the minimum value by submerging the sensor completely underwater, this should give us approximately 4095 for complete dryness and 710 when the sensor is submerged underwater.
 
 !!! info "Calibration is required"
@@ -136,7 +135,7 @@ We'll take the maximum value of the analog sensor which can be determined by lea
 
 The next will be to take the 2 values and change them to percentage (0% means the plant is completely dry while 100% means it's submerged in water)
 In reality, this will be impossible, the soil itself will have certain amount of resistance and capacitance.
-
+<br/><br/>
 It is recommended to calibrate the sensor afterwards using real life application while plotting the sensor inside of a plant / pot in wet and dry conditions.
 
 === "MicroPython"

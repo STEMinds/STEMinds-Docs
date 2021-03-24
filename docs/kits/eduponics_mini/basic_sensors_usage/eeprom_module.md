@@ -10,7 +10,7 @@ description: Atmel AT24C02 EEPROM is a memory chip that allows you to store data
 </p>
 
 The Atmel AT24C02 EEPROM is a memory chip that allows you to store data and retain it even when the power goes off. It is usually used to store user settings or other kind of configuration.
-
+<br/><br/>
 This great chip allows us to write bytes of information and read them later, no matter if the device rebooted itself or not.
 the ESP32 has the capability to store files locally using Python but we thought that adding EEPROM could be very useful.
 
@@ -48,13 +48,13 @@ There could be many reasons to use EEPROM, such as:
     For our Python code, we will need to import eduponics library, make sure you followed the introduction guide on installing the library on the ESP32 Eduponics Mini board.
 
 The software library is written by Mike Causer, you can check the Github library [here](https://github.com/mcauser/micropython-tinyrtc)
-
+<br/><br/>
 In micropython-eduponics we have a class called AT24C32N where there are multiple functions such as read and write.
 The first thing to do will be to initialize our EEPROM using the I2C protocol which has 2 pins SCL and SDA.
 The SCL pin would be pin 15 while the SDA pin would be pin number 4.
-
+<br/><br/>
 Then, when we have our i2c object ready, we can initialize the EEPROM.
-
+<br/><br/>
 First, we try to read 32 bytes which should be empty. Then, we'll write "hello world" which takes 11 bytes.
 finally, we'll read 11 bytes which is exactly the length of the string we've added which is "hello world".
 

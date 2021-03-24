@@ -6,12 +6,12 @@ description: Learn how to combine the WS2812B RGB with other sensors such as the
 # RGB based sensors indicators
 
 Previously we've discussed how WS2812B RGB LED can be useful in multiple applications and we've created a simple example how to change the RGB colors and brightness.
-
+<br/><br/>
 Let's take it one step forward and combine the RGB with other sensors such as the water level sensor, soil moisture, temperature and humidity and more
 to create interactive light based on the value changes of those sensors.
-
+<br/><br/>
 In this tutorials you might notice we used  Try and except KeyboardInterrupt, The reason is that as long as the script runs in "while" loop the only way to shut it down is by interruption, while we interrupt the script the RGB will freeze in it's last state (the last used color).
-
+<br/><br/>
 To overcome this situation, we except a keyboard interrupt event and manually turn off the LED after we finished with our program.
 
 ## Water level indication
@@ -19,9 +19,9 @@ To overcome this situation, we except a keyboard interrupt event and manually tu
 In this example we will change the WS2812B RGB LED color between green and red to indicate if our water container is empty or not.
 If it's empty - we'll change the RGB LED to red color else we'll make it green.
 in the code, we wrap everything around "while" loop to let our program check the quantity of the water every second and change the LED accordingly.
-
+<br/><br/>
 If the water container is empty, the function is_empty() will return True (the sensor output HIGH when no water detected) and LOW if water detected.
-
+<br/><br/>
 After setting np[0] (remember, we only have one LED at place 0) with the color we want, we need to remember to save changes using np.write() command.
 
 === "MicroPython"
@@ -61,7 +61,7 @@ After setting np[0] (remember, we only have one LED at place 0) with the color w
 
 Previously in the soil moisture tutorial we've showed how to get percentage of approximately how much water our plant submerged in.
 in this part we'll combine one more functionality - the RGB LED. using the LED we can indicate whenever the plant has enough water or not.
-
+<br/><br/>
 We'll use 3 colors: RED, YELLOW and GREEN. the red color will indicate the soil moisture is in critical levels, the yellow color  will give us warning that we might need to water our plant and the green color will let us know everything is alright and we have nothing to worry about.
 
 === "MicroPython"
@@ -152,7 +152,7 @@ In order to find the humidex value we need 2 parameters:
 
 This 2 variables we can get using our temperature and humidity sensor.
 But, we will need few more things which the sensor won't provide us directly. the first thing will be something called "dew point" which is the temperature at which the air is saturated (100 percent relative humidity).
-
+<br/><br/>
 Don't worry, we have a formulate to get this thing ready for us:
 
 <p align="center">
@@ -178,7 +178,7 @@ The graph itself already state for us the necessary values:
 * 40 > - Great discomfort
 
 The "discomfort" chart is for humans but we can use it for plants as well, if you feel it's extremely hot and dry outside your plant will probably feel the same and maybe on even much larger scale. again, depends on the type of plant you have.
-
+<br/><br/>
 To finalize everything we learned let's write the Python Code:
 
 

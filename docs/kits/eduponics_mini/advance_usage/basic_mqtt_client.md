@@ -7,24 +7,24 @@ description: MicroPython MQTT Client example to communicate with IoT devices aro
 
 In this article we'll build a simple MQTT client that publish static data at specific interval.
 We'll use the "smart home" scenario where we have lights at home, we'll publish data through the MQTT broker and finally read the data in real time.
-
+<br/><br/>
 This article doesn't have much real-life use using our Eduponics Mini but it will give you a glance and easy understand of how MQTT works. in our next article we'll integrate into our client all the Eduponics Mini sensor and send them over the MQTT network to our mobile app - The Eduponics APP.
 
 ## Install mosquitto CLI on your PC/Mac/Linux
 
 At the end of this guide we'll be able to publish static data at interval from our Eduponics Mini to the MQTT public broker. in order to listen (subscribe) to the data and see when it goes through, we'll need to install the mosquitto CLI into our machine.
-
+<br/><br/>
 The installation is fairly easy and mosquitto.org gives instructions and binary to download for each machine, follow the instructions in mosquitto.org website to install the binary that is suitable for you: [MQTT mosquitto.org CLI download](https://mosquitto.org/download/)
 
 ## Connecting Eduponics Mini to WiFi
 
 First thing you might be asking yourself "how does the Eduponics mini communicate with the cloud without wireless connectivity?"
 Well, the good news is ESP32, the microcontroller that the Eduponics mini uses includes WiFi and Bluetooth!
-
+<br/><br/>
 First thing before we even think about using the MQTT functionality is to make sure that our Eduponics Mini board can connect to the WiFi and has network connectivity so we could proceed.
 
 We can archive this by creating <b>boot.py</b> file, this file will first load when our Eduponics Mini restart or the power plugged in, in this file we'll configure the WiFi credentials such as ESSID (WiFi name) and the WiFi password.
-
+<br/><br/>
 Once we've connected to the WiFi using the station.connect() command, we can print our ESP32 WiFi IP address into the console.
 
 === "MicroPython"
@@ -59,9 +59,9 @@ Now every time we restart or power the Eduponics Mini board it will automaticall
 ## uMQTTSimple class
 
 This class was taken from [randomnedtutorials.com](https://randomnerdtutorials.com/micropython-mqtt-esp32-esp8266/) and it's extremely useful to what we are trying to archive. this class will enable us to deal with the entire MQTT protocol (publishing and subscribing) with ease.
-
+<br/><br/>
 If you look at the initialiser you'll see we give it couple of parameters such as server (we'll use a public server at [mqtt.eclipse.com](https://mqtt.eclipse.com/)) and some other credentials we won't use such as username, password and other parameters.
-
+<br/><br/>
 We should save this python code into file we'll call <b>umqttsimple.py</b> and we will import it using the import command everytime we want to use the MQTT functionalities to communicate through the MQTT network.
 
 === "MicroPython"
@@ -278,20 +278,20 @@ We should save this python code into file we'll call <b>umqttsimple.py</b> and w
 ## MQTT Main client
 
 The final step will be to create our main program, we should start by creating an empty file called <b>main.py</b> this file will be the second file to run once the system reboot/boot (the first file will be boot.py) main.py will run once we've successfully connected to the WiFi network.
-
+<br/><br/>
 In main.py we will import our umqttsimple library we've created earlier and configure few data point in advance for our MQTT client to use.
 
 ### Unique UUID
 
 A lot of devices will connect to the broker and if we'll use a topic like "living_room/light" how to define our light from hundreds of other devices use the exact same topic? off course one solution will be to own our private broker, this will solve the case. but for us, we will use a public one for this example.
-
+<br/><br/>
 In order to identify our device we'll need to generate a unique UUID for it, there are 2 ways to do that:
 
 1. use UUID generator online
 2. generate using MicroPython command
 
 For the first example, we could head to [uuidgenerator.net](https://www.uuidgenerator.net/) and copy paste the automatically generated UUID for us.
-
+<br/><br/>
 If we want to use the second option, here is a MicroPython example code to generate unique UUID, there are few kinds: unique based on host ID and current timestamp which is what we recommend, a UUID based on MD5 hash of a namespace (if you use this method, make sure to change steminds.com to something else, something random) and the last option to generate a random UUID.
 
 === "MicroPython"
@@ -316,11 +316,11 @@ Once you have your unique UUID we can continue to the next step of creating the 
       UUID = "YOUR_UUID_GENERATED_ID"
 
 Replace "YOUR_UUID_GENERATED_ID" with your custom generated UUID.
-
+<br/><br/>
 The following MQTT client will subscribe to one basic topic called "living_room/light" and every 1 second (where message interval is, you can change that to any number for longer or shorter interval) will publish the current light state which in our example doesn't change, it will always be 1. (light status = 1)
-
+<br/><br/>
 If we'll get messages back at "living_room/light" topic, it will go directly to on_message_callback() function which will print the topic and message into the console.
-
+<br/><br/>
 This is just an example to demonstrate a very simple and basic MQTT client and how it works.
 
 === "MicroPython"
@@ -400,7 +400,7 @@ This is just an example to demonstrate a very simple and basic MQTT client and h
 
 In order to see the published data from our ESP32 Eduponics mini kit to the MQTT broker network, we'll need to subscribe to it from our machine (your PC / laptop).
 Earlier on we've installed mosquitto CLI and now we are going to use it to archive it.
-
+<br/><br/>
 On your machine open terminal / console and type the following:
 
       mosquitto_sub -h mqtt.eclipse.org -p 1883 -t "UUID_GOES_HERE/living_room/light"
