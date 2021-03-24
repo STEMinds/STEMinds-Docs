@@ -10,15 +10,17 @@ description: The Eduponics mini extension board designed using ADS1115 for ADC s
 </p>
 
 The Eduponics mini extension board designed using ADS1115 for ADC support and MCP23017 for GPIO control with some advance functionalities such as interrupt on change and precise analog data reading, the board allows to connect extra 4 analog data sensors and 4 digital output devices with 12V support.
-<br/>
+
+
 While the Eduponics Mini ESP32 board allows to connect only one pump and one soil moisture sensor, we've decided to develop a custom HAT (Hardware Attached on Top) to enhance the Eduponics Mini functionalities by adding extra 4 soil moisture sensors and extra 4 pumps.
 
 ## Features
 
 If we use simple words: the extension board allows us to control extra 4 plants (total of 5 plants) at the same time.
-<br/>
+<br/><br/>
 If we go with deeper explanation, the sensors aren't necessary need to be soil moisture sensors or pumps, it can be any analog or digital sensors that needs to be controlled using the Eduponics Mini (or any other micro-controller), giving you access to extra 4 relays and another 4 open IOs (input / output) and extra 4 analog sensors control.
-<br/>
+
+
 This is really great addition not just to the Eduponics Mini ESP32 board but also to other microcontrollers such as Raspberry Pi that needs extra IO pins or analog reading which it's lack of.
 <br/>
 Here is the detailed features that the Eduponics Mini extension board can offer you:
