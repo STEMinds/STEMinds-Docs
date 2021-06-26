@@ -18,12 +18,12 @@ The installation is fairly easy and mosquitto.org gives instructions and binary 
 
 ## Connecting Eduponics Mini to WiFi
 
-First thing you might be asking yourself "how does the Eduponics mini communicate with the cloud without wireless connectivity?"
+The first thing you might be asking yourself "how does the Eduponics mini communicate with the cloud without wireless connectivity?"
 Well, the good news is ESP32, the microcontroller that the Eduponics mini uses includes WiFi and Bluetooth!
 <br/><br/>
 First thing before we even think about using the MQTT functionality is to make sure that our Eduponics Mini board can connect to the WiFi and has network connectivity so we could proceed.
 
-We can archive this by creating <b>boot.py</b> file, this file will first load when our Eduponics Mini restart or the power plugged in, in this file we'll configure the WiFi credentials such as ESSID (WiFi name) and the WiFi password.
+We can achieve this by creating <b>boot.py</b> file, this file will first load when our Eduponics Mini restart or the power plugged in, in this file we'll configure the WiFi credentials such as ESSID (WiFi name) and the WiFi password.
 <br/><br/>
 Once we've connected to the WiFi using the station.connect() command, we can print our ESP32 WiFi IP address into the console.
 
@@ -58,9 +58,9 @@ Now every time we restart or power the Eduponics Mini board it will automaticall
 
 ## uMQTTSimple class
 
-This class was taken from [randomnedtutorials.com](https://randomnerdtutorials.com/micropython-mqtt-esp32-esp8266/) and it's extremely useful to what we are trying to archive. this class will enable us to deal with the entire MQTT protocol (publishing and subscribing) with ease.
+This class was taken from [randomnedtutorials.com](https://randomnerdtutorials.com/micropython-mqtt-esp32-esp8266/) and it's extremely useful for what we are trying to achieve. this class will enable us to deal with the entire MQTT protocol (publishing and subscribing) with ease.
 <br/><br/>
-If you look at the initialiser you'll see we give it couple of parameters such as server (we'll use a public server at [mqtt.eclipse.com](https://mqtt.eclipse.com/)) and some other credentials we won't use such as username, password and other parameters.
+If you look at the initialiser you'll see we give it a couple of parameters such as server (we'll use a public server at [mqtt.eclipse.com](https://mqtt.eclipse.com/)) and some other credentials we won't use such as username, password and other parameters.
 <br/><br/>
 We should save this python code into file we'll call <b>umqttsimple.py</b> and we will import it using the import command everytime we want to use the MQTT functionalities to communicate through the MQTT network.
 
