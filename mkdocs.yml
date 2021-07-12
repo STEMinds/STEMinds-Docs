@@ -38,6 +38,7 @@ theme:
 extra_css:
   - stylesheets/bootstrap.min.css
   - stylesheets/shop.css
+  - stylesheets/style-starter.css
 extra_javascript:
   - javascripts/bootstrap.min.js
 markdown_extensions:
