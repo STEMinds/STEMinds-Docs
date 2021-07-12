@@ -19,18 +19,6 @@ We upload all of our code and repositories to our official Github account. Altho
 <br/><br/>
 Our Github account can be accessed here: [github.com/STEMinds](https://github.com/STEMinds)
 
-## Wiki navigation
-
-If you are using a mobile device to access this wiki you might not see it straight away but there is a small navigation icon on top:
-<br/><br/>
-<p align="left">
-  <img src="https://cdn.steminds.com/docs/images/navigation_icon.jpeg">
-</p>
-<br/><br/>
-If you press the yellow button on the top right, you'll be able to see the navigation menu, under kits you'll see our available kits with their related curriculum and everything else you'll need inside.
-<br/><br/>
-For better user experience, we strongly suggest to use your web browser on your PC / Laptop  instead of your mobile device.
-
 ## Contact us
 
 Having trouble? want to ask a question? We are here.
