@@ -36,9 +36,10 @@ theme:
     accent: amber
 
 extra_css:
-  - stylesheets/style-starter.css
+  - stylesheets/bootstrap.min.css
+  - stylesheets/shop.css
 extra_javascript:
-  - javascripts/extra.js
+  - javascripts/bootstrap.min.js
 markdown_extensions:
   - meta
   - admonition

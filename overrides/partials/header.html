@@ -25,37 +25,39 @@
 
 <!-- Application header -->
 <header class="w3l-bootstrap-header" data-md-component="header">
-    <nav class="navbar navbar-expand-lg navbar-dark py-lg-2 py-2">
-      <div class="container">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <!-- Button to open drawer -->
-          <label class="md-header-nav__button md-icon" for="__drawer">
-            {% include ".icons/material/menu" ~ ".svg" %}
-          </label>
-        </button>
+  <div class="container-fluid shop-nav">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <!-- Button to open drawer -->
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      {% include ".icons/material/menu" ~ ".svg" %}
+    </label>
+  </button>
+  </div>
+<nav class="navbar navbar-inverse navbar-expand-lg navbar-dark py-lg-2 py-2">
+  <div class="container">
+    <div class="header-inner">
+		<div class="container header-2">
+				<div class="row">
+						<div class="col-md-3 col-sm-12 col-xs-12 steminds-1">
+								<div class="brand"> <a href="https://steminds.com/"><img src="https://cdn.steminds.com/docs/images/logo.webp" class="rounded" alt="logo">
+										</a> </div>
+						</div>
+						<div class="col-md-6 col-sm-6 col-xs-12 steminds-2">
+								<nav id="nav-wrap" class="main-nav"> <a id="toggle-btn" href="#"></a>
+								<ul class="sf-menu">
+										<li><a href="https://steminds.com/collections"><strong>Categories</strong></a></li>
+										<li> <a href="https://steminds.com/collections/all"><strong>All Products</strong></a></li>
+                    <li> <a href="https://wiki.steminds.com/"><strong>Documentation</strong></a></li>
+										<li> <a href="https://steminds.com/blogs/news"><strong>Blog</strong></a></li>
+										<li> <a href="https://steminds.com/pages/contact-us"><strong>Contact</strong></a> </li>
+								</ul>
+								</nav>
+						</div>
 
-        <a class="navbar-brand" href="#index.html" style="color: #FFC51D;">
-            <img src="https://cdn.steminds.com/docs/images/icon.svg" alt="STEMinds" title="STEMinds" style="height:48px;" />
-            STEMinds
-        </a>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="https://steminds.com/">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://shop.steminds.com/">Products</a>
-            </li>
-              <li class="nav-item">
-              <a class="nav-link" href="https://wiki.steminds.com/">Documentation</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://steminds.com/contact.html">Contact</a>
-            </li>
-          </ul>
-        </div>
+				</div>
+			</div>
       </div>
-    </nav>
+</div>
+</nav>
 </header>
