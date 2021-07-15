@@ -40,6 +40,10 @@ Here is the detailed features that the Eduponics Mini extension board can offer 
       DO NOT connect voltage higher than 5V to the pin rated as 5V as this WILL damage your Eduponics extension board and/or your Eduponics mini.
       The 12V-24V are designed to be isolated and wired through the relays ONLY and are meant to control external sensors and modules that require such voltage.
 
+!!! note "Default address might be wrong for first batch (CrowdSupply)"
+    If you purchased the product through CrowdSupply on the first batch, your extension board might state "MCP23017 default address: 0x20" in fact, the default address is 0x27.
+    But don't you worry! this have no effect on your product at all, just make sure to note the default address if you  haven't played around with the switches is 0x27 instead of 0x20.
+
 ## ADS1115 16-Bit ADC
 
 The Eduponics Mini Built-in ADC works pretty well but for the extension board we've decided to use ADS1115 to increase the precision, the ADS1115 provides 16-bit precision at 860 samples/second over the I2C protocol, the ADC includes a programmable gain amplifier, up to x16, to help boost up smaller single/differential signals to the full range
@@ -115,9 +119,9 @@ For the Arduino code, we need to download and install the following library: [AD
     # define i2c connection to the extension board
     i2c = I2C(scl=Pin(33), sda=Pin(32))
 
-    # setup adc for the extension board
+    # setup adc for the extension board (default address for MCP might be 0x20)
     ads_address = 0x48
-    mcp_address = 0x20
+    mcp_address = 0x27
     gain = 1
 
     adc = ads1x15.ADS1115(i2c=i2c, address=ads_address,mcp_address=mcp_address, gain=gain)
@@ -325,8 +329,8 @@ In order to test the following example, make sure you have micropython-eduponics
     # define i2c connection to the extension board
     i2c = I2C(scl=Pin(33), sda=Pin(32))
 
-    # initialize relay object
-    relays = mcp23017.Relays(i2c, address=0x20)
+    # initialize relay object (default address might be 0x20)
+    relays = mcp23017.Relays(i2c, address=0x27)
 
     # open relays one by one
     for i in range(0,4):
