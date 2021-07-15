@@ -90,7 +90,7 @@ If you are wondering how, it's called [The Barometric Formula](https://en.wikipe
     """
 
     from machine import I2C,Pin
-    from eduponics import bme280
+    from Eduponics import bme280
     from utime import sleep
 
     # setup I2C connection
