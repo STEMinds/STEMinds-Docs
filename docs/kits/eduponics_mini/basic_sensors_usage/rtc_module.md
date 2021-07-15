@@ -120,7 +120,7 @@ Finally, we can call .datetime() command to get the current time and date from t
     """
 
     import machine
-    from eduponics import ds1307
+    from Eduponics import ds1307
     import time
 
     # configure i2c pin

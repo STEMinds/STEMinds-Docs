@@ -84,7 +84,7 @@ finally, we'll read 11 bytes which is exactly the length of the string we've add
     """
 
     # AT24C32A, 32K (32768 kbit / 4 KB), 128 pages, 32 bytes per page, i2c addr 0x50
-    from eduponics import at24c02
+    from Eduponics import at24c02
     import machine
     import time
 

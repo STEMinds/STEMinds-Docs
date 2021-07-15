@@ -105,7 +105,7 @@ The code is very straight forward: we'll create an object from the BH1750 librar
     SOFTWARE.
     """
 
-    from eduponics import bh1750
+    from Eduponics import bh1750
     import machine
     import time
 
