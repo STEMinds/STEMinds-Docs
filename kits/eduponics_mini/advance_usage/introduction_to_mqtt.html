@@ -1,0 +1,855 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="MQTT is a standard for moving data between an IoT device and a server. MQTT has become the de-facto IoT standard for connecting all sorts of IoT devices.">
+      
+      
+      
+      
+      <link rel="icon" href="https://cdn.steminds.com/docs/images/icon.svg">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.10">
+    
+    
+      
+        <title>STEMinds - Introduction to MQTT - STEMinds Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.1fe995fd.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+          
+          
+          <meta name="theme-color" content="">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/bootstrap.min.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/shop.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/style-starter.css">
+    
+    
+      
+  
+
+
+
+  
+  
+
+
+
+  <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-165700957-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+  <script async src="https://www.google-analytics.com/analytics.js"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="default" data-md-color-accent="amber">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction-to-mqtt" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <!--
+  Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Mitigate bug: https://github.com/mkdocs/mkdocs/issues/2191 -->
+
+
+
+<!-- Application header -->
+<header class="w3l-bootstrap-header" data-md-component="header">
+<nav class="navbar navbar-inverse navbar-expand-lg navbar-dark py-lg-2 py-2">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <!-- Button to open drawer -->
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+  </button>
+  <div class="container">
+    <div class="header-inner">
+		<div class="container header-2">
+				<div class="row">
+						<div class="col-md-3 col-sm-12 col-xs-12 steminds-1">
+								<div class="brand"> <a href="https://steminds.com/"><img src="https://cdn.steminds.com/docs/images/logo.webp" class="rounded" alt="logo">
+										</a> </div>
+						</div>
+						<div class="col-md-6 col-sm-6 col-xs-12 steminds-2">
+								<nav id="nav-wrap" class="main-nav"> <a id="toggle-btn" href="#"></a>
+								<ul class="sf-menu">
+										<li><a href="https://steminds.com/collections"><strong>Categories</strong></a></li>
+										<li> <a href="https://steminds.com/collections/all"><strong>All Products</strong></a></li>
+                    <li> <a href="https://wiki.steminds.com/"><strong>Documentation</strong></a></li>
+										<li> <a href="https://steminds.com/blogs/news"><strong>Blog</strong></a></li>
+										<li> <a href="https://steminds.com/pages/contact-us"><strong>Contact</strong></a> </li>
+								</ul>
+								</nav>
+						</div>
+
+				</div>
+			</div>
+      </div>
+</div>
+</nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../index.html" title="STEMinds Documentation" class="md-nav__button md-logo" aria-label="STEMinds Documentation" data-md-component="logo">
+      
+  <img src="https://cdn.steminds.com/docs/images/icon.svg" alt="logo">
+
+    </a>
+    STEMinds Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../index.html" class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Products
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Products" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Products
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../products/eduponics_mini_extension_board.html" class="md-nav__link">
+        Extension board for Eduponics Mini
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        Kits
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kits" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Kits
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" checked>
+      
+      <label class="md-nav__link" for="__nav_3_1">
+        Eduponics Mini
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Eduponics Mini" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Eduponics Mini
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduction.html" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eduponics_mini_getting_started.html" class="md-nav__link">
+        Getting started
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../advance_tools.html" class="md-nav__link">
+        Advance manual tools
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic_sensors_usage/bme280_temperature_and_humidity.html" class="md-nav__link">
+        BME280 sensor
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic_sensors_usage/dht11_temperature_and_humidity.html" class="md-nav__link">
+        DHT11 sensor
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic_sensors_usage/light_sensor.html" class="md-nav__link">
+        BH1750 Light sensor
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic_sensors_usage/water_quantity_sensor.html" class="md-nav__link">
+        Water level sensor
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic_sensors_usage/pump.html" class="md-nav__link">
+        Water pump
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic_sensors_usage/rgb_led.html" class="md-nav__link">
+        RGB LED
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic_sensors_usage/eeprom_module.html" class="md-nav__link">
+        EEPROM Module
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic_sensors_usage/rtc_module.html" class="md-nav__link">
+        RTC Module
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic_sensors_usage/soil_moisture_sensor.html" class="md-nav__link">
+        Soil moisture sensor
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic_sensors_usage/deep_sleep_wakeup.html" class="md-nav__link">
+        Deep sleep wakeup
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="RGB_indicators.html" class="md-nav__link">
+        RGB based indicators
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="water_level_based_water_pumping.html" class="md-nav__link">
+        Water level based pump
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Introduction to MQTT
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="introduction_to_mqtt.html" class="md-nav__link md-nav__link--active">
+        Introduction to MQTT
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-mqtt" class="md-nav__link">
+    What is MQTT
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mqtt-benefits" class="md-nav__link">
+    MQTT Benefits
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mqtt-vocabulary" class="md-nav__link">
+    MQTT Vocabulary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mqtt-useful-applications" class="md-nav__link">
+    MQTT useful applications
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mqtt-software" class="md-nav__link">
+    MQTT Software
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mqtt-protocol" class="md-nav__link">
+    MQTT protocol
+  </a>
+  
+    <nav class="md-nav" aria-label="MQTT protocol">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mqtt-publish" class="md-nav__link">
+    MQTT Publish
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mqtt-subscribe" class="md-nav__link">
+    MQTT Subscribe
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coming-up-next" class="md-nav__link">
+    Coming up next
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="basic_mqtt_client.html" class="md-nav__link">
+        Basic MQTT client
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="eduponics_mqtt_app.html" class="md-nav__link">
+        Eduponics MQTT APP
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-mqtt" class="md-nav__link">
+    What is MQTT
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mqtt-benefits" class="md-nav__link">
+    MQTT Benefits
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mqtt-vocabulary" class="md-nav__link">
+    MQTT Vocabulary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mqtt-useful-applications" class="md-nav__link">
+    MQTT useful applications
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mqtt-software" class="md-nav__link">
+    MQTT Software
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mqtt-protocol" class="md-nav__link">
+    MQTT protocol
+  </a>
+  
+    <nav class="md-nav" aria-label="MQTT protocol">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mqtt-publish" class="md-nav__link">
+    MQTT Publish
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mqtt-subscribe" class="md-nav__link">
+    MQTT Subscribe
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coming-up-next" class="md-nav__link">
+    Coming up next
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="introduction-to-mqtt">Introduction to MQTT</h1>
+<p align="center">
+  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/mqtt_illustration.jpg">
+</p>
+
+<p>MQTT is a standard for moving data between an IoT device and a server. Originally developed in 1999 by Andy Standford-Clark and Arlen Nipper to monitor oil and gas pipelines over remote satellite connections, MQTT has become the de-facto IoT standard for connecting all sorts of IoT devices. Today, all major IoT platforms, IoT cloud services providers, and many IoT edge gateways and devices support connectivity with MQTT.</p>
+<h2 id="what-is-mqtt">What is MQTT</h2>
+<p>MQTT is a publish/subscribe protocol that is lightweight and requires a minimal footprint and bandwidth to connect an IoT device. Unlike HTTP’s request/response paradigm, MQTT is event driven and enables messages to be pushed to clients. This type of architecture decouples the clients from each other to enable a highly scalable solution without dependencies between data producers and data consumers.
+<br/><br/>
+When using HTTP/HTTPS you need to pull data at interval and check whenever there is new data waiting for you, the requests often contain headers and more info which make the task quite heavy for small IoT nodes that need a lightweight and fast solution.
+<br/><br/>
+By Using MQTT, an IoT device can subscribe to a channel or publish to it (or both) when publishing a message, all the subscribed devices will get it almost instantly.</p>
+<h2 id="mqtt-benefits">MQTT Benefits</h2>
+<ul>
+<li>Lightweight and efficient to minimize resources required for the client and network bandwidth.</li>
+<li>Enables bidirectional communication between devices and servers. Also, enabling broadcasting messages to groups of things.</li>
+<li>Scales to millions of things (devices).</li>
+<li>MQTT specifies Quality of Service (QoS) levels to support message reliability.</li>
+<li>MQTT supports persistent sessions between device and server that reduces reconnection time required over unreliable networks.</li>
+<li>MQTT messages can be encrypted with TLS and support client authentication protocols.</li>
+</ul>
+<h2 id="mqtt-vocabulary">MQTT Vocabulary</h2>
+<p>When we talk about MQTT we need to clarify some vocabulary to make sure we all on the same page:</p>
+<ul>
+<li>MQTT - The protocol name we use to communicate between IoT devices.</li>
+<li>Message - When a device / server want to send packet of data, we call it a message.</li>
+<li>Topic - a URL where we subscribe / publish data to such as: sensors/light/</li>
+<li>Publish - When a device want to send a message, the action of sending a message called "Publish".</li>
+<li>Subscribe - When a device want to listen to new incoming messages, the action is called "Subscribe".</li>
+<li>Broker - The MQTT Server that handle the publish/subscribe transactions</li>
+<li>Client - The end device (any IoT device that we use to send or receive messages)</li>
+<li>QoS - Quality of service, a method to give a priority to messages (which one is more important to be received or sent first)</li>
+</ul>
+<h2 id="mqtt-useful-applications">MQTT useful applications</h2>
+<p>There are a lot of very useful and interesting applications that MQTT can be used for, particularly in the world of IoT. For example:</p>
+<ul>
+<li>Sending lightweight sensor data such as: temperature, humidity, light state etc ...</li>
+<li>Receiving sensors data and processing it</li>
+<li>Sending message to multiple (millions) of devices at the same time</li>
+<li>Receiving message in real time from a central server</li>
+</ul>
+<p>If this applications don't tell you much, don't worry about it.
+<br/><br/>
+Later on in our tutorials we will focus on our Eduponics Mini kit and will learn how to send the sensors data from the ESP32 Eduponics mini board to our mobile app through a dedicated STEMinds broker we've prepared in advance.</p>
+<h2 id="mqtt-software">MQTT Software</h2>
+<p align="center">
+  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/MQTT_mosquitto_logo.png">
+</p>
+
+<p>While MQTT is the name of the protocol itself there are huge variety of softwares we can use to implement the MQTT protocol into our code, the most popular one called "Mosquitto", many services and broker providers use this software and in result it has the highest community support.
+<br/><br/>
+<a href="https://mosquitto.org/">Eclipse Mosquitto</a> is the freely available broker software we use to connect the Eduponics mini to the cloud and communicate with it through our dedicated Eduponics mobile app.</p>
+<h2 id="mqtt-protocol">MQTT protocol</h2>
+<p align="center">
+  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/MQTT_demo.jpg">
+</p>
+
+<p>The MQTT protocol is deadly simple to use, as we've mentioned there are 2 main things we need to remember: Subscribe &amp; Publish.</p>
+<h3 id="mqtt-publish">MQTT Publish</h3>
+<p>When we want to send data (it can be any data, such as: temperature and humidity, light, state etc ...) we use publish. The data we publish called "Message" and we publish it into a url like channel for example
+<br/><br/>
+Imagine we want to turn on the living light, we can publish message to sensors/living_room/ topic with the message '1':</p>
+<div class="highlight"><pre><span></span><code>sensors/living_room/light/1
+</code></pre></div>
+<p>Any other device that is subscribed to /sensors/living_room/light will receive the state 1 or 0 and will be able to process commands from there.
+<br/><br/>
+There are couple of things to mind when designing topics, Here is a good article from HiveMQ on best practices when designing MQTT topics:</p>
+<p><a href="https://www.hivemq.com/blog/mqtt-essentials-part-5-mqtt-topics-best-practices/">MQTT Topics &amp; Best Practices - MQTT Essentials</a></p>
+<h3 id="mqtt-subscribe">MQTT Subscribe</h3>
+<p>The other thing to mind is the Subscribe functionality, when we want to receive message that been broadcast by other devices or the server itself through the MQTT network we need to subscribe to a topic. This is fairly easy as we don't need to send any data just receive it.</p>
+<p>For example, we can subscribe to the following topic:</p>
+<div class="highlight"><pre><span></span><code>sensors/living_room/light
+</code></pre></div>
+<p>Any device can post a message to that topic and we'll receive it almost instantly, then we can decide what to do with the information given. should we report to the database? should we give feedback? should we just ignore it? it all depends on the application we are trying to archive.</p>
+<h2 id="coming-up-next">Coming up next</h2>
+<p>In the next couple of lessons we'll build our first MQTT basic client and finally we'll connect our Eduponics Mini to the Eduponics Mobile APP for full functionality!</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <!--
+  Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+
+<footer class="md-footer">
+  
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.ddd52ceb.min.js"></script>
+      
+        <script src="../../../javascripts/bootstrap.min.js"></script>
+      
+    
+  </body>
+</html>

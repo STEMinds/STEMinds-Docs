@@ -1,0 +1,685 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="https://cdn.steminds.com/docs/images/icon.svg">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.10">
+    
+    
+      
+        <title>Flashing image into the RPi SD card - STEMinds Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1fe995fd.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+          
+          
+          <meta name="theme-color" content="">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/bootstrap.min.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/shop.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/style-starter.css">
+    
+    
+      
+  
+
+
+
+  
+  
+
+
+
+  <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-165700957-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+  <script async src="https://www.google-analytics.com/analytics.js"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="default" data-md-color-accent="amber">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#flashing-image-into-the-rpi-sd-card" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <!--
+  Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Mitigate bug: https://github.com/mkdocs/mkdocs/issues/2191 -->
+
+
+
+<!-- Application header -->
+<header class="w3l-bootstrap-header" data-md-component="header">
+<nav class="navbar navbar-inverse navbar-expand-lg navbar-dark py-lg-2 py-2">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <!-- Button to open drawer -->
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+  </button>
+  <div class="container">
+    <div class="header-inner">
+		<div class="container header-2">
+				<div class="row">
+						<div class="col-md-3 col-sm-12 col-xs-12 steminds-1">
+								<div class="brand"> <a href="https://steminds.com/"><img src="https://cdn.steminds.com/docs/images/logo.webp" class="rounded" alt="logo">
+										</a> </div>
+						</div>
+						<div class="col-md-6 col-sm-6 col-xs-12 steminds-2">
+								<nav id="nav-wrap" class="main-nav"> <a id="toggle-btn" href="#"></a>
+								<ul class="sf-menu">
+										<li><a href="https://steminds.com/collections"><strong>Categories</strong></a></li>
+										<li> <a href="https://steminds.com/collections/all"><strong>All Products</strong></a></li>
+                    <li> <a href="https://wiki.steminds.com/"><strong>Documentation</strong></a></li>
+										<li> <a href="https://steminds.com/blogs/news"><strong>Blog</strong></a></li>
+										<li> <a href="https://steminds.com/pages/contact-us"><strong>Contact</strong></a> </li>
+								</ul>
+								</nav>
+						</div>
+
+				</div>
+			</div>
+      </div>
+</div>
+</nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="STEMinds Documentation" class="md-nav__button md-logo" aria-label="STEMinds Documentation" data-md-component="logo">
+      
+  <img src="https://cdn.steminds.com/docs/images/icon.svg" alt="logo">
+
+    </a>
+    STEMinds Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Products
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Products" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Products
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../products/eduponics_mini_extension_board.html" class="md-nav__link">
+        Extension board for Eduponics Mini
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Kits
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kits" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Kits
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      <label class="md-nav__link" for="__nav_3_1">
+        Eduponics Mini
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Eduponics Mini" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Eduponics Mini
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/introduction.html" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/eduponics_mini_getting_started.html" class="md-nav__link">
+        Getting started
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/advance_tools.html" class="md-nav__link">
+        Advance manual tools
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/basic_sensors_usage/bme280_temperature_and_humidity.html" class="md-nav__link">
+        BME280 sensor
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/basic_sensors_usage/dht11_temperature_and_humidity.html" class="md-nav__link">
+        DHT11 sensor
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/basic_sensors_usage/light_sensor.html" class="md-nav__link">
+        BH1750 Light sensor
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/basic_sensors_usage/water_quantity_sensor.html" class="md-nav__link">
+        Water level sensor
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/basic_sensors_usage/pump.html" class="md-nav__link">
+        Water pump
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/basic_sensors_usage/rgb_led.html" class="md-nav__link">
+        RGB LED
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/basic_sensors_usage/eeprom_module.html" class="md-nav__link">
+        EEPROM Module
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/basic_sensors_usage/rtc_module.html" class="md-nav__link">
+        RTC Module
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/basic_sensors_usage/soil_moisture_sensor.html" class="md-nav__link">
+        Soil moisture sensor
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/basic_sensors_usage/deep_sleep_wakeup.html" class="md-nav__link">
+        Deep sleep wakeup
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/advance_usage/RGB_indicators.html" class="md-nav__link">
+        RGB based indicators
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/advance_usage/water_level_based_water_pumping.html" class="md-nav__link">
+        Water level based pump
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/advance_usage/introduction_to_mqtt.html" class="md-nav__link">
+        Introduction to MQTT
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/advance_usage/basic_mqtt_client.html" class="md-nav__link">
+        Basic MQTT client
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/advance_usage/eduponics_mqtt_app.html" class="md-nav__link">
+        Eduponics MQTT APP
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pre-requirements" class="md-nav__link">
+    Pre-requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-right-sd-card" class="md-nav__link">
+    Using the right SD card
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#downloading-the-right-image" class="md-nav__link">
+    Downloading the right image
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#downloading-raspberry-pi-imager" class="md-nav__link">
+    Downloading raspberry pi imager
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flashing-the-image" class="md-nav__link">
+    Flashing the image
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="flashing-image-into-the-rpi-sd-card">Flashing image into the RPi SD card</h1>
+<p>In this short guide we'll teach you how to download an image, download burner software and flash the image into your raspberry pi.</p>
+<h2 id="pre-requirements">Pre-requirements</h2>
+<p>For this short tutorial you'll need the following:</p>
+<ul>
+<li><b>Windows, Mac or Ubuntu computer</b></li>
+<li><b>Micro SD card</b> (if you are not sure which one to buy, keep reading)</li>
+<li><b>Micro SD card reader</b> (MicroSD to USB adapter)</li>
+</ul>
+<p>Using your computer we'll download the image and the raspberry pi imager software to burn the image into your SD card
+If you use laptop, you might have a built-in SD card reader, if that's not the case you might need a micro SD reader.</p>
+<h2 id="using-the-right-sd-card">Using the right SD card</h2>
+<p><img alt="SanDisk Raspberry Pi SD Cards" src="images/sandisk_sd_cards.jpg" /></p>
+<p>There are many possibilities and options to choose from when you decide what SD card is best for your raspberry pi.
+from our perspective, it's best to choose between SanDisk Ultra or SanDisk Extreme series.
+When it comes to the size, we recommend at least 16GB but you might find 32GB cheaper and more useful.<br/></p>
+<p>The SanDisk ultra and extreme series offer high data read and write speed, making your general Raspberry Pi experience smooth and convenient. you'll definitely feel the difference when you first boot your raspberry pi into the image, almost as you run it on SSD and normal mechanical HDD.</p>
+<p><b>Best for you:</b> SanDisk Ultra / SanDisk Extreme series, 16GB and up.</p>
+<h2 id="downloading-the-right-image">Downloading the right image</h2>
+<p align="center">
+  <img src="../images/raspbian_os.jpg">
+</p>
+
+<p>When it comes to the image, we don't offer our own custom images. why?<br/>
+The main reason is because Raspberry Pi Foundation keep the images up to date all the time, which will require a lot of effort from us creating new images to catch up on their updates. instead, we create a custom installer to allow you to install all the drivers with one press of a button and make sure your custom installation that is required by different setups and kits that we offer!<br/></p>
+<p>To get the best experience, we suggest to download the latest Raspbian OS from the raspberry Pi Foundation website.
+There are multiple versions, some including recommend software and some don't, as we use Raspberry Pi Zero for this course we suggest to either get the Desktop version without the software or with the software if you are just getting started.</p>
+<p><a href="https://www.raspberrypi.org/downloads/raspberry-pi-os/">Download Raspbian OS from Raspberry Pi Official website</a></p>
+<h2 id="downloading-raspberry-pi-imager">Downloading raspberry pi imager</h2>
+<p align="center">
+  <img src="../images/raspberry_pi_imager.png">
+</p>
+
+<p>Let's get the raspberry pi imager to burn the actual image into our SD card.<br/>
+Choosing the right imager is crucial, that depends on your operation system.<br/>
+Click The following links to download the latest version of the imager for Windows, macOS and Ubuntu Linux.<br/>
+Only download the owe that fits your OS.<br/></p>
+<ul>
+<li><a href="https://downloads.raspberrypi.org/imager/imager_1.4.exe">Raspberry Pi Imager for Windows</a></li>
+<li><a href="https://downloads.raspberrypi.org/imager/imager_1.4.dmg">Raspberry Pi Imager for macOS</a></li>
+<li><a href="https://downloads.raspberrypi.org/imager/imager_1.4_amd64.deb">Raspberry Pi Imager for Ubuntu</a></li>
+</ul>
+<p>Version: 1.4</p>
+<p>If you already have the image installed and you would like to install the imager inside your raspberry pi<br/>
+for copying or backup purposes of the current image, you can do so by running the following command in the terminal window:<br/>
+<div class="highlight"><pre><span></span><code>sudo apt install rpi-imager
+</code></pre></div></p>
+<h2 id="flashing-the-image">Flashing the image</h2>
+<p>Now to our final step, once you have the image on your computer (should be .img file or .iso file) and the raspberry pi imager downloaded and installed, you are ready to go! open the imager software and it will ask you to choose a file, choose the image you've just downloaded from the raspberry pi website (Raspbian OS) and when selecting drive, make sure to choose the SD card reader that is connected to your computer with the micro SD card.<br/></p>
+<p>Once you are all set and made sure you are burning the image on the right card, press "WRITE" to start the writing process, make sure not to quit the software in the middle! let it work it through and in few minutes you'll be ready with a brand new image of Raspbian OS.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <!--
+  Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+
+<footer class="md-footer">
+  
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.ddd52ceb.min.js"></script>
+      
+        <script src="../../javascripts/bootstrap.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,861 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Learn how to program the kit using the Thonny IDE and MicroPython, how to setup your environment and drivers and how to get started in the IoT world.">
+      
+      
+      
+      
+      <link rel="icon" href="https://cdn.steminds.com/docs/images/icon.svg">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.10">
+    
+    
+      
+        <title>STEMinds - Getting started with the Eduponics Mini - STEMinds Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1fe995fd.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+          
+          
+          <meta name="theme-color" content="">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/bootstrap.min.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/shop.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/style-starter.css">
+    
+    
+      
+  
+
+
+
+  
+  
+
+
+
+  <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-165700957-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+  <script async src="https://www.google-analytics.com/analytics.js"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="default" data-md-color-accent="amber">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#getting-started-with-eduponics-mini" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <!--
+  Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Mitigate bug: https://github.com/mkdocs/mkdocs/issues/2191 -->
+
+
+
+<!-- Application header -->
+<header class="w3l-bootstrap-header" data-md-component="header">
+<nav class="navbar navbar-inverse navbar-expand-lg navbar-dark py-lg-2 py-2">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <!-- Button to open drawer -->
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+  </button>
+  <div class="container">
+    <div class="header-inner">
+		<div class="container header-2">
+				<div class="row">
+						<div class="col-md-3 col-sm-12 col-xs-12 steminds-1">
+								<div class="brand"> <a href="https://steminds.com/"><img src="https://cdn.steminds.com/docs/images/logo.webp" class="rounded" alt="logo">
+										</a> </div>
+						</div>
+						<div class="col-md-6 col-sm-6 col-xs-12 steminds-2">
+								<nav id="nav-wrap" class="main-nav"> <a id="toggle-btn" href="#"></a>
+								<ul class="sf-menu">
+										<li><a href="https://steminds.com/collections"><strong>Categories</strong></a></li>
+										<li> <a href="https://steminds.com/collections/all"><strong>All Products</strong></a></li>
+                    <li> <a href="https://wiki.steminds.com/"><strong>Documentation</strong></a></li>
+										<li> <a href="https://steminds.com/blogs/news"><strong>Blog</strong></a></li>
+										<li> <a href="https://steminds.com/pages/contact-us"><strong>Contact</strong></a> </li>
+								</ul>
+								</nav>
+						</div>
+
+				</div>
+			</div>
+      </div>
+</div>
+</nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="STEMinds Documentation" class="md-nav__button md-logo" aria-label="STEMinds Documentation" data-md-component="logo">
+      
+  <img src="https://cdn.steminds.com/docs/images/icon.svg" alt="logo">
+
+    </a>
+    STEMinds Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Products
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Products" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Products
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../products/eduponics_mini_extension_board.html" class="md-nav__link">
+        Extension board for Eduponics Mini
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        Kits
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kits" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Kits
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" checked>
+      
+      <label class="md-nav__link" for="__nav_3_1">
+        Eduponics Mini
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Eduponics Mini" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Eduponics Mini
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="introduction.html" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Getting started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="eduponics_mini_getting_started.html" class="md-nav__link md-nav__link--active">
+        Getting started
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-the-kit-to-the-power" class="md-nav__link">
+    Connecting the kit to the power
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-usb-ttl-drivers" class="md-nav__link">
+    Installing USB TTL Drivers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ide-or-code-editor" class="md-nav__link">
+    IDE or Code Editor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-eduponics-mini-with-thonny-ide" class="md-nav__link">
+    Configuring Eduponics mini with Thonny IDE
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hello-world" class="md-nav__link">
+    Hello world
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-micropython-eduponics-library" class="md-nav__link">
+    Installing micropython-eduponics Library
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="advance_tools.html" class="md-nav__link">
+        Advance manual tools
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="basic_sensors_usage/bme280_temperature_and_humidity.html" class="md-nav__link">
+        BME280 sensor
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="basic_sensors_usage/dht11_temperature_and_humidity.html" class="md-nav__link">
+        DHT11 sensor
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="basic_sensors_usage/light_sensor.html" class="md-nav__link">
+        BH1750 Light sensor
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="basic_sensors_usage/water_quantity_sensor.html" class="md-nav__link">
+        Water level sensor
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="basic_sensors_usage/pump.html" class="md-nav__link">
+        Water pump
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="basic_sensors_usage/rgb_led.html" class="md-nav__link">
+        RGB LED
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="basic_sensors_usage/eeprom_module.html" class="md-nav__link">
+        EEPROM Module
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="basic_sensors_usage/rtc_module.html" class="md-nav__link">
+        RTC Module
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="basic_sensors_usage/soil_moisture_sensor.html" class="md-nav__link">
+        Soil moisture sensor
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="basic_sensors_usage/deep_sleep_wakeup.html" class="md-nav__link">
+        Deep sleep wakeup
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="advance_usage/RGB_indicators.html" class="md-nav__link">
+        RGB based indicators
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="advance_usage/water_level_based_water_pumping.html" class="md-nav__link">
+        Water level based pump
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="advance_usage/introduction_to_mqtt.html" class="md-nav__link">
+        Introduction to MQTT
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="advance_usage/basic_mqtt_client.html" class="md-nav__link">
+        Basic MQTT client
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="advance_usage/eduponics_mqtt_app.html" class="md-nav__link">
+        Eduponics MQTT APP
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-the-kit-to-the-power" class="md-nav__link">
+    Connecting the kit to the power
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-usb-ttl-drivers" class="md-nav__link">
+    Installing USB TTL Drivers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ide-or-code-editor" class="md-nav__link">
+    IDE or Code Editor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-eduponics-mini-with-thonny-ide" class="md-nav__link">
+    Configuring Eduponics mini with Thonny IDE
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hello-world" class="md-nav__link">
+    Hello world
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-micropython-eduponics-library" class="md-nav__link">
+    Installing micropython-eduponics Library
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="getting-started-with-eduponics-mini">Getting started with Eduponics Mini</h1>
+<p>Before we get started - we need to get our programming environment ready, this includes installing some tools and drivers.
+It won't take long, just follow along with the guide and you should be ready in no time!</p>
+<h2 id="connecting-the-kit-to-the-power">Connecting the kit to the power</h2>
+<p>The Eduponics Mini board includes 2 power interfaces.</p>
+<ol>
+<li>DC 12V Power interface</li>
+<li>USB Type-C 5V Power interface</li>
+</ol>
+<p>It's possible to power the board only by 5V USB Type C through one of the USB ports available on your computer or through an external USB hub.
+<br/><br/>
+The USB Type-C should be used only for programming and not be used for general operation as the voltage is not enough to power some of the development board functionalities such as the 12V pump.
+<br/><br/>
+Once you've finished programming, use the 12V power adapter to power your project, some modules and sensors such as the water pump and the relay require 12V, the inability to provide 12V input, and trying to use those sensors might cause instability and unexpected results.
+<br/><br/>
+Powering the board by 12V and 5V power at the same time is completely safe and won't cause any damage to the board.</p>
+<div class="admonition danger">
+<p class="admonition-title">Only use Eduponics mini supplied DC Power adapter</p>
+<p>Our Eduponics Mini 12V2A power adapter is RoHs, CE and FCC certified.</p>
+<p>The power adapter passed the most critical tests to ensure your safety and the safety of your project. The use of any other unofficial power adapter might result in damage to you or your project and we are not liable for the outcome</p>
+</div>
+<h2 id="installing-usb-ttl-drivers">Installing USB TTL Drivers</h2>
+<p>The USB TTL Serial cables are a range of USB to serial converter cables which provide connectivity between USB and serial UART interfaces,
+<br/><br/>
+In our kit, we include a USB Type-C cable that can communicate with the Eduponics Mini board to upload or download code into and from the ESP32 microcontroller that we use in our Eduponics mini kit.
+<br/><br/>
+The Eduponics mini UART (serial communication) port is based on the CH340C driver which is the USB to TTL chip we are using. In order to make sure your computer can read and write to and from the Eduponics mini ESP32 kit we need to make sure we have the appropriate drivers installed
+<br/><br/>
+Some computers might include support for it but some don't, if it doesn't work for you right away you might need to follow the instructions to install the driver.</p>
+<div class="admonition info">
+<p class="admonition-title">Windows and OSX drivers automatically installed</p>
+<p>If you have Windows or Mac system, The latest version of the Universal Driver should be automatically installed from a Windows Update or included with the OSX System pre-installed. On other systems you might need to download and install the drivers manually.</p>
+</div>
+<p>SparkFun Electronics created a fabulous video that explains step by step how to get the driver installed on your machine. Follow the video below if you're having difficulties with your drivers and learn how to install the driver on your Windows, Mac, or Linux machine:</p>
+<div class="video-wrapper">
+  <center>
+  <iframe width="600" height="327" src="https://www.youtube.com/embed/MM9Fj6bwHLk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </center>
+</div>
+
+<p>The link to the tutorial can be found here: <a href="https://learn.sparkfun.com/tutorials/how-to-install-ch340-drivers/all">SparkFun how to install CH340C driver</a></p>
+<div class="admonition note">
+<p class="admonition-title">System reboot might be required</p>
+<p>When the installation is finished, a restart (reboot) to your system might be required in order for the driver to function properly.</p>
+</div>
+<h2 id="ide-or-code-editor">IDE or Code Editor</h2>
+<p align="center">
+  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/code_editor_illustration.jpeg">
+</p>
+
+<p>The term “IDE” stands for "Integrated Development Environment". It is intended as a comprehensive toolset including a text editor, compiler, build/make integration, debugging and so on. Virtually all IDEs are tied specifically to a language or framework or a tightly collected set of languages or frameworks. Some examples: Visual Studio for .NET and other Microsoft languages, RubyMine for Ruby, IntelliJ for Java, XCode for Apple technologies.
+<br/><br/>
+An editor is simply that, a tool that is designed to edit text. Typically they are optimized for programming languages though many programmer’s text editors are branching out and adding features for non-programming text like Markdown 108 or Org Mode 88. The key here is that text editors are designed to work with whatever language or framework you choose.
+<br/><br/>
+There are many available IDEs and code editors that support MicroPython, In STEMinds we prefer to use the Thonny IDE for the purpose of programming this kit and if you are a beginner and you'll see why.
+<br/><br/>
+Inside the Thonny IDE, which is available both for Mac OSX, Windows and Linux; We can configure our Eduponics Mini to work right out of the box.
+The IDE allows us to communicate through UART directly, upload code, run code, and manage existing files on the Eduponics Mini.
+<br/><br/>
+With the Thonny IDE you can run, manage and execute files directly in an easy, convenient and fast way.
+<br/><br/>
+You can download Thonny IDE from here: <a href="https://thonny.org/">Thonny IDE official website</a></p>
+<h2 id="configuring-eduponics-mini-with-thonny-ide">Configuring Eduponics mini with Thonny IDE</h2>
+<p>The first thing you should to do is to connect the Eduponics Mini to your PC/Mac using the USB Type-C cable.
+<br/><br/>
+Remember, the USB Type-C cable is the data cable we will use to write/read data from the Eduponics Mini kit while the DC power adapter is used to power the board, particularly the 12V pump.
+<br/><br/>
+Once we've connected the Eduponics Mini board - drivers should be installed automatically, if you have an old operating system you can install them manually using the instructions we've mentioned earlier.
+<br/><br/>
+Under Thonny -&gt; Preferences you will find a tab called interpreter like this:</p>
+<p align="center">
+  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/thonny_ide.png">
+</p>
+
+<p>In the interpreter make sure to choose <b>MicroPython (ESP32)</b> because that's the one we are using and in the port you should see USB Serial port, choose the one that is suitable to the Eduponics Mini device and not any other device that is connected to your system.
+<br/><br/>
+Press <b>OK</b> to save the settings.</p>
+<h2 id="hello-world">Hello world</h2>
+<p>Now when everything is ready -  it's time to run our first command to make sure everything is working.
+<br/><br/>
+In Python, we use the "print" command to print something into the terminal (or console if you are on windows) to run the hello world command - type the following into the putty window or your terminal after connecting to the USB UART using the "screen" command:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello world&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p align="center">
+  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/micropython_hello_world.png">
+</p>
+
+<p>if you are using Thonny IDE, on the bottom of the IDE, once you've connected your ESP32 Eduponics kit successfully, you should notice something similar to:
+<br/><br/>
+"MicroPython v1.13 on 2020-09-02; ESP32 module with ESP32".
+<br/><br/>
+Now every line of code you'll write will be directly executed on the Eduponics mini ESP32 microcontroller.</p>
+<p align="center">
+  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/thonny_ide_hello_world.png">
+</p>
+
+<p>Once you've typed the command and pressed "Enter" you should see "Hello world" on your screen! well done!</p>
+<div class="admonition info">
+<p class="admonition-title">Command is executed on the ESP32 not on your machine</p>
+<p>Once the "hello world" printing command was successfully executed, be aware that it was executed on the ESP32 Eduponics Mini board directly!</p>
+</div>
+<p>Your machine may or may not have Python3 installed but the code through Thonny is running on the development board directly which means we can continue to code more exciting things and explore all the feature the Eduponics Mini prepared for us!</p>
+<h2 id="installing-micropython-eduponics-library">Installing micropython-eduponics Library</h2>
+<p>In order to ease things up, we've created a special library MicroPython for the Eduponics Mini and the Eduponics Mini extension board.
+<br/><br/>
+The library can be found on our Github account: <a href="https://github.com/STEMinds/micropython-eduponics">Micropython-Eduponics on github</a>
+<br/><br/>
+This library will allow us to use different type of functions with ease without the need to drag external dependencies and libs to the ESP32 board. If you are planning on using Arduino IDE environment, you can ignore the following steps.
+<br/><br/>
+We will install the library through upip which is a MicroPython implementation of pip, python package manager. In order to do that, we first have to connect to the WiFi, we can do this by creating a file called <strong>boot.py</strong> on our Eduponics Mini device inside Thonny IDE and adding the following lines:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">network</span>
+<span class="kn">import</span> <span class="nn">esp</span>
+<span class="n">esp</span><span class="o">.</span><span class="n">osdebug</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">gc</span>
+<span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+
+<span class="n">ssid</span> <span class="o">=</span> <span class="s1">&#39;WIFI_NAME&#39;</span>
+<span class="n">password</span> <span class="o">=</span> <span class="s1">&#39;WIFI_PASSWORD&#39;</span>
+
+<span class="n">station</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">WLAN</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">STA_IF</span><span class="p">)</span>
+
+<span class="n">station</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">station</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">ssid</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="n">station</span><span class="o">.</span><span class="n">isconnected</span><span class="p">()</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+  <span class="k">pass</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Connected to WiFi successfully, IP: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">station</span><span class="o">.</span><span class="n">ifconfig</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+</code></pre></div>
+<p>We need to make sure to change WIFI_NAME and WIFI_PASSWORD to your Access point at home (WiFI credentials), make sure that the WiFi is 2.4GhZ and not 5G as the ESP32 currently doesn't support 5G wireless networks.
+<br/><br/>
+Once the ESP32 is successfully connected to the WiFi and received IP address, we can write the following commands:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">upip</span>
+<span class="n">upip</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="s2">&quot;micropython-eduponics&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>This will import upip and using the command upip.install() we can install the micropython-eduponics library. Now once everything is ready, we can import eduponics library and time and use the API to ease our programming experience and tasks!</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <!--
+  Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+
+<footer class="md-footer">
+  
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.ddd52ceb.min.js"></script>
+      
+        <script src="../../javascripts/bootstrap.min.js"></script>
+      
+    
+  </body>
+</html>
