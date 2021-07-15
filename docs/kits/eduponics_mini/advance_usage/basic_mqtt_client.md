@@ -29,26 +29,41 @@ Once we've connected to the WiFi using the station.connect() command, we can pri
 
 === "MicroPython"
     ``` python linenums="1"
-    # This code should be written into boot.py file on your Eduponics Mini board.
-    from umqttsimple import MQTTClient
     import network
     import esp
+    import time
     esp.osdebug(None)
     import gc
     gc.collect()
 
-    ssid = 'WIFI_NAME'
-    password = 'WIFI_PASSWORD'
+    # set WiFi credentials
+    ssid = ''
+    password = ''
 
-    station = network.WLAN(network.STA_IF)
+    # check if there is username and password for wifi
+    if(ssid != '' and password != ''):
 
-    station.active(True)
-    station.connect(ssid, password)
+        station = network.WLAN(network.STA_IF)
 
-    while station.isconnected() == False:
-      pass
+        station.active(True)
+        station.connect(ssid, password)
 
-    print('Connected to WiFi successfully, IP: %s' % station.ifconfig()[0])
+        timeout_interval = 10
+
+        # try to connect with timeout interval
+        for i in range(0,timeout_interval):
+            if(station.isconnected() == False):
+                time.sleep(1)
+                pass
+            else:
+                break;
+
+        if(station.isconnected()):
+            print('Connected to WiFi successfully, IP: %s' % station.ifconfig()[0])
+        else:
+            print("Something went wrong, connection timeout, try again!")
+    else:
+        print("Please add WiFi credentials properly")
     ```
 
 Now every time we restart or power the Eduponics Mini board it will automatically connect to the WiFi at our home.
@@ -56,13 +71,30 @@ Now every time we restart or power the Eduponics Mini board it will automaticall
 !!! Warning "2.54GhZ WiFi support only"
     The ESP32 support only 2.54GhZ WiFi networks. Most of the 5Ghz WiFi routers / access points allow both 5Ghz and 2.54Ghz, make sure to choose the 2.54Ghz one.
 
+### Installing the micropython-eduponics library
+
+The MicroPython-Eduponics library can be found on [STEMinds Micropython-Eduponics repository](https://github.com/STEMinds/micropython-eduponics) the easist way to install the library is through uPip.
+
+Make sure to change WiFi ESSID and Password. Once the ESP32 is connected to the Wifi, run the following commands:
+
+```python
+import upip
+upip.install("micropython-eduponics")
+```
+
+The installation should complete and once it's done you shall have a "lib" directory on your ESP32 device containing all the pre-requirements for this tutorial.
+
+Another way would be to grab the firmwares directly from the repository and install them into your ESP32 device using the esptool mentioned in the first tutorials.
+
 ## uMQTTSimple class
 
 This class was taken from [randomnedtutorials.com](https://randomnerdtutorials.com/micropython-mqtt-esp32-esp8266/) and it's extremely useful for what we are trying to achieve. this class will enable us to deal with the entire MQTT protocol (publishing and subscribing) with ease.
 <br/><br/>
 If you look at the initialiser you'll see we give it a couple of parameters such as server (we'll use a public server at [mqtt.eclipse.com](https://mqtt.eclipse.com/)) and some other credentials we won't use such as username, password and other parameters.
 <br/><br/>
-We should save this python code into file we'll call <b>umqttsimple.py</b> and we will import it using the import command everytime we want to use the MQTT functionalities to communicate through the MQTT network.
+We should save this python code into file we'll call <b>umqttsimple.py</b> and we will import it using the import command every time we want to use the MQTT functionalities to communicate through the MQTT network.
+<br/><br/>
+It's important to note that the class already exists in the micropython-eduponics library and if you followed the instructions above, you don't need to copy this class, it's for reference only.
 
 === "MicroPython"
     ``` python linenums="1"
@@ -76,7 +108,7 @@ We should save this python code into file we'll call <b>umqttsimple.py</b> and w
 
     class MQTTClient:
 
-        def __init__(self, client_id=hexlify(machine.unique_id()), server="mqtt.eclipse.org", port=0, user=None, password=None, keepalive=0,
+        def __init__(self, client_id=hexlify(machine.unique_id()), server="mqtt.eclipseprojects.io", port=0, user=None, password=None, keepalive=0,
                      ssl=False, ssl_params={}):
             if port == 0:
                 port = 8883 if ssl else 1883
@@ -325,7 +357,7 @@ This is just an example to demonstrate a very simple and basic MQTT client and h
 
 === "MicroPython"
     ``` python linenums="1"
-    from umqttsimple import MQTTClient
+    from Eduponics import umqttsimple
     import machine
     import time
     import json
@@ -345,7 +377,7 @@ This is just an example to demonstrate a very simple and basic MQTT client and h
 
         print("[-] Connecting to MQTT client ...")
         # set the MQTT broker object
-        client = MQTTClient()
+        client = umqttsimple.MQTTClient()
         # set a callback for incoming messages (subscribed topics)
         client.set_callback(on_message_callback)
         # connect to the broker
@@ -403,7 +435,7 @@ Earlier on we've installed mosquitto CLI and now we are going to use it to archi
 <br/><br/>
 On your machine open terminal / console and type the following:
 
-      mosquitto_sub -h mqtt.eclipse.org -p 1883 -t "UUID_GOES_HERE/living_room/light"
+      mosquitto_sub -h mqtt.eclipseprojects.io -p 1883 -t "UUID_GOES_HERE/living_room/light"
 
 Make sure to change the line that says:
 
