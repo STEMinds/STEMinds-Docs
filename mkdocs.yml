@@ -1,4 +1,5 @@
 site_name: STEMinds Documentation
+site_url: https://docs.steminds.com/
 nav:
   - Welcome: index.md
   - 'Products':
