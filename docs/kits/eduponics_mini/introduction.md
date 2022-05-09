@@ -1,6 +1,6 @@
 ---
 title: STEMinds - Eduponics Mini IoT Smart agriculture Kit
-description: Eduponics mini is a smart agricultural IoT learning kit based on the ESP32, it can be used for: smart watering solution, smart garden, IoT learning and development. Eduponics mini supports the MicroPython programming language and can can help you learn to code in no time!
+description: Eduponics mini is a smart agricultural IoT learning kit based on the ESP32, used for smart watering solution, smart garden, IoT learning and development. Eduponics mini supports the MicroPython programming language and can can help you learn to code in no time!
 ---
 
 # STEMinds Eduponics Mini Kit

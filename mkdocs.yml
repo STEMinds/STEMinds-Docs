@@ -24,33 +24,21 @@ nav:
       - 'Basic MQTT client' : 'kits/eduponics_mini/advance_usage/basic_mqtt_client.md'
       - 'Eduponics MQTT APP' : 'kits/eduponics_mini/advance_usage/eduponics_mqtt_app.md'
 theme:
+  name: material
   logo: https://cdn.steminds.com/docs/images/icon.svg
   favicon: https://cdn.steminds.com/docs/images/icon.svg
   name: material
-  custom_dir: overrides
   language: en
   icon:
     logo: https://cdn.steminds.com/docs/images/icon.svg
   palette:
     primary: default
     accent: amber
-
-extra_css:
-  - stylesheets/bootstrap.min.css
-  - stylesheets/shop.css
-  - stylesheets/style-starter.css
-extra_javascript:
-  - javascripts/bootstrap.min.js
 markdown_extensions:
   - meta
-  - admonition
-  - pymdownx.details
   - pymdownx.superfences
-  - pymdownx.tabbed
-  - pymdownx.highlight:
-      use_pygments: true
-      linenums: false
-      linenums_style: pymdownx.inline
+  - pymdownx.tabbed:
+      alternate_style: true
 extra:
   social:
     - icon: fontawesome/brands/github-alt
@@ -59,6 +47,13 @@ extra:
       link: https://facebook.com/STEMinds
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/company/STEMinds
-google_analytics:
-  - UA-165700957-1
-  - auto
+  analytics:
+    provider: google
+    property: G-PW3PQDPSNS
+  consent:
+    title: Cookie consent
+    description: >- 
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
