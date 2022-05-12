@@ -1,4 +1,4 @@
-site_name: STEMinds Documentation
+site_name: STEMinds Docs
 site_url: https://docs.steminds.com/
 nav:
   - Welcome: index.md
@@ -37,9 +37,17 @@ theme:
     accent: amber
 markdown_extensions:
   - meta
+  - admonition
+  - pymdownx.details
   - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.highlight:
+      use_pygments: true
+      linenums: false
+      linenums_style: pymdownx.inline
   - pymdownx.tabbed:
       alternate_style: true
+
 extra:
   social:
     - icon: fontawesome/brands/github-alt
