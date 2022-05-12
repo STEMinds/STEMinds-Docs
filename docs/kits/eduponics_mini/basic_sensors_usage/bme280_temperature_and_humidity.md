@@ -1,5 +1,5 @@
 ---
-title: STEMinds - BME280 Temperature and Humidity sensor
+title: BME280 Temperature, Humidity, air pressure sensor
 description: Bosch BME280 sensor is a humidity, temperature and barometric pressure sensor especially developed for mobile applications and wearables where size and low power consumption are key design parameters.
 ---
 

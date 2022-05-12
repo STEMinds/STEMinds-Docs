@@ -1,5 +1,5 @@
 ---
-title: STEMinds - Water level and pump
+title: Water level and pump
 description: Combining both functionalities - the pump and the the liquid sensor to determine whenever there is water or not then decide if we should allow or prevent water pumping.
 ---
 

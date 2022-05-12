@@ -1,5 +1,5 @@
 ---
-title: STEMinds - Eduponics APP
+title: MQTT ESP32 Eduponics APP
 description: Learn how to integrate the Eduponics mini kit with Eduponics app to create a remote controlled smart garden, IoT irrigation system or smart watering solution
 ---
 

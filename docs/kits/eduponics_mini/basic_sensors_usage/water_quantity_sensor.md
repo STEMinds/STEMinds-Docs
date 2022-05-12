@@ -1,5 +1,5 @@
 ---
-title: STEMinds - Water liquid level sensor
+title: Water liquid level sensor
 description: No contact with liquid makes the module suitable for hazardous applications such as detecting toxic substances, strong acid, strong alkali and all kinds of liquid in an air tight container under high pressure. It's an industrial grade IP65 certified sensor that could be used for many industrial applications.
 ---
 

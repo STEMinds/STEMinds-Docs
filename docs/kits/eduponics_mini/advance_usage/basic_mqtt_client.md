@@ -1,5 +1,5 @@
 ---
-title: STEMinds - Basic MQTT client
+title: Basic ESP32 MQTT client
 description: MicroPython MQTT Client example to communicate with IoT devices around you
 ---
 

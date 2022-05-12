@@ -1,5 +1,5 @@
 ---
-title: STEMinds - WS2812B RGB LED Indicators
+title: WS2812B RGB LED Indicators
 description: Learn how to combine the WS2812B RGB with other sensors such as the water level sensor, soil moisture, temperature and humidity and more to create interactive light based on the value changes of those sensors.
 ---
 

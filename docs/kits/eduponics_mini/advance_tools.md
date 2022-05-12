@@ -1,5 +1,5 @@
 ---
-title: STEMinds - Advanced MicroPython and ESP32 tools
+title: Advanced MicroPython and ESP32 tools
 description: Let's learn about some advanced tools such as detecting the UART manually and operating the ESP32 with Ampy (an Adafruit Tool) something that can be useful if you want to work outside of the Thonny IDE environment.
 ---
 

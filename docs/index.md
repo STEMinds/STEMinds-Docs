@@ -1,9 +1,9 @@
 ---
-title: STEMinds - Wiki and documentation
-description: STEMinds wiki offers documentation and information about various products and kits with famous MicroControllers and programming languages such as Raspberry Pi, Arduino, ESP32, MicroBit, MicroPython, Python, C++ and more.
+title: documentation
+description: STEMinds docs offers documentation and information about various products and kits with famous MicroControllers and programming languages such as Raspberry Pi, Arduino, ESP32, MicroBit, MicroPython, Python, C++ and more.
 ---
 
-# Welcome to STEMinds Wiki
+# STEMinds official documentation
 
 <p align="center">
   <img src="https://cdn.steminds.com/docs/images/wiki_intro.png">

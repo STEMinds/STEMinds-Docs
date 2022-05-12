@@ -1,5 +1,5 @@
 ---
-title: Minduino Uno - Arduino Uno Compatible development board
+title: Minduino Uno, an Arduino Uno Compatible development board
 description: Minduino Uno is Arduino compatible board with some extra neat features such as: USB Type-C, Battery charging, Battery Indicator, NeoPixel Ring, SD card reader and much more.
 ---
 

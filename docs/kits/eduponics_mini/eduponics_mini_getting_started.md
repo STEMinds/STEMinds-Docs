@@ -1,5 +1,5 @@
 ---
-title: STEMinds - Getting started with the Eduponics Mini
+title: Getting started with the Eduponics Mini
 description: Learn how to program the kit using the Thonny IDE and MicroPython, how to setup your environment and drivers and how to get started in the IoT world.
 ---
 

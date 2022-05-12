@@ -1,5 +1,5 @@
 ---
-title: STEMinds - Introduction to MQTT
+title: Introduction to ESP32 MQTT
 description: MQTT is a standard for moving data between an IoT device and a server. MQTT has become the de-facto IoT standard for connecting all sorts of IoT devices.
 ---
 

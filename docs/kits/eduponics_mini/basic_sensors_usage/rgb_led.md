@@ -1,5 +1,5 @@
 ---
-title: STEMinds - WS2812B RGB LED
+title: WS2812B RGB LED
 description: WS2812 is an intelligent control LED light source module with integrated RGB chip circuit at a 5050 size component package.
 ---
 

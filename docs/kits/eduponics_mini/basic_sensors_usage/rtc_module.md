@@ -1,5 +1,5 @@
 ---
-title: STEMinds - DS1307Z Real time clock (RTC) Module
+title: DS1307Z Real time clock (RTC) Module
 description: The DS1307 Serial Real-Time Clock is a low-power, full binary-coded decimal (BCD) clock/calendar plus 56 bytes of NV SRAM. Address and data are transferred serially via a 2-wire, bi-directional bus. The clock/calendar provides seconds, minutes, hours, day, date, month, and year information.
 ---
 

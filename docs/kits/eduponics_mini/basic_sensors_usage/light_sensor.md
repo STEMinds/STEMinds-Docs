@@ -1,5 +1,5 @@
 ---
-title: STEMinds - BH1750 IIC light sensor
+title: BH1750 IIC light sensor
 description: The BH1750 is integrated IC with photodiode that allows us to measure the intensity and Illuminance of light and understanding whenever our environment is sufficient for our plant to live or it won't be able to survive due to lack of sunlight.
 ---
 

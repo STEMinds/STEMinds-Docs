@@ -1,5 +1,5 @@
 ---
-title: STEMinds - ESP32 Deep sleep functionality
+title: ESP32 Deep sleep feature
 description: Deep sleep mode will reduce the power consumption and your batteries will last longer. Having the ESP board in deep sleep mode means cutting with the activities that consume more power while operating but leave just enough activity to wake up the processor when something interesting happens.
 ---
 

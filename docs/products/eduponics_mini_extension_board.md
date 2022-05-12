@@ -1,5 +1,5 @@
 ---
-title: Eduponics Mini - Extension board
+title: Eduponics Mini Extension board
 description: The Eduponics mini extension board designed using ADS1115 for ADC support and MCP23017 for GPIO control with some advance functionalities such as interrupt on change and precise analog data reading, the board allows to connect extra 4 analog data sensors and 4 digital output devices with 12V support.
 ---
 

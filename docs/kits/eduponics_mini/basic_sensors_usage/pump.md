@@ -1,5 +1,5 @@
 ---
-title: STEMinds - 12V Submersible water pump
+title: 12V Submersible water pump
 description: STEMinds 12V submersible water pump will allow you to water your plants and move water from one side to the other with ease.
 ---
 

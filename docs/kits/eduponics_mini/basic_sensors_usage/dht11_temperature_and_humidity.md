@@ -1,5 +1,5 @@
 ---
-title: STEMinds - DHT11 temperature and humidity sensor
+title: DHT11 temperature and humidity sensor
 description: DHT11 Temperature & Humidity Sensor features a temperature & humidity sensor complex with a calibrated digital signal output.
 ---
 
