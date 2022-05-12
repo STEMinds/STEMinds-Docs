@@ -1,6 +1,6 @@
 ---
 title: documentation
-description: STEMinds docs offers documentation and information about various products and kits with famous MicroControllers and programming languages such as Raspberry Pi, Arduino, ESP32, MicroBit, MicroPython, Python, C++ and more.
+description: STEMinds docs offer documentation on various products and kits such as Raspberry Pi, Arduino, ESP32, STM, MicroBit, MicroPython, Python, C++, and more.
 ---
 
 # STEMinds official documentation
