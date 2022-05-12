@@ -35,6 +35,10 @@ theme:
   palette:
     primary: default
     accent: amber
+plugins:
+  - tags
+  - privacy
+  - social
 markdown_extensions:
   - meta
   - admonition
