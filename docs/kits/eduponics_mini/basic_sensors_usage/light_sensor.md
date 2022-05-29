@@ -46,7 +46,7 @@ From Wikipedia:
 >Thus holes move toward the anode, and electrons toward the cathode, and a photocurrent is produced. The total current through the photodiode is the sum of the dark current (current that is generated in the absence of light) and the photocurrent, so the dark current must be minimized to maximize the sensitivity of the device"
 
 <p align="center">
-  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/photodiode_explained.jpg">
+  <img src="/images/kits/eduponics_mini/photodiode_explained.jpeg" alt="photodiode explained">
 </p>
 <p align="center">
 </p>
@@ -59,7 +59,7 @@ From Wikipedia:
 The BH1750 is a very sophisticated IC (integrated circuit) that includes multiple components. Let's walk through the data sheet shown in the picture below to understand the principles better.
 
 <p align="center">
-  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/bh1750.png">
+  <img src="/images/kits/eduponics_mini/bh1750.png" alt="bh1750 light sensor">
 </p>
 
 * PD - Photo diode with approximate human eye response, this is the main component in the IC that allow us to detect the amount of light.

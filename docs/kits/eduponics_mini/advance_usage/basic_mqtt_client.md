@@ -444,7 +444,7 @@ Make sure to change the line that says:
 With your UUID that you've generated and inserted into your ESP32 device. If everything goes well, every time the ESP32 will publish to the MQTT broker you should see it on your machine using the MQTT CLI:
 
 <p align="center">
-  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/mqtt_basic_application_results.png">
+  <img src="/images/kits/eduponics_mini/mqtt_basic_application_results.png" alt="MQTT basic application">
 </p>
 
 As we always publish the same static data (integer 1) there is nothing much to see or operate except the proof that it works, next we'll move to real life application using the Eduponics Mobile APP to receive and control the sensors on top of our Eduponics Mini board!

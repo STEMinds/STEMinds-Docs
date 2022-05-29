@@ -6,7 +6,7 @@ description: MQTT is a standard for moving data between an IoT device and a serv
 # Introduction to MQTT
 
 <p align="center">
-  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/mqtt_illustration.jpg">
+  <img src="/images/kits/eduponics_mini/mqtt_illustration.jpeg">
 </p>
 
 MQTT is a standard for moving data between an IoT device and a server. Originally developed in 1999 by Andy Standford-Clark and Arlen Nipper to monitor oil and gas pipelines over remote satellite connections, MQTT has become the de-facto IoT standard for connecting all sorts of IoT devices. Today, all major IoT platforms, IoT cloud services providers, and many IoT edge gateways and devices support connectivity with MQTT.
@@ -57,7 +57,7 @@ Later on in our tutorials we will focus on our Eduponics Mini kit and will learn
 ## MQTT Software
 
 <p align="center">
-  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/MQTT_mosquitto_logo.png">
+  <img src="/images/kits/eduponics_mini/MQTT_mosquitto_logo.png">
 </p>
 
 While MQTT is the name of the protocol itself there are huge variety of softwares we can use to implement the MQTT protocol into our code, the most popular one called "Mosquitto", many services and broker providers use this software and in result it has the highest community support.
@@ -67,7 +67,7 @@ While MQTT is the name of the protocol itself there are huge variety of software
 ## MQTT protocol
 
 <p align="center">
-  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/MQTT_demo.jpg">
+  <img src="/images/kits/eduponics_mini/MQTT_demo.jpeg">
 </p>
 
 The MQTT protocol is deadly simple to use, as we've mentioned there are 2 main things we need to remember: Subscribe & Publish.

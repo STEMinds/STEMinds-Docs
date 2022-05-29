@@ -57,7 +57,7 @@ The link to the tutorial can be found here: [SparkFun how to install CH340C driv
 ## IDE or Code Editor
 
 <p align="center">
-  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/code_editor_illustration.jpeg">
+  <img src="/images/kits/eduponics_mini/code_editor_illustration.jpeg" alt="code editor IDE">
 </p>
 
 The term “IDE” stands for "Integrated Development Environment". It is intended as a comprehensive toolset including a text editor, compiler, build/make integration, debugging and so on. Virtually all IDEs are tied specifically to a language or framework or a tightly collected set of languages or frameworks. Some examples: Visual Studio for .NET and other Microsoft languages, RubyMine for Ruby, IntelliJ for Java, XCode for Apple technologies.
@@ -84,7 +84,7 @@ Once we've connected the Eduponics Mini board - drivers should be installed auto
 Under Thonny -> Preferences you will find a tab called interpreter like this:
 
 <p align="center">
-  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/thonny_ide.png">
+  <img src="/images/kits/eduponics_mini/thonny_ide.png" alt="thonny IDE for programming">
 </p>
 
 In the interpreter make sure to choose <b>MicroPython (ESP32)</b> because that's the one we are using and in the port you should see USB Serial port, choose the one that is suitable to the Eduponics Mini device and not any other device that is connected to your system.
@@ -102,7 +102,7 @@ print("hello world")
 ```
 
 <p align="center">
-  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/micropython_hello_world.png">
+  <img src="/images/kits/eduponics_mini/micropython_hello_world.png" alt="micropython hello world example">
 </p>
 
 if you are using Thonny IDE, on the bottom of the IDE, once you've connected your ESP32 Eduponics kit successfully, you should notice something similar to:
@@ -112,7 +112,7 @@ if you are using Thonny IDE, on the bottom of the IDE, once you've connected you
 Now every line of code you'll write will be directly executed on the Eduponics mini ESP32 microcontroller.
 
 <p align="center">
-  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/thonny_ide_hello_world.png">
+  <img src="/images/kits/eduponics_mini/thonny_ide_hello_world.png" alt="thonny IDE hello world">
 </p>
 
 Once you've typed the command and pressed "Enter" you should see "Hello world" on your screen! well done!

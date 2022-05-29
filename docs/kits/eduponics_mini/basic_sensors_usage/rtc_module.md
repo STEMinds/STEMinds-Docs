@@ -48,7 +48,7 @@ The RTC module is super useful, here are some of the possible applications you c
 ## Hardware explanation
 
 <p align="center">
-  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/RTC_ DS1307_schematic.jpg">
+  <img src="/images/kits/eduponics_mini/RTC_DS1307_schematic.jpeg" alt="DS1307 RTC schematic">
 </p>
 
 The simple circuit the two inputs X1 and X2 are connected to a 32.768 kHz crystal oscillator as the source of the chip. VBAT is connected to positive culture of a 3V battery chip. VCC power to the I2C interface is 3.3V which is given by the ESP32 board. If the power supply VCC is not granted read and writes are inhibited.
@@ -61,13 +61,13 @@ On the Eduponics Mini board the RTC module and the crystal oscillator is at the 
 ## Connecting the battery to the RTC module
 
 <p align="center">
-  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/3V-Coin-Cell-Battery-CR1220.jpg">
+  <img src="/images/kits/eduponics_mini/3V-Coin-Cell-Battery-CR1220.jpeg" alt="3V coin cell battery CR1220">
 </p>
 
 The RTC coin battery is <b>not included</b> with the kit due to logistics concerns when shipping Lithium batteries, The battery type is CR1220 and can be found in probably any convenient shop near your home. The picture above is for illustration purpose only, there are many brands such as Panasonic, Murata, Cellewell etc ... all should work as long as it's 3V and same size (the model should be CR1220).
 
 <p align="center">
-  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/eduponics_mini_plugging_rtc.png">
+  <img src="/images/kits/eduponics_mini/eduponics_mini_plugging_rtc.png" alt="eduponics mini plugging-in RTC battery">
 </p>
 
 The battery case can be found on the bottom side of the Eduponics Mini development board.

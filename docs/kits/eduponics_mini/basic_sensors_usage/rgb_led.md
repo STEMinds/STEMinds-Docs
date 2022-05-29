@@ -6,7 +6,7 @@ description: WS2812 is an intelligent control LED light source module with integ
 # WS2812B RGB LED
 
 <p align="center">
-  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/WS2812B.jpg">
+  <img src="/images/kits/eduponics_mini/WS2812B.jpeg" alt="WS2812B RGB">
 </p>
 
 WS2812 is an intelligent control LED light source module with integrated RGB chip circuit at a 5050 size component package.
@@ -39,13 +39,13 @@ RGB LED can be very useful specially for debugging without connecting to the kit
 ## Hardware explanation
 
 <p align="center">
-  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/WS2812B-close-look.jpg">
+  <img src="/images/kits/eduponics_mini/WS2812B-close-look.jpeg" alt="WS2812B RGB close look">
 </p>
 
 The cool thing about the WS2812B RGB LED is it's not just an LED (to be exact, 3 LEDs) but it includes a tiny IC (integrated circuit) inside that allows us to control the LED state using a single IO pin. The RGB color can be manipulated using a simple PWN commands, if you'd like to connect multiple WS2812B LEDs that can also be archived and guess what? with just a single IO pin!
 
 <p align="center">
-  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/WS2812B_explained.png">
+  <img src="/images/kits/eduponics_mini/WS2812B_explained.png" alt="WS2812B RGB how it works">
 </p>
 
 We can add as many as we want and connect them together in series, in the protocol each one will have a location starting from 0 up to n (number of LED's we have)

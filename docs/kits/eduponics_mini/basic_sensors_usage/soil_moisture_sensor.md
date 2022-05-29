@@ -6,7 +6,7 @@ description: The soil moisture sensor is analog sensor, there are some pins on t
 # STEMinds Soil moisture sensor
 
 <p align="center">
-  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/eduponics-soil-moisture-sensors.jpeg">
+  <img src="/images/kits/eduponics_mini/eduponics-soil-moisture-sensors.jpeg" alt="Eduponics soil moisture sensor">
 </p>
 
 Our sensor is one of a kind, we truly love that sensor and hope other people can use it as much as we do.
@@ -54,7 +54,7 @@ Please note the following regarding the testing of the soil moisture sensors **t
 ## Hardware explanation
 
 <p align="center">
-  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/metal_plate_illustration.gif">
+  <img src="/images/kits/eduponics_mini/metal_plate_illustration.gif" alt="metal plate illustration">
 </p>
 
 The soil moisture sensor is based on a very important component called "capacitor", the capacitor consist of three pieces.  A positive plate, a negative plate and the space in-between the plates, known as the dielectric. The physical form and construction of practical capacitors vary widely and many capacitor types are in common use. Most capacitors contain at least two electrical conductors often in the form of metallic plates or surfaces separated by a dielectric medium.
@@ -76,7 +76,7 @@ This sensor can be used in smart agriculture related projects such as:
 ## Plugging-in the soil moisture sensor
 
 <p align="center">
-  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/eduponics_mini_connecting_soil_moisture_sensor.jpeg">
+  <img src="/images/kits/eduponics_mini/eduponics_mini_connecting_soil_moisture_sensor.jpeg" alt="connecting soil moisture sensor to eduponics mini">
 </p>
 
 Plugging in the sensor is deadly easy. as we use the XH2.54 interface we can simply plug and play the sensor as shown in the picture above.

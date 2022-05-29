@@ -53,7 +53,7 @@ Regarding the humidity, multiple actions can be taken such as alert, automatic w
 ## Hardware explanation
 
 <p align="center">
-  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/dht11_inside.jpg">
+  <img src="/images/kits/eduponics_mini/dht11_inside.jpeg" alt="dht11 sensor">
 </p>
 
 

@@ -6,10 +6,10 @@ description: STEMinds docs offer documentation on various products and kits such
 # STEMinds official documentation
 
 <p align="center">
-  <img src="https://cdn.steminds.com/docs/images/wiki_intro.png">
+  <img src="/images/wiki_intro.png" alt="steminds docs intro">
 </p>
 <br/><br/>
-In this wiki platform you'll find all the tools, tutorials and guides you need to get started with STEMinds official products and kits.</br>
+In this docs platform you'll find all the tools, tutorials and guides you need to get started with STEMinds official products and kits.</br>
 <br/><br/>
 In the wiki we offer detailed explanations and code samples in an easy to read format.
 

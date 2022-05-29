@@ -6,7 +6,7 @@ description: Atmel AT24C02 EEPROM is a memory chip that allows you to store data
 # AT24C02 EEPROM Module
 
 <p align="center">
-  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/AT24C02_EEPROM.jpg">
+  <img src="/images/kits/eduponics_mini/AT24C02_EEPROM.jpeg" alt="AT24C02 EEPROM">
 </p>
 
 The Atmel AT24C02 EEPROM is a memory chip that allows you to store data and retain it even when the power goes off. It is usually used to store user settings or other kind of configuration.

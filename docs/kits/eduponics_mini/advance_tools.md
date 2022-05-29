@@ -68,7 +68,7 @@ We use PuTTY to communicate through UART with the Eduponics Mini, in OSX or Linu
 You can download Putty from here: [Putty official website](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
 
 <p align="center">
-  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/putty_example.png">
+  <img src="/images/kits/eduponics_mini/putty_example.png" alt="putty example">
 </p>
 
 Once you have Putty installed, you can proceed to entering the COM port that we found earlier in the device manager (it may not necessarily be COM4, it could be a different number)

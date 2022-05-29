@@ -6,7 +6,7 @@ description: Deep sleep mode will reduce the power consumption and your batterie
 # Wakeup from Deep sleep
 
 <p align="center">
-  <img src="https://cdn.steminds.com/docs/kits/eduponics_mini/drained_battery_illustration.jpg" width="350px">
+  <img src="/images/kits/eduponics_mini/drained_battery_illustration.jpeg" width="350px" alt="drained battery low power">
 </p>
 
 Having the Eduponics Mini ESP32 board running on active mode with batteries it’s not ideal, since the power from batteries will drain very quickly.
