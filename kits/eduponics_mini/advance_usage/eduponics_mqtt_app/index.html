@@ -1,0 +1,1306 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Learn how to integrate the Eduponics mini kit with Eduponics app to create a remote controlled smart garden, IoT irrigation system or smart watering solution">
+      
+      
+      
+        <link rel="canonical" href="https://docs.steminds.com/kits/eduponics_mini/advance_usage/eduponics_mqtt_app/">
+      
+      <link rel="icon" href="https://steminds.com/images/bulb_white.svg">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.16">
+    
+    
+      
+        <title>MQTT ESP32 Eduponics APP - STEMinds Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.1c3799f8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+          
+          
+          <meta name="theme-color" content="">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-PW3PQDPSNS"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-PW3PQDPSNS",{page_path:e.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PW3PQDPSNS"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="default" data-md-color-accent="amber">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#eduponics-mqtt-powered-mobile-app" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="STEMinds Documentation" class="md-header__button md-logo" aria-label="STEMinds Documentation" data-md-component="logo">
+      
+  <img src="https://steminds.com/images/bulb_white.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            STEMinds Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              MQTT ESP32 Eduponics APP
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="STEMinds Documentation" class="md-nav__button md-logo" aria-label="STEMinds Documentation" data-md-component="logo">
+      
+  <img src="https://steminds.com/images/bulb_white.svg" alt="logo">
+
+    </a>
+    STEMinds Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Products
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Products" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Products
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../products/eduponics_mini_extension_board/" class="md-nav__link">
+        Extension board for Eduponics Mini
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Kits
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Kits" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Kits
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          Eduponics Mini
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Eduponics Mini" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Eduponics Mini
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eduponics_mini_getting_started/" class="md-nav__link">
+        Getting started
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advance_tools/" class="md-nav__link">
+        Advance manual tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic_sensors_usage/bme280_temperature_and_humidity/" class="md-nav__link">
+        BME280 sensor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic_sensors_usage/dht11_temperature_and_humidity/" class="md-nav__link">
+        DHT11 sensor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic_sensors_usage/light_sensor/" class="md-nav__link">
+        BH1750 Light sensor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic_sensors_usage/water_quantity_sensor/" class="md-nav__link">
+        Water level sensor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic_sensors_usage/pump/" class="md-nav__link">
+        Water pump
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic_sensors_usage/rgb_led/" class="md-nav__link">
+        RGB LED
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic_sensors_usage/eeprom_module/" class="md-nav__link">
+        EEPROM Module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic_sensors_usage/rtc_module/" class="md-nav__link">
+        RTC Module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic_sensors_usage/soil_moisture_sensor/" class="md-nav__link">
+        Soil moisture sensor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic_sensors_usage/deep_sleep_wakeup/" class="md-nav__link">
+        Deep sleep wakeup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RGB_indicators/" class="md-nav__link">
+        RGB based indicators
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../water_level_based_water_pumping/" class="md-nav__link">
+        Water level based pump
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduction_to_mqtt/" class="md-nav__link">
+        Introduction to MQTT
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic_mqtt_client/" class="md-nav__link">
+        Basic MQTT client
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Eduponics MQTT APP
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Eduponics MQTT APP
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#preparing-the-eduponics-mini" class="md-nav__link">
+    Preparing the Eduponics Mini
+  </a>
+  
+    <nav class="md-nav" aria-label="Preparing the Eduponics Mini">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connecting-eduponics-mini-to-wifi" class="md-nav__link">
+    Connecting Eduponics Mini to WiFi
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-the-micropython-eduponics-library" class="md-nav__link">
+    Installing the micropython-eduponics library
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generating-uuid" class="md-nav__link">
+    Generating UUID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-main-mqtt-client" class="md-nav__link">
+    Adding main MQTT client
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changing-the-mqtt-broker" class="md-nav__link">
+    Changing the MQTT broker
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparing-the-eduponics-app" class="md-nav__link">
+    Preparing the Eduponics APP
+  </a>
+  
+    <nav class="md-nav" aria-label="Preparing the Eduponics APP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#downloading-installing-eduponics-app" class="md-nav__link">
+    Downloading &amp; Installing Eduponics APP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connecting-eduponics-app-to-eduponics-mini" class="md-nav__link">
+    Connecting Eduponics APP to Eduponics Mini
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#preparing-the-eduponics-mini" class="md-nav__link">
+    Preparing the Eduponics Mini
+  </a>
+  
+    <nav class="md-nav" aria-label="Preparing the Eduponics Mini">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connecting-eduponics-mini-to-wifi" class="md-nav__link">
+    Connecting Eduponics Mini to WiFi
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-the-micropython-eduponics-library" class="md-nav__link">
+    Installing the micropython-eduponics library
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generating-uuid" class="md-nav__link">
+    Generating UUID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-main-mqtt-client" class="md-nav__link">
+    Adding main MQTT client
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changing-the-mqtt-broker" class="md-nav__link">
+    Changing the MQTT broker
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparing-the-eduponics-app" class="md-nav__link">
+    Preparing the Eduponics APP
+  </a>
+  
+    <nav class="md-nav" aria-label="Preparing the Eduponics APP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#downloading-installing-eduponics-app" class="md-nav__link">
+    Downloading &amp; Installing Eduponics APP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connecting-eduponics-app-to-eduponics-mini" class="md-nav__link">
+    Connecting Eduponics APP to Eduponics Mini
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="eduponics-mqtt-powered-mobile-app">Eduponics MQTT Powered Mobile APP</h1>
+<p align="left">
+  <img src="/images/kits/eduponics_mini/eduponics_featured.png">
+</p>
+
+<p>The Eduponics App is a special app we've developed in order to turn your kit into a complete autonomous smart watering solution.
+<br/><br/>
+By using the app and pairing it with the Eduponics mini kit you'll be able to control your plants remotely by pumping water when needed, view sensors data in real time such as: temperature and humidity, light intensity, water quantity and off course monitoring soil moisture levels.
+<br/><br/>
+The app can work anywhere, whenever you are at home, at work or on vocation. it doesn't require a local server or port forwarding.
+<br/><br/>
+The app currently support the following languages:
+<br/><br/>
+English, Hebrew, Mandarin (Chinese), Spanish, German, Ukrainian, Russian, Hindi, Portuguese
+<br/><br/>
+The language is selected by your system language (your mobile phone language). If you'd like us to add extra translations and would like to help us translate the app for more languages, feel free to contact us!</p>
+<div class="admonition tip">
+<p class="admonition-title">For now, only Android app version is available</p>
+<p>Although we developed both the Android and iOS version for the Eduponics app, we haven't released the iOS app yet for the apple appstore due to app regulations and application approval process, we plan to release it as soon as possible, stay tuned!</p>
+</div>
+<h2 id="preparing-the-eduponics-mini">Preparing the Eduponics Mini</h2>
+<p>Before we'll jump directly into our app, we need to prepare our Eduponics Mini ESP32 board first with custom software that will enable our kit to connect to the MQTT broker and publish and subscribe to and from topics.</p>
+<p>In order for this tutorial to work, make sure you follow the installation instructions below to install the micropython-eduponics library on your Eduponics Mini device.</p>
+<h3 id="connecting-eduponics-mini-to-wifi">Connecting Eduponics Mini to WiFi</h3>
+<p>Let's repeat the same process we've used in the basic MQTT client tutorial by creating <b>boot.py</b> file, this file will first load when our Eduponics Mini restart or the power plugged in, in this file we'll configure the WiFi credentials such as ESSID (WiFi name) and the WiFi password.
+<br/><br/>
+Once we've connected to the WiFi using the station.connect() command, we can print our ESP32 WiFi IP address into the console.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">MicroPython</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">network</span>
+<span class="kn">import</span> <span class="nn">esp</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="n">esp</span><span class="o">.</span><span class="n">osdebug</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">gc</span>
+<span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+
+<span class="c1"># set WiFi credentials</span>
+<span class="n">ssid</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="n">password</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+<span class="c1"># check if there is username and password for wifi</span>
+<span class="k">if</span><span class="p">(</span><span class="n">ssid</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span> <span class="ow">and</span> <span class="n">password</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">):</span>
+
+    <span class="n">station</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">WLAN</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">STA_IF</span><span class="p">)</span>
+
+    <span class="n">station</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">station</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">ssid</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+
+    <span class="n">timeout_interval</span> <span class="o">=</span> <span class="mi">10</span>
+
+    <span class="c1"># try to connect with timeout interval</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">timeout_interval</span><span class="p">):</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">station</span><span class="o">.</span><span class="n">isconnected</span><span class="p">()</span> <span class="o">==</span> <span class="kc">False</span><span class="p">):</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">break</span><span class="p">;</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">station</span><span class="o">.</span><span class="n">isconnected</span><span class="p">()):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Connected to WiFi successfully, IP: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">station</span><span class="o">.</span><span class="n">ifconfig</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Something went wrong, connection timeout, try again!&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please add WiFi credentials properly&quot;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Now every time we restart or power the Eduponics Mini board it will automatically connect to the WiFi at our home.</p>
+<div class="admonition warning">
+<p class="admonition-title">2.54GhZ WiFi support only</p>
+<p>Just reminding once again, the ESP32 support only 2.54GhZ WiFi networks. Most of the 5Ghz WiFi routers / access points allow both 5Ghz and 2.54Ghz, make sure to choose the 2.54Ghz one. to avoid connectivity issues make sure your network is operated on 2.54Ghz.</p>
+</div>
+<h3 id="installing-the-micropython-eduponics-library">Installing the micropython-eduponics library</h3>
+<p>The MicroPython-Eduponics library can be found on <a href="https://github.com/STEMinds/micropython-eduponics">STEMinds Micropython-Eduponics repository</a> the easist way to install the library is through uPip.</p>
+<p>Make sure to change WiFi ESSID and Password. Once the ESP32 is connected to the Wifi, run the following commands:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">upip</span>
+<span class="n">upip</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="s2">&quot;micropython-eduponics&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>The installation should complete and once it's done you shall have a "lib" directory on your ESP32 device containing all the pre-requirements for this tutorial.</p>
+<p>Another way would be to grab the firmwares directly from the repository and install them into your ESP32 device using the esptool mentioned in the first tutorials.</p>
+<h3 id="generating-uuid">Generating UUID</h3>
+<p>As we've mentioned in the basic MQTT client tutorial, we could either head to <a href="https://www.uuidgenerator.net/">uuidgenerator.net</a> and copy paste the automatically generated UUID for us or generate it by ourselves.
+<br/><br/>
+The UUID is used to identify our device from other devices on the MQTT network.
+<br/><br/>
+<b>it is crucial to generate a unique UUID and not re-use it</b>.
+<br/><br/>
+If we want to use the second option, here is a MicroPython example code to generate unique UUID, there are few kinds: unique based on host ID and current timestamp which is what we recommend, a UUID based on MD5 hash of a namespace (if you use this method, make sure to change steminds.com to something else, something random) and the last option to generate a random UUID.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">MicroPython</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">uuid</span>
+
+<span class="c1"># make a UUID based on the host ID and current time, best option.</span>
+<span class="n">uuid_x</span> <span class="o">=</span> <span class="n">uuid</span><span class="o">.</span><span class="n">uuid1</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">uuid_x</span><span class="p">)</span>
+
+<span class="c1"># make a UUID using an MD5 hash of a namespace UUID and a name</span>
+<span class="n">uuid_y</span> <span class="o">=</span> <span class="n">uuid</span><span class="o">.</span><span class="n">uuid3</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">NAMESPACE_DNS</span><span class="p">,</span> <span class="s1">&#39;steminds.com&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">uuid_y</span><span class="p">)</span>
+
+<span class="c1"># make a random UUID</span>
+<span class="n">uuid_z</span> <span class="o">=</span> <span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">uuid_z</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="adding-main-mqtt-client">Adding main MQTT client</h3>
+<p>The main MQTT client we will use now is very different from the previous basic MQTT example we've done.
+<br/><br/>
+In this example, we will integrate all our sensors and use them when needed, we will start by defining in our ode all the sensors such as ADC for the soil moisture sensor, light sensor, BME280 sensor and water quantity sensor.
+<br/><br/>
+Then we'll have multiple topics, the topics we will use are:</p>
+<ul>
+<li>plants/soil</li>
+<li>plants/environment</li>
+<li>plants/water</li>
+</ul>
+<p>The plants/soil topic is used to publish soil moisture sensor data, take a look at the JSON file below:</p>
+<div class="highlight"><pre><span></span><code>  plant = {
+      &quot;id&quot;:0,
+      &quot;name&quot;:&quot;Plant A&quot;,
+      &quot;enabled&quot;:1,
+      &quot;moisture&quot;:normal_reading
+  }
+</code></pre></div>
+<p>We can name the plant as we wish and it will show on our app, enabled can be changed between 1 or 0 which will describe if the plant can be used or not (watering functionality mainly) and inside moisture we add the soil moisture sensor values.
+<br/><br/>
+It's import to keep the ID 0 as we use only one soil moisture, if you use the IO extension pins to add more plants, you can change the ID from 0 to 1,2,3 .. as follows:</p>
+<div class="highlight"><pre><span></span><code>  plants = [{
+      &quot;id&quot;:0,
+      &quot;name&quot;:&quot;Plant A&quot;,
+      &quot;enabled&quot;:1,
+      &quot;moisture&quot;:normal_reading
+    },{
+      &quot;id&quot;:1,
+      &quot;name&quot;:&quot;Plant B&quot;,
+      &quot;enabled&quot;:1,
+      &quot;moisture&quot;:normal_reading_two
+    }]
+</code></pre></div>
+<p>In the plants/environment topic we will publish temperature, humidity, sunlight and water quantity using the rest of the sensors that are integrated in the Eduponics Mini kit.
+<br/><br/>
+And finally plants/water will be used to subscribe instead of publishing, in our app we can press the watering icon which will water our plants, our ESP32 will receive the message from the plants/water topic and water the plants accordingly.
+<br/><br/>
+Note in water_plant() function the following lines:</p>
+<div class="highlight"><pre><span></span><code>  # check if soil moisture is bigger than 60
+  if(int(json.loads(get_soil_moisture())[&quot;moisture&quot;].replace(&quot;%&quot;,&quot;&quot;)) &gt; 60):
+      # enough water, stop giving water
+      break;
+</code></pre></div>
+<p>We've set default of allowing to give water only if the plant has less than 60% soil moisture or if the water quantity sensor says there is no more water left. this configuration can be played with as well as to add automatic watering and not manual operation through the app.
+<br/><br/>
+Here is the complete code, make sure to save it as <b>main.py</b> as this will be our main program:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">MicroPython</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">MicroPython MQTT Eduponics APP Client</span>
+<span class="sd">https://github.com/STEMinds/micropython-eduponics</span>
+<span class="sd">MIT License</span>
+<span class="sd">Copyright (c) 2020 STEMinds</span>
+
+<span class="sd">Permission is hereby granted, free of charge, to any person obtaining a copy</span>
+<span class="sd">of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="sd">in the Software without restriction, including without limitation the rights</span>
+<span class="sd">to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
+<span class="sd">copies of the Software, and to permit persons to whom the Software is</span>
+<span class="sd">furnished to do so, subject to the following conditions:</span>
+<span class="sd">The above copyright notice and this permission notice shall be included in all</span>
+<span class="sd">copies or substantial portions of the Software.</span>
+
+<span class="sd">THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="sd">IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
+<span class="sd">FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
+<span class="sd">AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
+<span class="sd">LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span>
+<span class="sd">OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
+<span class="sd">SOFTWARE.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">Eduponics</span> <span class="kn">import</span> <span class="n">umqttsimple</span><span class="p">,</span><span class="n">bh1750</span><span class="p">,</span><span class="n">bme280</span>
+<span class="kn">import</span> <span class="nn">machine</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="c1"># set adc (analog to digital) on pin 35</span>
+<span class="n">adc</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">ADC</span><span class="p">(</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">35</span><span class="p">))</span>
+<span class="c1"># set 11dB input attenuation (voltage range roughly 0.0v - 3.6v)</span>
+<span class="n">adc</span><span class="o">.</span><span class="n">atten</span><span class="p">(</span><span class="n">machine</span><span class="o">.</span><span class="n">ADC</span><span class="o">.</span><span class="n">ATTN_11DB</span><span class="p">)</span>
+
+<span class="c1"># Configure light sensor</span>
+<span class="n">light_sensor</span> <span class="o">=</span> <span class="n">bh1750</span><span class="o">.</span><span class="n">BH1750</span><span class="p">()</span>
+
+<span class="c1"># Configure BME280</span>
+<span class="c1"># setup I2C connection</span>
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">I2C</span><span class="p">(</span><span class="n">scl</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">15</span><span class="p">),</span> <span class="n">sda</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<span class="c1"># Initialize BME280 object with default address 0x76</span>
+<span class="n">bme_sensor</span> <span class="o">=</span> <span class="n">bme280</span><span class="o">.</span><span class="n">BME280</span><span class="p">(</span><span class="n">i2c</span><span class="o">=</span><span class="n">i2c</span><span class="p">)</span>
+<span class="c1"># initialize dht object, DHT11 coonected to IO19</span>
+<span class="c1">#d = dht.DHT11(machine.Pin(19))</span>
+
+<span class="c1"># define water level sensor as INPUT on IO pin number 21</span>
+<span class="n">water_level</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">)</span>
+
+<span class="c1"># define pump on pin IO23 as OUTPUT, define pump state</span>
+<span class="n">pump</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">23</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
+<span class="n">pump_state</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="c1"># MQTT Unique ID</span>
+<span class="n">UUID</span> <span class="o">=</span> <span class="s2">&quot;YOUR_UUID_GENERATED_ID&quot;</span>
+<span class="c1"># MQTT Topics</span>
+<span class="n">topics</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;plants/soil&quot;</span><span class="p">,</span><span class="s2">&quot;plants/environment&quot;</span><span class="p">,</span><span class="s2">&quot;plants/water&quot;</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">handle_water_level</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">pump_state</span>
+    <span class="c1"># water level triggered, turn off the pump</span>
+    <span class="c1"># wait for 0.3 seconds to make sure it&#39;s just a little below the water sensor</span>
+    <span class="c1"># else the pump might become unstable</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>
+    <span class="n">pump</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">pump_state</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="k">def</span> <span class="nf">get_soil_moisture</span><span class="p">():</span>
+
+    <span class="c1"># sensor min and max values</span>
+    <span class="c1"># can be changed and callibrated</span>
+    <span class="n">minVal</span> <span class="o">=</span> <span class="mi">710</span>
+    <span class="n">maxVal</span> <span class="o">=</span> <span class="mi">4095</span>
+
+    <span class="c1"># read soil moisture sensor data</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="n">adc</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+    <span class="c1"># scale the value based on maxVal and minVal</span>
+    <span class="n">scale</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">/</span> <span class="p">(</span><span class="n">minVal</span> <span class="o">-</span> <span class="n">maxVal</span><span class="p">)</span>
+    <span class="c1"># get calculated scale</span>
+    <span class="n">normal_reading</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">%s%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">int</span><span class="p">((</span><span class="n">val</span> <span class="o">-</span> <span class="n">maxVal</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span><span class="s2">&quot;%&quot;</span><span class="p">))</span>
+    <span class="c1"># we can also get inverted value if needed</span>
+    <span class="n">inverted_reading</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">%s%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">int</span><span class="p">((</span><span class="n">minVal</span> <span class="o">-</span> <span class="n">val</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span><span class="s2">&quot;%&quot;</span><span class="p">))</span>
+    <span class="c1"># for this example we&#39;ll return only the normal reading</span>
+    <span class="c1"># put everything in a JSON format suitable for the eduponics app</span>
+    <span class="n">plant</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Plant A&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;enabled&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;moisture&quot;</span><span class="p">:</span><span class="n">normal_reading</span>
+    <span class="p">}</span>
+    <span class="c1"># return the data</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">plant</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span><span class="s1">&#39;&quot;&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">get_environmental_data</span><span class="p">():</span>
+
+    <span class="c1"># get light from the light sensor</span>
+    <span class="n">lux</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">light_sensor</span><span class="o">.</span><span class="n">readLight</span><span class="p">())</span>
+    <span class="c1"># get bme280 sensor data</span>
+    <span class="n">bme280_values</span> <span class="o">=</span> <span class="n">bme_sensor</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">temperature</span> <span class="o">=</span> <span class="n">bme280_values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">pressure</span> <span class="o">=</span> <span class="n">bme280_values</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">humidity</span> <span class="o">=</span> <span class="n">bme280_values</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;%&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="c1"># get DHT11 sensor data</span>
+    <span class="c1"># measure sensor data</span>
+    <span class="c1">#d.measure()</span>
+    <span class="c1"># get temperature and humidity</span>
+    <span class="c1">#temperature = d.temperature()</span>
+    <span class="c1">#humidity = d.humidity()</span>
+    <span class="c1"># get water quantity</span>
+    <span class="n">water_quantity</span> <span class="o">=</span> <span class="n">water_level</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
+
+    <span class="c1"># put all this data into a JSON object</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;temp&quot;</span><span class="p">:</span><span class="n">temperature</span><span class="p">,</span>
+        <span class="s2">&quot;humidity&quot;</span><span class="p">:</span><span class="n">humidity</span><span class="p">,</span>
+        <span class="s2">&quot;sunlight&quot;</span><span class="p">:</span><span class="n">lux</span><span class="p">,</span>
+        <span class="s2">&quot;water_quantity&quot;</span><span class="p">:</span><span class="n">water_quantity</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span><span class="s1">&#39;&quot;&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">water_plant</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">pump_state</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">pump_state</span> <span class="ow">or</span> <span class="n">water_level</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="c1"># turn off the pump</span>
+        <span class="n">pump</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">pump_state</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># turn on the pump</span>
+        <span class="n">pump</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">pump_state</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+<span class="k">def</span> <span class="nf">on_message_callback</span><span class="p">(</span><span class="n">topic</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    this is a callback, will be called when the app asks for certain information</span>
+<span class="sd">    such as to water the plants when the watering button pressed</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># convert topic and message byte to string</span>
+    <span class="n">topic</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">topic</span><span class="p">,</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">topic</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/plants/soil&quot;</span> <span class="o">%</span> <span class="n">UUID</span> <span class="ow">or</span> <span class="n">topic</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/plants/environment&quot;</span> <span class="o">%</span> <span class="n">UUID</span><span class="p">):</span>
+        <span class="c1"># Do nothing, we only publish to those topics</span>
+        <span class="k">pass</span>
+    <span class="k">elif</span><span class="p">(</span><span class="n">topic</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/plants/water&quot;</span> <span class="o">%</span> <span class="n">UUID</span><span class="p">):</span>
+        <span class="c1"># when the app request for plant watering it goes here</span>
+        <span class="k">if</span><span class="p">(</span><span class="s2">&quot;key&quot;</span> <span class="ow">in</span> <span class="n">msg</span> <span class="ow">and</span> <span class="s2">&quot;status&quot;</span> <span class="ow">in</span> <span class="n">msg</span><span class="p">):</span>
+            <span class="c1"># valid request, let&#39;s process it</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">msg</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;pending&quot;</span><span class="p">):</span>
+                <span class="c1"># it&#39;s waiting for us to water it, let&#39;s water it</span>
+                <span class="n">water_plant</span><span class="p">()</span>
+                <span class="c1"># after watering, publish success message of watering</span>
+                <span class="n">response</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span><span class="n">msg</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">],</span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;ok&quot;</span><span class="p">}</span>
+                <span class="n">client</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/plants/water&quot;</span> <span class="o">%</span> <span class="n">UUID</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">response</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span><span class="s1">&#39;&quot;&#39;</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">((</span><span class="n">topic</span><span class="p">,</span> <span class="n">msg</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">connect_and_subscribe</span><span class="p">():</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[-] Connecting to MQTT client ...&quot;</span><span class="p">)</span>
+    <span class="c1"># set the MQTT broker object</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">umqttsimple</span><span class="o">.</span><span class="n">MQTTClient</span><span class="p">()</span>
+    <span class="c1"># set a callback for incoming messages (subscribed topics)</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">set_callback</span><span class="p">(</span><span class="n">on_message_callback</span><span class="p">)</span>
+    <span class="c1"># connect to the broker</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+
+    <span class="c1"># subscribe to the topics</span>
+    <span class="k">for</span> <span class="n">topic</span> <span class="ow">in</span> <span class="n">topics</span><span class="p">:</span>
+        <span class="n">client</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">UUID</span><span class="p">,</span><span class="n">topic</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[-] Subscribed to </span><span class="si">%s</span><span class="s2"> successfully&quot;</span> <span class="o">%</span> <span class="n">topic</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[-] Connected to </span><span class="si">%s</span><span class="s2"> MQTT broker successfully&quot;</span> <span class="o">%</span> <span class="n">client</span><span class="o">.</span><span class="n">server</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">client</span>
+
+<span class="k">def</span> <span class="nf">restart_and_reconnect</span><span class="p">():</span>
+    <span class="c1"># something  went wrong, reconnect in 5 seconds ...</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;[-] Failed to connect to MQTT broker. Reconnecting...&#39;</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">machine</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">connect_and_subscribe</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="n">restart_and_reconnect</span><span class="p">()</span>
+
+<span class="c1"># configure few variables</span>
+<span class="n">last_message</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">message_interval</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="c1"># set callback on the water level sensor, if no water stop the pump</span>
+<span class="n">water_level</span><span class="o">.</span><span class="n">irq</span><span class="p">(</span><span class="n">trigger</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">IRQ_RISING</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">handle_water_level</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># check if there are new messages pending to be processed</span>
+        <span class="c1"># if there are, redirect them to callback on_message_callback()</span>
+        <span class="n">client</span><span class="o">.</span><span class="n">check_msg</span><span class="p">()</span>
+
+        <span class="c1"># check if the last published data wasn&#39;t less than message_interval</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">last_message</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">message_interval</span><span class="p">:</span>
+            <span class="c1"># get soil moisture</span>
+            <span class="n">soil_moisture</span> <span class="o">=</span> <span class="n">get_soil_moisture</span><span class="p">()</span>
+            <span class="c1"># publish soil moisture data</span>
+            <span class="n">client</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/plants/soil&quot;</span> <span class="o">%</span> <span class="n">UUID</span><span class="p">,</span> <span class="n">soil_moisture</span><span class="p">)</span>
+            <span class="c1">#print(&quot;[-] published soil moisture&quot;)</span>
+
+            <span class="c1"># update environmetal data</span>
+            <span class="n">env</span> <span class="o">=</span> <span class="n">get_environmental_data</span><span class="p">()</span>
+            <span class="n">client</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/plants/environment&quot;</span> <span class="o">%</span> <span class="n">UUID</span><span class="p">,</span> <span class="n">env</span><span class="p">)</span>
+            <span class="c1">#print(&quot;[-] published evironmental data&quot;)</span>
+
+            <span class="c1"># update last message timestamp</span>
+            <span class="n">last_message</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+    <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="c1"># if something goes wrong, reconnct to MQTT server</span>
+        <span class="n">restart_and_reconnect</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="changing-the-mqtt-broker">Changing the MQTT broker</h3>
+<p>If you'd like to change the existing MQTT broker (mqtt.eclipseprojects.io) you can modify the umqttsimple.py located in the lib directory of the Eduponics library an add your custom broker of your choice.</p>
+<p>The Eduponics Mobile app support any type of broker with or without SSL support.</p>
+<h2 id="preparing-the-eduponics-app">Preparing the Eduponics APP</h2>
+<p>Now once we have everything ready on our ESP32 Eduponics Mini hardware, it's time to move to the app installation and preparation.</p>
+<h3 id="downloading-installing-eduponics-app">Downloading &amp; Installing Eduponics APP</h3>
+<p>Currently the app is only available on the Android store and should be able to work on most if not all Android phones. To download, search "Eduponics" in playstore app and you should find it right away.</p>
+<p align="center">
+  <img src="/images/kits/eduponics_mini/eduponics_mini_android_store.png" alt="eduponics mini android play store">
+</p>
+
+<p>Alternatively you can install it directly to your phone using the web browser playstore application: <a href="https://play.google.com/store/apps/details?id=com.steminds.eduponics">Eduponics Playstore APP</a></p>
+<h3 id="connecting-eduponics-app-to-eduponics-mini">Connecting Eduponics APP to Eduponics Mini</h3>
+<p>After downloading and launching the app successfully a popup window will show that the hardware is not initialized, this is normal and will happen on first launch of the app or if we've pressed the "wipe data" button in settings to wipe the internal memory of the app.
+<br/><br/>
+In this window press "Let's go!" and it will take you automatically to the settings page to bind the Eduponics Mini hardware with the APP.</p>
+<p align="center">
+  <img style="max-width:50%; height:auto;" src="/images/kits/eduponics_mini/eduponics_app_setup_step_1.jpeg" alt="eduponics app setup stage 1">
+</p>
+
+<p>Once we've  been redirected successfully, it's time to bind the app with our hardware.
+In order to do so - we'll need the UUID we've generated earlier and initialized in our eduponics mini hardware, we can either type it manually or take a picture of a QR code with the UUID inside of it.</p>
+<div class="admonition warning">
+<p class="admonition-title">Make sure to press the 'Enter' key on the virtual keyboard</p>
+<p>After you've typed the UUID completely, press the enter key on the virtual keyboard to confirm the UUID, this should complete the process.</p>
+</div>
+<p align="center">
+  <img style="max-width:50%; height:auto;" src="/images/kits/eduponics_mini/eduponics_app_setup_step_2.jpeg" alt="eduponics app setup stage 2">
+</p>
+
+<p>Once the virtual key entered successfully, we are now successfully connected to the same channel (the topics) as our Eduponics Mini hardware! it's time to go back to the "Control" tab and see if we can get real time data from our device.</p>
+<p align="center">
+  <img style="max-width:50%; height:auto;" src="/images/kits/eduponics_mini/eduponics_app_setup_step_3.jpeg" alt="eduponics app setup step 3">
+</p>
+
+<p>Now you can monitor your plant from everywhere, water it remotely and track the sensors data to make smarter decisions.
+As the app doesn't use any external server except the MQTT broker, you can control it even outside of your home network.</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../basic_mqtt_client/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Basic MQTT client" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Basic MQTT client
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/STEMinds" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://facebook.com/STEMinds" target="_blank" rel="noopener" title="facebook.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/STEMinds" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": [], "search": "../../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.3a4b43e5.min.js"></script>
+      
+    
+  </body>
+</html>

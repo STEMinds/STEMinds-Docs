@@ -1,0 +1,1273 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="The Eduponics mini extension board designed using ADS1115 for ADC support and MCP23017 for GPIO control with some advance functionalities such as interrupt on change and precise analog data reading, the board allows to connect extra 4 analog data sensors and 4 digital output devices with 12V support.">
+      
+      
+      
+        <link rel="canonical" href="https://docs.steminds.com/products/eduponics_mini_extension_board/">
+      
+      <link rel="icon" href="https://steminds.com/images/bulb_white.svg">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.16">
+    
+    
+      
+        <title>Eduponics Mini Extension board - STEMinds Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1c3799f8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+          
+          
+          <meta name="theme-color" content="">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-PW3PQDPSNS"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-PW3PQDPSNS",{page_path:e.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PW3PQDPSNS"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="default" data-md-color-accent="amber">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#eduponics-mini-extension-board" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="STEMinds Documentation" class="md-header__button md-logo" aria-label="STEMinds Documentation" data-md-component="logo">
+      
+  <img src="https://steminds.com/images/bulb_white.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            STEMinds Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Eduponics Mini Extension board
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="STEMinds Documentation" class="md-nav__button md-logo" aria-label="STEMinds Documentation" data-md-component="logo">
+      
+  <img src="https://steminds.com/images/bulb_white.svg" alt="logo">
+
+    </a>
+    STEMinds Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Products
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Products" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Products
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Extension board for Eduponics Mini
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Extension board for Eduponics Mini
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    Features
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ads1115-16-bit-adc" class="md-nav__link">
+    ADS1115 16-Bit ADC
+  </a>
+  
+    <nav class="md-nav" aria-label="ADS1115 16-Bit ADC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features_1" class="md-nav__link">
+    Features
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ads1x15-library" class="md-nav__link">
+    ADS1X15 library
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mcp23017-16-bit-io-expander" class="md-nav__link">
+    MCP23017 16-bit I/O Expander
+  </a>
+  
+    <nav class="md-nav" aria-label="MCP23017 16-bit I/O Expander">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features_2" class="md-nav__link">
+    Features
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mcp23017-library" class="md-nav__link">
+    MCP23017 library
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Kits
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Kits" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Kits
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          Eduponics Mini
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Eduponics Mini" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Eduponics Mini
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/eduponics_mini_getting_started/" class="md-nav__link">
+        Getting started
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/advance_tools/" class="md-nav__link">
+        Advance manual tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/basic_sensors_usage/bme280_temperature_and_humidity/" class="md-nav__link">
+        BME280 sensor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/basic_sensors_usage/dht11_temperature_and_humidity/" class="md-nav__link">
+        DHT11 sensor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/basic_sensors_usage/light_sensor/" class="md-nav__link">
+        BH1750 Light sensor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/basic_sensors_usage/water_quantity_sensor/" class="md-nav__link">
+        Water level sensor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/basic_sensors_usage/pump/" class="md-nav__link">
+        Water pump
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/basic_sensors_usage/rgb_led/" class="md-nav__link">
+        RGB LED
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/basic_sensors_usage/eeprom_module/" class="md-nav__link">
+        EEPROM Module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/basic_sensors_usage/rtc_module/" class="md-nav__link">
+        RTC Module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/basic_sensors_usage/soil_moisture_sensor/" class="md-nav__link">
+        Soil moisture sensor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/basic_sensors_usage/deep_sleep_wakeup/" class="md-nav__link">
+        Deep sleep wakeup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/advance_usage/RGB_indicators/" class="md-nav__link">
+        RGB based indicators
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/advance_usage/water_level_based_water_pumping/" class="md-nav__link">
+        Water level based pump
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/advance_usage/introduction_to_mqtt/" class="md-nav__link">
+        Introduction to MQTT
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/advance_usage/basic_mqtt_client/" class="md-nav__link">
+        Basic MQTT client
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kits/eduponics_mini/advance_usage/eduponics_mqtt_app/" class="md-nav__link">
+        Eduponics MQTT APP
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    Features
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ads1115-16-bit-adc" class="md-nav__link">
+    ADS1115 16-Bit ADC
+  </a>
+  
+    <nav class="md-nav" aria-label="ADS1115 16-Bit ADC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features_1" class="md-nav__link">
+    Features
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ads1x15-library" class="md-nav__link">
+    ADS1X15 library
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mcp23017-16-bit-io-expander" class="md-nav__link">
+    MCP23017 16-bit I/O Expander
+  </a>
+  
+    <nav class="md-nav" aria-label="MCP23017 16-bit I/O Expander">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features_2" class="md-nav__link">
+    Features
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mcp23017-library" class="md-nav__link">
+    MCP23017 library
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="eduponics-mini-extension-board">Eduponics Mini Extension board</h1>
+<p align="center">
+  <img src="/images/products/extension_board/expension_board.png">
+</p>
+
+<p>The Eduponics mini extension board designed using ADS1115 for ADC support and MCP23017 for GPIO control with some advance functionalities such as interrupt on change and precise analog data reading, the board allows to connect extra 4 analog data sensors and 4 digital output devices with 12V support.
+<br/><br/>
+While the Eduponics Mini ESP32 board allows to connect only one pump and one soil moisture sensor, we've decided to develop a custom HAT (Hardware Attached on Top) to enhance the Eduponics Mini functionalities by adding extra 4 soil moisture sensors and extra 4 pumps.</p>
+<h2 id="features">Features</h2>
+<p>If we use simple words: the extension board allows us to control extra 4 plants (total of 5 plants) at the same time.
+<br/><br/>
+If we go with deeper explanation, the sensors aren't necessary need to be soil moisture sensors or pumps, it can be any analog or digital sensors that needs to be controlled using the Eduponics Mini (or any other micro-controller), giving you access to extra 4 relays and another 4 open IOs (input / output) and extra 4 analog sensors control.</p>
+<p>This is really great addition not just to the Eduponics Mini ESP32 board but also to other microcontrollers such as Raspberry Pi that needs extra IO pins or analog reading which it's lack of.
+<br/><br/>
+Here is the detailed features that the Eduponics Mini extension board can offer you:</p>
+<ul>
+<li>ADS1115 16 bit ADC chipset, precise analog data reading</li>
+<li>MCP23017 IO chipset, allows to control extra 8 IO (input or output) devices</li>
+<li>External interrupt pins on data change for MCP23017</li>
+<li>External interrupt alert on analog data changes for ADS1115</li>
+<li>4 Relay modules with XH2.54 connectors, 5V-24V support</li>
+<li>I2C interface - only 2 pins required</li>
+<li>12-24V output for the relay modules</li>
+<li>MOSFETs to control the main power and the power for each analog input</li>
+<li>Arduino, Raspberry Pi &amp; ESP32 and other controllers compatible</li>
+</ul>
+<div class="admonition danger">
+<p class="admonition-title">12V-24V are not the same as 5V input</p>
+<p>The Eduponics mini has 2 pins one is used as 12V pin goes from the DC adapter to the relay directly allows the relay to control pumps that rated higher than 5V, the other pin is 5V which gives power to the ESP32 and other ICs.</p>
+<p>DO NOT connect voltage higher than 5V to the pin rated as 5V as this WILL damage your Eduponics extension board and/or your Eduponics mini.
+  The 12V-24V are designed to be isolated and wired through the relays ONLY and are meant to control external sensors and modules that require such voltage.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Default address might be wrong for first batch (CrowdSupply)</p>
+<p>If you purchased the product through CrowdSupply on the first batch, your extension board might state "MCP23017 default address: 0x20" in fact, the default address is 0x27.
+But don't you worry! this have no effect on your product at all, just make sure to note the default address if you  haven't played around with the switches is 0x27 instead of 0x20.</p>
+</div>
+<h2 id="ads1115-16-bit-adc">ADS1115 16-Bit ADC</h2>
+<p>The Eduponics Mini Built-in ADC works pretty well but for the extension board we've decided to use ADS1115 to increase the precision, the ADS1115 provides 16-bit precision at 860 samples/second over the I2C protocol, the ADC includes a programmable gain amplifier, up to x16, to help boost up smaller single/differential signals to the full range
+<br/><br/>
+A micro-computer like Raspberry Pi for example doesn't have built-in ADC (analog to digital converter) as well as the pins might be occupied or limited, by using I2C we only need 2 pins and using the ADS1115 we can add analog capabilities to boards that lack of it.</p>
+<h3 id="features_1">Features</h3>
+<p>Here are some of the specific features of the ADS1115:</p>
+<ul>
+<li>Wide supply range: 2.0V to 5.5V</li>
+<li>Low current consumption: Continuous Mode: Only 150µA Single-Shot Mode: Auto Shut-Down</li>
+<li>Internal oscillator</li>
+<li>Internal PGA</li>
+<li>I2C Interface</li>
+</ul>
+<p>For the complete information, check the ADS1115 data sheet: <a href="https://www.ti.com/lit/ds/symlink/ads1115.pdf">ADS1115 datasheet</a></p>
+<h3 id="ads1x15-library">ADS1X15 library</h3>
+<div class="admonition info">
+<p class="admonition-title">Make sure micropython-eduponics is installed through upip</p>
+<p>For our Python code, we will need to import eduponics library, make sure you followed the introduction guide on installing the library on the ESP32 Eduponics Mini board.</p>
+</div>
+<p>Below is the MicroPython library to control and configure the ADS1115 functionalities using the Eduponics Mini board and micropython-eduponics library, in the following example we are going to use a single soil moisture input in ADC(0).
+<br/><br/>
+let's use it to to get the analog sensors data (both raw and voltage), voltage can be sometimes useful to create some other conversion techniques or use it for data collection purposes. We will configure I2C address on SCL pin 33 and SDA pin 32 as this is the pins the extension board connected to, then we will use the default 0x48 I2C address and set gain to 1 (default)</p>
+<div class="admonition info">
+<p class="admonition-title">When reading analog, current will flow. When not reading - current will not flow</p>
+<p>a cool feature we have built-in inside the ADS1X15 library is to auto-control the MOSFETs, when we test data through the ADS the MOSFETs will open, when we finish testing the MOSFETs will close. this allows us to both save power and use sensors together that otherwise might have a conflict.</p>
+</div>
+<p>We will read the analog data from the sensors every second and print them into the terminal screen.
+<br/><br/>
+For the Arduino code, we need to download and install the following library: <a href="https://github.com/addicore/ADS1115">ADS1115 Arduino Library</a></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">MicroPython</label><label for="__tabbed_1_2">Arduino</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">MicroPython BMCP23017 Eduponics mini extension board - Soil moisture demo</span>
+<span class="sd">https://github.com/STEMinds/eduponics-mini</span>
+<span class="sd">MIT License</span>
+<span class="sd">Copyright (c) 2020 STEMinds</span>
+
+<span class="sd">Permission is hereby granted, free of charge, to any person obtaining a copy</span>
+<span class="sd">of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="sd">in the Software without restriction, including without limitation the rights</span>
+<span class="sd">to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
+<span class="sd">copies of the Software, and to permit persons to whom the Software is</span>
+<span class="sd">furnished to do so, subject to the following conditions:</span>
+<span class="sd">The above copyright notice and this permission notice shall be included in all</span>
+<span class="sd">copies or substantial portions of the Software.</span>
+
+<span class="sd">THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="sd">IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
+<span class="sd">FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
+<span class="sd">AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
+<span class="sd">LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span>
+<span class="sd">OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
+<span class="sd">SOFTWARE.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">eduponics</span> <span class="kn">import</span> <span class="n">mcp23017</span><span class="p">,</span><span class="n">ads1x15</span>
+<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="c1"># IO12 reserved for powering the board, define it</span>
+<span class="n">power</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
+<span class="c1"># activate the board</span>
+<span class="n">power</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># make sure to wait enough time for the board to wakeup</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="c1"># define i2c connection to the extension board</span>
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">33</span><span class="p">),</span> <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">32</span><span class="p">))</span>
+
+<span class="c1"># setup adc for the extension board (default address for MCP might be 0x20)</span>
+<span class="n">ads_address</span> <span class="o">=</span> <span class="mh">0x48</span>
+<span class="n">mcp_address</span> <span class="o">=</span> <span class="mh">0x27</span>
+<span class="n">gain</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">adc</span> <span class="o">=</span> <span class="n">ads1x15</span><span class="o">.</span><span class="n">ADS1115</span><span class="p">(</span><span class="n">i2c</span><span class="o">=</span><span class="n">i2c</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="n">ads_address</span><span class="p">,</span><span class="n">mcp_address</span><span class="o">=</span><span class="n">mcp_address</span><span class="p">,</span> <span class="n">gain</span><span class="o">=</span><span class="n">gain</span><span class="p">)</span>
+
+<span class="c1"># set max val and min val of the sensor</span>
+<span class="c1"># this requires manual calibration</span>
+<span class="c1"># minVal get be recieved by putting the sensor submerged in the water</span>
+<span class="c1"># maxVal can be recieved by making sure the sensor is dry in the clear air</span>
+<span class="n">minVal</span> <span class="o">=</span> <span class="mi">710</span>
+<span class="n">maxVal</span> <span class="o">=</span> <span class="mi">4095</span>
+
+<span class="k">def</span> <span class="nf">value_in_percentage</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+    <span class="c1"># scale the value based on maxVal and minVal</span>
+    <span class="n">scale</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">/</span> <span class="p">(</span><span class="n">minVal</span> <span class="o">-</span> <span class="n">maxVal</span><span class="p">)</span>
+    <span class="c1"># get calculated scale</span>
+    <span class="n">normal_reading</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">%s%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">int</span><span class="p">((</span><span class="n">val</span> <span class="o">-</span> <span class="n">maxVal</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span><span class="s2">&quot;%&quot;</span><span class="p">))</span>
+    <span class="c1"># we can also get inverted value if needed</span>
+    <span class="n">inverted_reading</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">%s%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">int</span><span class="p">((</span><span class="n">minVal</span> <span class="o">-</span> <span class="n">val</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span><span class="s2">&quot;%&quot;</span><span class="p">))</span>
+    <span class="c1"># for this example we&#39;ll return only the normal reading</span>
+    <span class="k">return</span> <span class="n">normal_reading</span>
+
+<span class="c1"># get voltage</span>
+<span class="n">adc_read</span> <span class="o">=</span> <span class="n">adc</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># get sensor value</span>
+<span class="n">voltage</span> <span class="o">=</span> <span class="n">adc_read</span><span class="p">[</span><span class="s2">&quot;voltage&quot;</span><span class="p">]</span>
+<span class="n">value</span> <span class="o">=</span> <span class="n">adc_read</span><span class="p">[</span><span class="s2">&quot;raw&quot;</span><span class="p">]</span>
+<span class="c1"># print the analog results (moisture)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sensor value: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">value</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sensor value in percentage: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">value_in_percentage</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// I2C device class (I2Cdev) demonstration Arduino sketch for ADS1115 class</span>
+<span class="c1">// Example of reading two differential inputs of the ADS1115 and showing the value in mV</span>
+<span class="c1">// 2016-03-22 by Eadf (https://github.com/eadf)</span>
+<span class="c1">// Updates should (hopefully) always be available at https://github.com/jrowberg/i2cdevlib</span>
+<span class="c1">//</span>
+<span class="c1">// Changelog:</span>
+<span class="c1">//     2016-03-22 - initial release</span>
+
+<span class="cm">/* ============================================</span>
+<span class="cm">I2Cdev device library code is placed under the MIT license</span>
+<span class="cm">Copyright (c) 2011 Jeff Rowberg</span>
+<span class="cm">Permission is hereby granted, free of charge, to any person obtaining a copy</span>
+<span class="cm">of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="cm">in the Software without restriction, including without limitation the rights</span>
+<span class="cm">to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
+<span class="cm">copies of the Software, and to permit persons to whom the Software is</span>
+<span class="cm">furnished to do so, subject to the following conditions:</span>
+<span class="cm">The above copyright notice and this permission notice shall be included in</span>
+<span class="cm">all copies or substantial portions of the Software.</span>
+<span class="cm">THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="cm">IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
+<span class="cm">FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
+<span class="cm">AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
+<span class="cm">LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span>
+<span class="cm">OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</span>
+<span class="cm">THE SOFTWARE.</span>
+<span class="cm">===============================================</span>
+<span class="cm">Wiring the ADS1115 Module to an Arduino UNO</span>
+<span class="cm">ADS1115 --&gt;  UNO</span>
+<span class="cm">  VDD        5V</span>
+<span class="cm">  GND        GND</span>
+<span class="cm">  SCL        A5 (or SCL)</span>
+<span class="cm">  SDA        A4 (or SDA)</span>
+<span class="cm">  ALRT       2</span>
+<span class="cm">*/</span><span class="w"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ADS1115.h&quot;</span><span class="cp"></span>
+
+<span class="n">ADS1115</span><span class="w"> </span><span class="nf">adc0</span><span class="p">(</span><span class="mh">0x48</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// Wire ADS1115 ALERT/RDY pin to pin 25</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">alertReadyPin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">25</span><span class="p">;</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">//I2Cdev::begin();  // join I2C bus</span>
+<span class="w">    </span><span class="n">Wire</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">33</span><span class="p">,</span><span class="mi">32</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span><span class="w"> </span><span class="c1">// initialize serial communication</span>
+
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Testing device connections...&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">adc0</span><span class="p">.</span><span class="n">testConnection</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">&quot;ADS1115 connection successful&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">&quot;ADS1115 connection failed&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">adc0</span><span class="p">.</span><span class="n">initialize</span><span class="p">();</span><span class="w"> </span><span class="c1">// initialize ADS1115 16 bit A/D chip</span>
+
+<span class="w">    </span><span class="c1">// We&#39;re going to do single shot sampling</span>
+<span class="w">    </span><span class="n">adc0</span><span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="n">ADS1115_MODE_SINGLESHOT</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Slow things down so that we can see that the &quot;poll for conversion&quot; code works</span>
+<span class="w">    </span><span class="n">adc0</span><span class="p">.</span><span class="n">setRate</span><span class="p">(</span><span class="n">ADS1115_RATE_8</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Set the gain (PGA) +/- 4.096V</span>
+<span class="w">    </span><span class="c1">// Note that any analog input must be higher than –0.3V and less than VDD +0.3</span>
+<span class="w">    </span><span class="n">adc0</span><span class="p">.</span><span class="n">setGain</span><span class="p">(</span><span class="n">ADS1115_PGA_4P096</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// ALERT/RDY pin will indicate when conversion is ready</span>
+
+<span class="w">    </span><span class="n">pinMode</span><span class="p">(</span><span class="n">alertReadyPin</span><span class="p">,</span><span class="n">INPUT_PULLUP</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">adc0</span><span class="p">.</span><span class="n">setConversionReadyPinMode</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// To get output from this method, you&#39;ll need to turn on the</span>
+<span class="w">    </span><span class="c1">//#define ADS1115_SERIAL_DEBUG // in the ADS1115.h file</span>
+<span class="w">    </span><span class="cp">#ifdef ADS1115_SERIAL_DEBUG</span>
+<span class="w">    </span><span class="n">adc0</span><span class="p">.</span><span class="n">showConfigRegister</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;HighThreshold=&quot;</span><span class="p">);</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">adc0</span><span class="p">.</span><span class="n">getHighThreshold</span><span class="p">(),</span><span class="n">BIN</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;LowThreshold=&quot;</span><span class="p">);</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">adc0</span><span class="p">.</span><span class="n">getLowThreshold</span><span class="p">(),</span><span class="n">BIN</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="cp">#endif</span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="cm">/** Poll the assigned pin for conversion status</span>
+<span class="cm"> */</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">pollAlertReadyPin</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="mi">100000</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">digitalRead</span><span class="p">(</span><span class="n">alertReadyPin</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Failed to wait for AlertReadyPin, it&#39;s stuck high!&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// The below method sets the mux and gets a reading.</span>
+<span class="w">    </span><span class="n">adc0</span><span class="p">.</span><span class="n">setMultiplexer</span><span class="p">(</span><span class="n">ADS1115_MUX_P0_NG</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">adc0</span><span class="p">.</span><span class="n">triggerConversion</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">pollAlertReadyPin</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;A0: &quot;</span><span class="p">);</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">adc0</span><span class="p">.</span><span class="n">getMilliVolts</span><span class="p">(</span><span class="nb">false</span><span class="p">));</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;mV</span><span class="se">\t</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">adc0</span><span class="p">.</span><span class="n">setMultiplexer</span><span class="p">(</span><span class="n">ADS1115_MUX_P1_NG</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">adc0</span><span class="p">.</span><span class="n">triggerConversion</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">pollAlertReadyPin</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;A1: &quot;</span><span class="p">);</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">adc0</span><span class="p">.</span><span class="n">getMilliVolts</span><span class="p">(</span><span class="nb">false</span><span class="p">));</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;mV</span><span class="se">\t</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">adc0</span><span class="p">.</span><span class="n">setMultiplexer</span><span class="p">(</span><span class="n">ADS1115_MUX_P2_NG</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">adc0</span><span class="p">.</span><span class="n">triggerConversion</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">pollAlertReadyPin</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;A2: &quot;</span><span class="p">);</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">adc0</span><span class="p">.</span><span class="n">getMilliVolts</span><span class="p">(</span><span class="nb">false</span><span class="p">));</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;mV</span><span class="se">\t</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">adc0</span><span class="p">.</span><span class="n">setMultiplexer</span><span class="p">(</span><span class="n">ADS1115_MUX_P3_NG</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Do conversion polling via I2C on this last reading:</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;A3: &quot;</span><span class="p">);</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">adc0</span><span class="p">.</span><span class="n">getMilliVolts</span><span class="p">(</span><span class="nb">true</span><span class="p">));</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;mV&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">digitalRead</span><span class="p">(</span><span class="n">alertReadyPin</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="mcp23017-16-bit-io-expander">MCP23017 16-bit I/O Expander</h2>
+<p>How can we control 4 relays without taking up 4 pins (excluding GND and VCC pins)? Simply use the MCP23017 I/O expander that uses I2C for communication (just 2 pins!)
+<br/><br/>
+the MCP23017 can control up to 8 IO ports: 4 of the IO pins are reserved for the relays those cannot be re-wired as input or any other purposes, for the other 4 IO pins we've made pins available to connect any other extra sensors. Except that, the Eduponics Mini also has available IO ports for use which are not taken by any other application.</p>
+<h3 id="features_2">Features</h3>
+<p>All the MCP23017 pins can be used for either input or output and they even offer some advance features such as external interrupt on I/O changes, the complete feature list includes:</p>
+<ul>
+<li>16-Bit Bidirectional I/O Ports</li>
+<li>High-Speed I2C Interface</li>
+<li>Control up to eight IO devices</li>
+<li>Configurable interrupt output pins</li>
+</ul>
+<p>To learn more, feel free to refer to the data sheet: <a href="https://ww1.microchip.com/downloads/en/DeviceDoc/20001952C.pdf">MCP23017 data sheet</a></p>
+<h3 id="mcp23017-library">MCP23017 library</h3>
+<div class="admonition info">
+<p class="admonition-title">Make sure micropython-eduponics is installed through upip</p>
+<p>For our Python code, we will need to import eduponics library, make sure you followed the introduction guide on installing the library on the ESP32 Eduponics Mini board.</p>
+</div>
+<p>For the Arduino demo - you'll need to install the arduino-mcp23017 library: <a href="https://github.com/blemasle/arduino-mcp23017">arduino-mcp23017</a>
+<br/><br/>
+In order to test the following example, make sure you have micropython-eduponics library installed through uPip:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">MicroPython</label><label for="__tabbed_2_2">Arduino</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">#Copyright (c) 2020 Roni Gorodetsky for STEMinds</span>
+<span class="c1">#Website: https://steminds.com</span>
+
+<span class="c1">#Permission is hereby granted, free of charge, to any person obtaining a copy</span>
+<span class="c1">#of self software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="c1">#in the Software without restriction, including without limitation the rights</span>
+<span class="c1">#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
+<span class="c1">#copies of the Software, and to permit persons to whom the Software is</span>
+<span class="c1">#furnished to do so, subject to the following conditions:</span>
+
+<span class="c1">#The above copyright notice and self permission notice shall be included in</span>
+<span class="c1">#all copies or substantial portions of the Software.</span>
+
+<span class="c1">#THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="c1">#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
+<span class="c1">#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
+<span class="c1">#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
+<span class="c1">#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span>
+<span class="c1">#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</span>
+<span class="c1">#THE SOFTWARE.</span>
+
+<span class="kn">from</span> <span class="nn">eduponics</span> <span class="kn">import</span> <span class="n">mcp23017</span>
+<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="c1"># IO12 reserved for powering the board, define it</span>
+<span class="n">power</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
+<span class="c1"># activate the board</span>
+<span class="n">power</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># make sure to wait enough time for the board to wakeup</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="c1"># define i2c connection to the extension board</span>
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">33</span><span class="p">),</span> <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">32</span><span class="p">))</span>
+
+<span class="c1"># initialize relay object (default address might be 0x20)</span>
+<span class="n">relays</span> <span class="o">=</span> <span class="n">mcp23017</span><span class="o">.</span><span class="n">Relays</span><span class="p">(</span><span class="n">i2c</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="mh">0x27</span><span class="p">)</span>
+
+<span class="c1"># open relays one by one</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">relays</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># close all relays one by one</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">relays</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># open all relays</span>
+<span class="n">relays</span><span class="o">.</span><span class="n">open_all</span><span class="p">()</span>
+
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># close all relays</span>
+<span class="n">relays</span><span class="o">.</span><span class="n">close_all</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="cm">/**</span>
+<span class="cm"> * On every loop, the state of the port B is copied to port A.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Use active low inputs on port A. Internal pullups are enabled by default by the library so there is no need for external resistors.</span>
+<span class="cm"> * Place LEDS on port B for instance.</span>
+<span class="cm"> * When pressing a button, the corresponding led is shut down.</span>
+<span class="cm"> *</span>
+<span class="cm"> * You can also uncomment one line to invert the input (when pressing a button the corresponding led is lit)</span>
+<span class="cm"> */</span><span class="w"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Wire.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;MCP23017.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define MCP23017_ADDR 0x20</span>
+<span class="n">MCP23017</span><span class="w"> </span><span class="n">mcp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MCP23017</span><span class="p">(</span><span class="n">MCP23017_ADDR</span><span class="p">);</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Wire</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">33</span><span class="p">,</span><span class="mi">32</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">mcp</span><span class="p">.</span><span class="n">init</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">mcp</span><span class="p">.</span><span class="n">portMode</span><span class="p">(</span><span class="n">MCP23017Port</span><span class="o">::</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">//Port A as output</span>
+<span class="w">    </span><span class="n">mcp</span><span class="p">.</span><span class="n">portMode</span><span class="p">(</span><span class="n">MCP23017Port</span><span class="o">::</span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">//Port B as output</span>
+<span class="w">    </span><span class="n">mcp</span><span class="p">.</span><span class="n">portMode</span><span class="p">(</span><span class="n">MCP23017Port</span><span class="o">::</span><span class="n">C</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">//Port C as output</span>
+<span class="w">    </span><span class="n">mcp</span><span class="p">.</span><span class="n">portMode</span><span class="p">(</span><span class="n">MCP23017Port</span><span class="o">::</span><span class="n">D</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">//Port D as output</span>
+
+<span class="w">    </span><span class="n">mcp</span><span class="p">.</span><span class="n">writeRegister</span><span class="p">(</span><span class="n">MCP23017Register</span><span class="o">::</span><span class="n">GPIO_A</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">);</span><span class="w">  </span><span class="c1">//Reset port A</span>
+<span class="w">    </span><span class="n">mcp</span><span class="p">.</span><span class="n">writeRegister</span><span class="p">(</span><span class="n">MCP23017Register</span><span class="o">::</span><span class="n">GPIO_B</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">);</span><span class="w">  </span><span class="c1">//Reset port B</span>
+<span class="w">    </span><span class="n">mcp</span><span class="p">.</span><span class="n">writeRegister</span><span class="p">(</span><span class="n">MCP23017Register</span><span class="o">::</span><span class="n">GPIO_C</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">);</span><span class="w">  </span><span class="c1">//Reset port C</span>
+<span class="w">    </span><span class="n">mcp</span><span class="p">.</span><span class="n">writeRegister</span><span class="p">(</span><span class="n">MCP23017Register</span><span class="o">::</span><span class="n">GPIO_D</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">);</span><span class="w">  </span><span class="c1">//Reset port D</span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// open relay A</span>
+<span class="w">    </span><span class="n">mcp</span><span class="p">.</span><span class="n">writePort</span><span class="p">(</span><span class="n">MCP23017Port</span><span class="o">::</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// open relay B</span>
+<span class="w">    </span><span class="n">mcp</span><span class="p">.</span><span class="n">writePort</span><span class="p">(</span><span class="n">MCP23017Port</span><span class="o">::</span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// open relay C</span>
+<span class="w">    </span><span class="n">mcp</span><span class="p">.</span><span class="n">writePort</span><span class="p">(</span><span class="n">MCP23017Port</span><span class="o">::</span><span class="n">C</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// open relay D</span>
+<span class="w">    </span><span class="n">mcp</span><span class="p">.</span><span class="n">writePort</span><span class="p">(</span><span class="n">MCP23017Port</span><span class="o">::</span><span class="n">D</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// close relay A</span>
+<span class="w">    </span><span class="n">mcp</span><span class="p">.</span><span class="n">writePort</span><span class="p">(</span><span class="n">MCP23017Port</span><span class="o">::</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// close relay B</span>
+<span class="w">    </span><span class="n">mcp</span><span class="p">.</span><span class="n">writePort</span><span class="p">(</span><span class="n">MCP23017Port</span><span class="o">::</span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// close relay C</span>
+<span class="w">    </span><span class="n">mcp</span><span class="p">.</span><span class="n">writePort</span><span class="p">(</span><span class="n">MCP23017Port</span><span class="o">::</span><span class="n">C</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// close relay D</span>
+<span class="w">    </span><span class="n">mcp</span><span class="p">.</span><span class="n">writePort</span><span class="p">(</span><span class="n">MCP23017Port</span><span class="o">::</span><span class="n">D</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+</div>
+</div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../.." class="md-footer__link md-footer__link--prev" aria-label="Previous: Welcome" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Welcome
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../kits/eduponics_mini/introduction/" class="md-footer__link md-footer__link--next" aria-label="Next: Introduction" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Introduction
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/STEMinds" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://facebook.com/STEMinds" target="_blank" rel="noopener" title="facebook.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/STEMinds" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.3a4b43e5.min.js"></script>
+      
+    
+  </body>
+</html>

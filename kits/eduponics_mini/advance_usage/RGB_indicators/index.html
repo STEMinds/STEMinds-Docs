@@ -1,0 +1,1133 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Learn how to combine the WS2812B RGB with other sensors such as the water level sensor, soil moisture, temperature and humidity and more to create interactive light based on the value changes of those sensors.">
+      
+      
+      
+        <link rel="canonical" href="https://docs.steminds.com/kits/eduponics_mini/advance_usage/RGB_indicators/">
+      
+      <link rel="icon" href="https://steminds.com/images/bulb_white.svg">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.16">
+    
+    
+      
+        <title>WS2812B RGB LED Indicators - STEMinds Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.1c3799f8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+          
+          
+          <meta name="theme-color" content="">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-PW3PQDPSNS"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-PW3PQDPSNS",{page_path:e.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PW3PQDPSNS"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="default" data-md-color-accent="amber">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#rgb-based-sensors-indicators" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="STEMinds Documentation" class="md-header__button md-logo" aria-label="STEMinds Documentation" data-md-component="logo">
+      
+  <img src="https://steminds.com/images/bulb_white.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            STEMinds Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              WS2812B RGB LED Indicators
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="STEMinds Documentation" class="md-nav__button md-logo" aria-label="STEMinds Documentation" data-md-component="logo">
+      
+  <img src="https://steminds.com/images/bulb_white.svg" alt="logo">
+
+    </a>
+    STEMinds Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Products
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Products" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Products
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../products/eduponics_mini_extension_board/" class="md-nav__link">
+        Extension board for Eduponics Mini
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Kits
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Kits" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Kits
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          Eduponics Mini
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Eduponics Mini" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Eduponics Mini
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eduponics_mini_getting_started/" class="md-nav__link">
+        Getting started
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advance_tools/" class="md-nav__link">
+        Advance manual tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic_sensors_usage/bme280_temperature_and_humidity/" class="md-nav__link">
+        BME280 sensor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic_sensors_usage/dht11_temperature_and_humidity/" class="md-nav__link">
+        DHT11 sensor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic_sensors_usage/light_sensor/" class="md-nav__link">
+        BH1750 Light sensor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic_sensors_usage/water_quantity_sensor/" class="md-nav__link">
+        Water level sensor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic_sensors_usage/pump/" class="md-nav__link">
+        Water pump
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic_sensors_usage/rgb_led/" class="md-nav__link">
+        RGB LED
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic_sensors_usage/eeprom_module/" class="md-nav__link">
+        EEPROM Module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic_sensors_usage/rtc_module/" class="md-nav__link">
+        RTC Module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic_sensors_usage/soil_moisture_sensor/" class="md-nav__link">
+        Soil moisture sensor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic_sensors_usage/deep_sleep_wakeup/" class="md-nav__link">
+        Deep sleep wakeup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          RGB based indicators
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        RGB based indicators
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#water-level-indication" class="md-nav__link">
+    Water level indication
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#soil-moisture-indication" class="md-nav__link">
+    Soil moisture indication
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#temperature-humidity-indication" class="md-nav__link">
+    Temperature / Humidity indication
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#light-indication" class="md-nav__link">
+    Light indication
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../water_level_based_water_pumping/" class="md-nav__link">
+        Water level based pump
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduction_to_mqtt/" class="md-nav__link">
+        Introduction to MQTT
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic_mqtt_client/" class="md-nav__link">
+        Basic MQTT client
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eduponics_mqtt_app/" class="md-nav__link">
+        Eduponics MQTT APP
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#water-level-indication" class="md-nav__link">
+    Water level indication
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#soil-moisture-indication" class="md-nav__link">
+    Soil moisture indication
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#temperature-humidity-indication" class="md-nav__link">
+    Temperature / Humidity indication
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#light-indication" class="md-nav__link">
+    Light indication
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="rgb-based-sensors-indicators">RGB based sensors indicators</h1>
+<p>Previously we've discussed how WS2812B RGB LED can be useful in multiple applications and we've created a simple example how to change the RGB colors and brightness.
+<br/><br/>
+Let's take it one step forward and combine the RGB with other sensors such as the water level sensor, soil moisture, temperature and humidity and more
+to create interactive light based on the value changes of those sensors.
+<br/><br/>
+In this tutorials you might notice we used  Try and except KeyboardInterrupt, The reason is that as long as the script runs in "while" loop the only way to shut it down is by interruption, while we interrupt the script the RGB will freeze in it's last state (the last used color).
+<br/><br/>
+To overcome this situation, we except a keyboard interrupt event and manually turn off the LED after we finished with our program.</p>
+<h2 id="water-level-indication">Water level indication</h2>
+<p>In this example we will change the WS2812B RGB LED color between green and red to indicate if our water container is empty or not.
+If it's empty - we'll change the RGB LED to red color else we'll make it green.
+in the code, we wrap everything around "while" loop to let our program check the quantity of the water every second and change the LED accordingly.
+<br/><br/>
+If the water container is empty, the function is_empty() will return True (the sensor output HIGH when no water detected) and LOW if water detected.
+<br/><br/>
+After setting np[0] (remember, we only have one LED at place 0) with the color we want, we need to remember to save changes using np.write() command.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">MicroPython</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span><span class="o">,</span> <span class="nn">neopixel</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="c1"># define water level sensor as INPUT on IO pin number 21</span>
+<span class="n">water_level</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">)</span>
+<span class="c1"># Configure the RGB LED at IO pin 14 (1 indicates 1 LED)</span>
+<span class="n">np</span> <span class="o">=</span> <span class="n">neopixel</span><span class="o">.</span><span class="n">NeoPixel</span><span class="p">(</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">14</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">is_empty</span><span class="p">():</span>
+    <span class="c1"># will return 0 if container have no water and 1 if it has water</span>
+    <span class="k">return</span> <span class="n">water_level</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">is_empty</span><span class="p">()):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[-] You don&#39;t have water in the container&quot;</span><span class="p">)</span>
+            <span class="n">np</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># set to red, full brightness</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[-] The water container has sufficient amount of water&quot;</span><span class="p">)</span>
+            <span class="n">np</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># set to green, full brightness</span>
+        <span class="c1"># save changes</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">write</span><span class="p">()</span> <span class="c1"># save changes</span>
+        <span class="c1"># wait one second before checking again</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+    <span class="c1"># keyboard interrupt, let&#39;s turn off LED</span>
+    <span class="n">np</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="soil-moisture-indication">Soil moisture indication</h2>
+<p>Previously in the soil moisture tutorial we've showed how to get percentage of approximately how much water our plant submerged in.
+in this part we'll combine one more functionality - the RGB LED. using the LED we can indicate whenever the plant has enough water or not.
+<br/><br/>
+We'll use 3 colors: RED, YELLOW and GREEN. the red color will indicate the soil moisture is in critical levels, the yellow color  will give us warning that we might need to water our plant and the green color will let us know everything is alright and we have nothing to worry about.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">MicroPython</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">ADC</span><span class="p">,</span><span class="n">Pin</span>
+<span class="kn">import</span> <span class="nn">neopixel</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="c1"># set max val and min val of the sensor</span>
+<span class="c1"># this requires manual calibration</span>
+<span class="c1"># minVal get be recieved by putting the sensor submerged in the water</span>
+<span class="c1"># maxVal can be recieved by making sure the sensor is dry in the clear air</span>
+<span class="n">minVal</span> <span class="o">=</span> <span class="mi">710</span>
+<span class="n">maxVal</span> <span class="o">=</span> <span class="mi">4095</span>
+<span class="c1"># configure neopixel</span>
+<span class="n">np</span> <span class="o">=</span> <span class="n">neopixel</span><span class="o">.</span><span class="n">NeoPixel</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">14</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">value_in_percentage</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+    <span class="c1"># scale the value based on maxVal and minVal</span>
+    <span class="n">scale</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">/</span> <span class="p">(</span><span class="n">minVal</span> <span class="o">-</span> <span class="n">maxVal</span><span class="p">)</span>
+    <span class="c1"># get calculated scale</span>
+    <span class="n">normal_reading</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">%s%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">int</span><span class="p">((</span><span class="n">val</span> <span class="o">-</span> <span class="n">maxVal</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span><span class="s2">&quot;%&quot;</span><span class="p">))</span>
+    <span class="c1"># we can also get inverted value if needed</span>
+    <span class="n">inverted_reading</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">%s%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">int</span><span class="p">((</span><span class="n">minVal</span> <span class="o">-</span> <span class="n">val</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span><span class="s2">&quot;%&quot;</span><span class="p">))</span>
+    <span class="c1"># for this example we&#39;ll return only the normal reading</span>
+    <span class="k">return</span> <span class="n">normal_reading</span>
+
+<span class="c1"># set adc (analog to digital) on pin 35</span>
+<span class="n">adc</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">35</span><span class="p">))</span>
+<span class="c1"># read analog input</span>
+<span class="n">adc</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="c1"># set 11dB input attenuation (voltage range roughly 0.0v - 3.6v)</span>
+<span class="n">adc</span><span class="o">.</span><span class="n">atten</span><span class="p">(</span><span class="n">ADC</span><span class="o">.</span><span class="n">ATTN_11DB</span><span class="p">)</span>
+
+<span class="c1"># keep running the software till we stop it manually.</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># get sensor value</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">adc</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="c1"># get the value in percentage, convert it to int</span>
+        <span class="n">estimated</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">value_in_percentage</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;%&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">))</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">estimated</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">estimated</span> <span class="o">&lt;</span> <span class="mi">35</span><span class="p">):</span>
+            <span class="c1"># turn RED color, it&#39;s critical</span>
+            <span class="n">np</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># set to red, full brightness</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">estimated</span> <span class="o">&gt;=</span> <span class="mi">35</span> <span class="ow">and</span> <span class="n">estimated</span> <span class="o">&lt;</span> <span class="mi">65</span><span class="p">):</span>
+            <span class="c1"># turn YELLOW color, it&#39;s alright for now</span>
+            <span class="n">np</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># set to yellow, full brightness</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">estimated</span> <span class="o">&gt;=</span> <span class="mi">65</span> <span class="ow">and</span> <span class="n">estimated</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">):</span>
+            <span class="c1"># turn GREEN color, we have enough water</span>
+            <span class="n">np</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># set to green, full brightness</span>
+        <span class="c1"># write changes of the RGB LED color</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+        <span class="c1"># print the analog results (moisture)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sensor value: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">value</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sensor value in percentage: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">value_in_percentage</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+        <span class="c1"># sleep for 1 second</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+    <span class="c1"># keyboard interrupt, let&#39;s turn off LED</span>
+    <span class="n">np</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="temperature-humidity-indication">Temperature / Humidity indication</h2>
+<p>Let's understand more about what is right or wrong temperature for the plants by the following chart made by the ministry of environment in Canada:</p>
+<p align="center">
+  <img src="/images/kits/eduponics_mini/Humidex_Chart.jpeg" alt="humidex chart">
+</p>
+
+<p>The X axis represents the temperature while the Y axis represents the humidity. We can match them both in order to find the optional temperature and humidity on how to behave during heat waves. Humidex provides a crucial information on how to behave during certain temperature and humidity situations to avoid damage to humans such as workers that work outdoors, kids at schools and more ...</p>
+<div class="admonition info">
+<p class="admonition-title">Not all plants are the same, changes in the variables might be required</p>
+<p>each plant is different, if you know the optimal temperature/humidity for your plant you should consider using your known data points instead.
+humidex might not be the right solution for your build so you can consider other alternatives.</p>
+</div>
+<p>The graph above is called "Humidex chart" from wikipedia:</p>
+<blockquote>
+<p>The humidex (short for humidity index) is an index number used by Canadian meteorologists to describe how hot the weather feels to the average person, by combining the effect of heat and humidity. The term humidex was first coined in 1965.</p>
+<p>The humidex is a nominally dimensionless quantity (though generally recognized by the public as equivalent to the degree Celsius) based on the dew point.</p>
+</blockquote>
+<p>In order to find the humidex value we need 2 parameters:</p>
+<ul>
+<li>Temperature (in celsius)</li>
+<li>Himidity (in celsius)</li>
+</ul>
+<p>This 2 variables we can get using our temperature and humidity sensor.
+But, we will need few more things which the sensor won't provide us directly. the first thing will be something called "dew point" which is the temperature at which the air is saturated (100 percent relative humidity).
+<br/><br/>
+Don't worry, we have a formulate to get this thing ready for us:</p>
+<p align="center">
+  <img src="/images/kits/eduponics_mini/dewpoint_formula.jpeg" alt="dewpoint formula">
+</p>
+
+<p>Where RH stands for "relative humidity" the humidity we get through our temperature and humidity sensor.
+The results of this formula will be in celsius but to calculate humidex we'll need the result in Kelvin, the formula for celsius to kevin is quite easy:</p>
+<div class="highlight"><pre><span></span><code>dewpoint_k = (dewpoint_c + 273.15)
+</code></pre></div>
+<p>Now when we have the depoint in Kavin, it's time to get the humidex value, the formula as follows:</p>
+<p align="center">
+  <img src="/images/kits/eduponics_mini/humidex_formula.png" alt="humidex formula">
+</p>
+
+<p>Looks quite complicated right? no worries, we've implemented it in Python already in the example that will come up next.
+The graph itself already state for us the necessary values:</p>
+<ul>
+<li>Less than 29 - No discomfort</li>
+<li>30-39 - Some discomfort</li>
+<li>40 &gt; - Great discomfort</li>
+</ul>
+<p>The "discomfort" chart is for humans but we can use it for plants as well, if you feel it's extremely hot and dry outside your plant will probably feel the same and maybe on even much larger scale. again, depends on the type of plant you have.
+<br/><br/>
+To finalize everything we learned let's write the Python Code:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">MicroPython</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">dht</span>
+<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">neopixel</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">def</span> <span class="nf">calculate_humidex</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">RH</span><span class="p">):</span>
+    <span class="c1"># find dewpoint in celsius</span>
+    <span class="n">dewpoint_c</span> <span class="o">=</span> <span class="mf">243.04</span> <span class="o">*</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">RH</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span><span class="n">math</span><span class="o">.</span><span class="n">e</span><span class="p">)</span><span class="o">+</span><span class="p">((</span><span class="mf">17.625</span><span class="o">*</span><span class="n">T</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">243.04</span><span class="o">+</span><span class="n">T</span><span class="p">)))</span><span class="o">/</span><span class="p">(</span><span class="mf">17.625</span><span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">RH</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span><span class="n">math</span><span class="o">.</span><span class="n">e</span><span class="p">)</span><span class="o">-</span><span class="p">((</span><span class="mf">17.625</span><span class="o">*</span><span class="n">T</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">243.04</span><span class="o">+</span><span class="n">T</span><span class="p">)))</span>
+    <span class="c1"># convert celsius to Kelvin</span>
+    <span class="n">dewpoint_k</span> <span class="o">=</span> <span class="p">(</span><span class="n">dewpoint_c</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">)</span>
+    <span class="c1"># find the humidex using the dewpoint we found earlier</span>
+    <span class="n">humidex</span> <span class="o">=</span> <span class="n">T</span> <span class="o">+</span> <span class="p">(</span><span class="mf">0.5555</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mf">6.11</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">5417.7530</span> <span class="o">*</span> <span class="p">((</span><span class="mi">1</span><span class="o">/</span><span class="mf">273.16</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">dewpoint_k</span><span class="p">)))</span> <span class="o">-</span> <span class="mf">10.0</span><span class="p">)</span>
+    <span class="c1"># return  humidex</span>
+    <span class="k">return</span> <span class="n">humidex</span>
+
+<span class="c1"># initialize dht object, DHT11 coonected to IO19</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">dht</span><span class="o">.</span><span class="n">DHT11</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">19</span><span class="p">))</span>
+<span class="c1"># configure neopixel</span>
+<span class="n">np</span> <span class="o">=</span> <span class="n">neopixel</span><span class="o">.</span><span class="n">NeoPixel</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">14</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># measure sensor data</span>
+        <span class="n">d</span><span class="o">.</span><span class="n">measure</span><span class="p">()</span>
+        <span class="c1"># get temperature and humidity</span>
+        <span class="n">temperature</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">temperature</span><span class="p">()</span>
+        <span class="n">humidity</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">humidity</span><span class="p">()</span>
+        <span class="c1"># get humidex</span>
+        <span class="n">humidex</span> <span class="o">=</span> <span class="n">calculate_humidex</span><span class="p">(</span><span class="n">temperature</span><span class="p">,</span><span class="n">humidity</span><span class="p">)</span>
+
+        <span class="c1"># check the value of the humidex</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">humidex</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">humidex</span> <span class="o">&lt;</span> <span class="mi">29</span><span class="p">):</span>
+            <span class="c1"># Turn on green RGB</span>
+            <span class="n">np</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># set to green, full brightness</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">humidex</span> <span class="o">&gt;=</span> <span class="mi">30</span> <span class="ow">and</span> <span class="n">humidex</span> <span class="o">&lt;=</span> <span class="mi">39</span><span class="p">):</span>
+            <span class="c1"># Turn on yellow RGB</span>
+            <span class="n">np</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># set to red, full brightness</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">humidex</span> <span class="o">&gt;</span> <span class="mi">40</span><span class="p">):</span>
+            <span class="c1"># Turn on red RGB</span>
+            <span class="n">np</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># set to red, full brightness</span>
+
+        <span class="c1"># write the data to the RGB</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+        <span class="c1"># print temperature and humidity</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--------------------------&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;temperature : </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">temperature</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;humidity : </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">humidity</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;humidex : </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">humidex</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--------------------------&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="c1"># sleep for 1 second</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+    <span class="c1"># keyboard interrupt, let&#39;s turn off LED</span>
+    <span class="n">np</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>To summarize what the python code will do: use the function calculate_humidex which is based on the previous formulas we've studied to calculate the humidex value based on the current temperature and humidity. Then, it will run a loop as long as the keyboard does not interrupt it to measure temperature and humidity and check if the value is good, normal or bad and change the RGB LEDs accordingly.</p>
+<h2 id="light-indication">Light indication</h2>
+<p>Each plant need different amount of light and that's a fact. We've found <a href="https://sustainablecampus.unimelb.edu.au/__data/assets/pdf_file/0005/2839190/Indoor-plant-workshop-Light-and-Moisture-Requirements.pdf">this great document by the University Of Melbourne</a> that explains amount of light required for indoor plants in lux (Lumens per square metre).</p>
+<p>By that University made document we can understand few levels of lights that we can configure:</p>
+<ul>
+<li>Low – range 270 to 807Lux</li>
+<li>Medium – range of 807 to 1614 Lux.</li>
+<li>High – range 1614 to 10764 Lux</li>
+</ul>
+<p>As in previous examples we'll configure 3 main colors: red for low, yellow for medium and green for high.
+We will use the light class we've made earlier and combine it with the Neopixel functionality to turn on different RGB color at different state of light.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">MicroPython</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span><span class="o">,</span> <span class="nn">neopixel</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">class</span> <span class="nc">LightSensor</span><span class="p">():</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="c1"># Define some constants from the datasheet</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">DEVICE</span> <span class="o">=</span> <span class="mh">0x5c</span> <span class="c1"># Default device I2C address</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">POWER_DOWN</span> <span class="o">=</span> <span class="mh">0x00</span> <span class="c1"># No active state</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">POWER_ON</span> <span class="o">=</span> <span class="mh">0x01</span> <span class="c1"># Power on</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">RESET</span> <span class="o">=</span> <span class="mh">0x07</span> <span class="c1"># Reset data register value</span>
+
+        <span class="c1"># Start measurement at 4lx resolution. Time typically 16ms.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">CONTINUOUS_LOW_RES_MODE</span> <span class="o">=</span> <span class="mh">0x13</span>
+        <span class="c1"># Start measurement at 1lx resolution. Time typically 120ms</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">CONTINUOUS_HIGH_RES_MODE_1</span> <span class="o">=</span> <span class="mh">0x10</span>
+        <span class="c1"># Start measurement at 0.5lx resolution. Time typically 120ms</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">CONTINUOUS_HIGH_RES_MODE_2</span> <span class="o">=</span> <span class="mh">0x11</span>
+        <span class="c1"># Start measurement at 1lx resolution. Time typically 120ms</span>
+        <span class="c1"># Device is automatically set to Power Down after measurement.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ONE_TIME_HIGH_RES_MODE_1</span> <span class="o">=</span> <span class="mh">0x20</span>
+        <span class="c1"># Start measurement at 0.5lx resolution. Time typically 120ms</span>
+        <span class="c1"># Device is automatically set to Power Down after measurement.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ONE_TIME_HIGH_RES_MODE_2</span> <span class="o">=</span> <span class="mh">0x21</span>
+        <span class="c1"># Start measurement at 1lx resolution. Time typically 120ms</span>
+        <span class="c1"># Device is automatically set to Power Down after measurement.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ONE_TIME_LOW_RES_MODE</span> <span class="o">=</span> <span class="mh">0x23</span>
+        <span class="c1"># setup I2C</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">i2c</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">I2C</span><span class="p">(</span><span class="n">scl</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">15</span><span class="p">),</span> <span class="n">sda</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">convertToNumber</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+
+        <span class="c1"># Simple function to convert 2 bytes of data</span>
+        <span class="c1"># into a decimal number</span>
+        <span class="k">return</span> <span class="p">((</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="mi">256</span> <span class="o">*</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> <span class="o">/</span> <span class="mf">1.2</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">readLight</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">i2c</span><span class="o">.</span><span class="n">readfrom_mem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">DEVICE</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">ONE_TIME_HIGH_RES_MODE_1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">convertToNumber</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Configure the RGB LED at IO pin 14 (1 indicates 1 LED)</span>
+<span class="n">np</span> <span class="o">=</span> <span class="n">neopixel</span><span class="o">.</span><span class="n">NeoPixel</span><span class="p">(</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">14</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+<span class="c1"># Configure light sensor</span>
+<span class="n">sensor</span> <span class="o">=</span> <span class="n">LightSensor</span><span class="p">()</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># get amount of light</span>
+        <span class="n">light</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sensor</span><span class="o">.</span><span class="n">readLight</span><span class="p">())</span>
+        <span class="c1"># check amount of light</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">light</span> <span class="o">&lt;=</span> <span class="mi">807</span><span class="p">):</span>
+            <span class="c1"># low light, turn on red RGB</span>
+            <span class="n">np</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">elif</span><span class="p">(</span><span class="n">light</span> <span class="o">&gt;</span> <span class="mi">807</span> <span class="ow">and</span> <span class="n">light</span> <span class="o">&lt;=</span> <span class="mi">1614</span><span class="p">):</span>
+            <span class="c1"># medium light, turn on yellow RGB</span>
+            <span class="n">np</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">elif</span><span class="p">(</span><span class="n">light</span> <span class="o">&gt;</span> <span class="mi">1614</span><span class="p">):</span>
+            <span class="c1"># high light, turn on green RGB</span>
+            <span class="n">np</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="c1"># Save changes to RGB</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+        <span class="c1"># Print amount of light in lux</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Light in the room: </span><span class="si">%s</span><span class="s2">lux&quot;</span> <span class="o">%</span> <span class="n">light</span><span class="p">)</span>
+        <span class="c1"># Sleep 1 second</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+    <span class="c1"># keyboard interrupt, let&#39;s turn off LED</span>
+    <span class="n">np</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../basic_sensors_usage/deep_sleep_wakeup/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Deep sleep wakeup" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Deep sleep wakeup
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../water_level_based_water_pumping/" class="md-footer__link md-footer__link--next" aria-label="Next: Water level based pump" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Water level based pump
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/STEMinds" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://facebook.com/STEMinds" target="_blank" rel="noopener" title="facebook.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/STEMinds" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": [], "search": "../../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.3a4b43e5.min.js"></script>
+      
+    
+  </body>
+</html>

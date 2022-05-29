@@ -1,0 +1,1104 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="The soil moisture sensor is analog sensor, there are some pins on the board that can be converted from analog to digital (ADC) and we will need to work through the process of converting the pin to become analog pin so we could read the data from the sensor.">
+      
+      
+      
+        <link rel="canonical" href="https://docs.steminds.com/kits/eduponics_mini/basic_sensors_usage/soil_moisture_sensor/">
+      
+      <link rel="icon" href="https://steminds.com/images/bulb_white.svg">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.16">
+    
+    
+      
+        <title>Capacitive soil moisture sensor - STEMinds Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.1c3799f8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+          
+          
+          <meta name="theme-color" content="">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-PW3PQDPSNS"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-PW3PQDPSNS",{page_path:e.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PW3PQDPSNS"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="default" data-md-color-accent="amber">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#steminds-soil-moisture-sensor" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="STEMinds Documentation" class="md-header__button md-logo" aria-label="STEMinds Documentation" data-md-component="logo">
+      
+  <img src="https://steminds.com/images/bulb_white.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            STEMinds Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Capacitive soil moisture sensor
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="STEMinds Documentation" class="md-nav__button md-logo" aria-label="STEMinds Documentation" data-md-component="logo">
+      
+  <img src="https://steminds.com/images/bulb_white.svg" alt="logo">
+
+    </a>
+    STEMinds Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Products
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Products" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Products
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../products/eduponics_mini_extension_board/" class="md-nav__link">
+        Extension board for Eduponics Mini
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Kits
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Kits" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Kits
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          Eduponics Mini
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Eduponics Mini" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Eduponics Mini
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eduponics_mini_getting_started/" class="md-nav__link">
+        Getting started
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advance_tools/" class="md-nav__link">
+        Advance manual tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bme280_temperature_and_humidity/" class="md-nav__link">
+        BME280 sensor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dht11_temperature_and_humidity/" class="md-nav__link">
+        DHT11 sensor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../light_sensor/" class="md-nav__link">
+        BH1750 Light sensor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../water_quantity_sensor/" class="md-nav__link">
+        Water level sensor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pump/" class="md-nav__link">
+        Water pump
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rgb_led/" class="md-nav__link">
+        RGB LED
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eeprom_module/" class="md-nav__link">
+        EEPROM Module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rtc_module/" class="md-nav__link">
+        RTC Module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Soil moisture sensor
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Soil moisture sensor
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#specifications" class="md-nav__link">
+    Specifications
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison-to-other-sensors" class="md-nav__link">
+    Comparison to other sensors
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware-explanation" class="md-nav__link">
+    Hardware explanation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#possible-applications" class="md-nav__link">
+    Possible applications
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugging-in-the-soil-moisture-sensor" class="md-nav__link">
+    Plugging-in the soil moisture sensor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#software-explanation" class="md-nav__link">
+    Software explanation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deep_sleep_wakeup/" class="md-nav__link">
+        Deep sleep wakeup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advance_usage/RGB_indicators/" class="md-nav__link">
+        RGB based indicators
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advance_usage/water_level_based_water_pumping/" class="md-nav__link">
+        Water level based pump
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advance_usage/introduction_to_mqtt/" class="md-nav__link">
+        Introduction to MQTT
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advance_usage/basic_mqtt_client/" class="md-nav__link">
+        Basic MQTT client
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advance_usage/eduponics_mqtt_app/" class="md-nav__link">
+        Eduponics MQTT APP
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#specifications" class="md-nav__link">
+    Specifications
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison-to-other-sensors" class="md-nav__link">
+    Comparison to other sensors
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware-explanation" class="md-nav__link">
+    Hardware explanation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#possible-applications" class="md-nav__link">
+    Possible applications
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugging-in-the-soil-moisture-sensor" class="md-nav__link">
+    Plugging-in the soil moisture sensor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#software-explanation" class="md-nav__link">
+    Software explanation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="steminds-soil-moisture-sensor">STEMinds Soil moisture sensor</h1>
+<p align="center">
+  <img src="/images/kits/eduponics_mini/eduponics-soil-moisture-sensors.jpeg" alt="Eduponics soil moisture sensor">
+</p>
+
+<p>Our sensor is one of a kind, we truly love that sensor and hope other people can use it as much as we do.
+We've been looking for quite some time for a soil moisture stable sensor for smart agriculture / smart plants related projects but couldn't find any.
+<br/><br/>
+We've tested over 10 sensors available in the market till we've decided to make our own. let's go through the information to understand why our sensor is different and why it's better than other alternatives.</p>
+<h2 id="specifications">Specifications</h2>
+<p>During the process of testing and finding the perfect soil moisture sensor for our Eduponics Mini kit we found out that other existing sensors and solution just don't work to our high expectation. here is some of the specification of our custom made sensor:</p>
+<ul>
+<li>Wide range of reading (about 1024 to 4060 in scale of analog reading)</li>
+<li>Water-proof and dust-proof, self-tested submerged for 24 hours.</li>
+<li>Powered by 5V input/output</li>
+<li>Highly accurate, useful for industrial and real life applications.</li>
+</ul>
+<h2 id="comparison-to-other-sensors">Comparison to other sensors</h2>
+<p>While looking for soil moisture sensors to use with our kit, we encountered a severe challenge - the sensors were just not good enough.
+We've purchased and tested multiple sensors till the decision was made to make our own.
+<br/><br/>
+Take a look at the comparison below, our sensor has the highest voltage range and sensitivity between all the sensors we've tested,
+allowing you to create a stable and precise high resolution smart agriculture and IoT applications.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>STEMinds (Short)</th>
+<th>STEMinds (Long)</th>
+<th>DFRobot</th>
+<th>Grove Seeed studio</th>
+<th>Generic v1.2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Type of sensor</strong></td>
+<td>Capacitive</td>
+<td>Capacitive</td>
+<td>Capacitive</td>
+<td>Capacitive</td>
+<td>Capacitive</td>
+</tr>
+<tr>
+<td><strong>Operation voltage</strong></td>
+<td>5V</td>
+<td>5V</td>
+<td>3.3~5.5V</td>
+<td>3.3~5V</td>
+<td>3.3-5V</td>
+</tr>
+<tr>
+<td><strong>Min voltage output</strong></td>
+<td>0.987V</td>
+<td>0.561V</td>
+<td>2.468V</td>
+<td>2.378V</td>
+<td>1.022V</td>
+</tr>
+<tr>
+<td><strong>Max voltage output</strong></td>
+<td>3.3V</td>
+<td>3.3V</td>
+<td>3.112V</td>
+<td>3.570V</td>
+<td>2.300V</td>
+</tr>
+<tr>
+<td><strong>Min output value</strong></td>
+<td>154</td>
+<td>106</td>
+<td>260</td>
+<td>494</td>
+<td>214</td>
+</tr>
+<tr>
+<td><strong>Max output value</strong></td>
+<td>668</td>
+<td>683</td>
+<td>517</td>
+<td>745</td>
+<td>480</td>
+</tr>
+<tr>
+<td><strong>Operation current</strong></td>
+<td>7mA</td>
+<td>7mA</td>
+<td>5mA</td>
+<td>8mA</td>
+<td>6mA</td>
+</tr>
+<tr>
+<td><strong>Resolution (high-low)</strong></td>
+<td>514</td>
+<td>577</td>
+<td>257</td>
+<td>251</td>
+<td>266</td>
+</tr>
+</tbody>
+</table>
+<p>Please note the following regarding the testing of the soil moisture sensors <strong>that belong to other brands</strong> and the comparison between different type of sensors:</p>
+<ul>
+<li>All the sensors tested with Genuine Arduino Uno device using the analog pins and 5V as input.</li>
+<li>Generic v1.2 refers to generic sensors without Manufacturer or brand produced in China. (some Chinese companies sell it under their brand)</li>
+<li>Maximum voltage and output stands for the voltage when the sensor is in the open air, minimum voltage and output stands for the voltage when the sensor is submersed under water.</li>
+<li>For comparison we've purchased the original sensors from the authorized distributers.</li>
+<li>Operation current measured using Fluke multimeter.</li>
+<li>Soil moisture test results are for <strong><em>Educational reference only</em></strong> and should not be taken AS IS, different environments might bring different results, this meant to say that we can't control over other branded sensors while we can guarantee that our sensors will be at top quality and affordable price.</li>
+</ul>
+<h2 id="hardware-explanation">Hardware explanation</h2>
+<p align="center">
+  <img src="/images/kits/eduponics_mini/metal_plate_illustration.gif" alt="metal plate illustration">
+</p>
+
+<p>The soil moisture sensor is based on a very important component called "capacitor", the capacitor consist of three pieces.  A positive plate, a negative plate and the space in-between the plates, known as the dielectric. The physical form and construction of practical capacitors vary widely and many capacitor types are in common use. Most capacitors contain at least two electrical conductors often in the form of metallic plates or surfaces separated by a dielectric medium.
+<br/><br/>
+A capacitive moisture sensor works by measuring the changes in capacitance caused by the changes in the dielectric. It does not measure moisture directly (pure water does not conduct electricity well),  instead it measures the ions that are dissolved in the moisture.
+<br/><br/>
+These ions and their concentration can be affected by a number of factors, for example adding fertilizer for instance will decrease the resistance of the soil.  Capacitive measuring basically measures the dielectric that is formed by the soil and the water is the most important factor that affects the dielectric.</p>
+<h2 id="possible-applications">Possible applications</h2>
+<p>This sensor can be used in smart agriculture related projects such as:</p>
+<ul>
+<li>automatic watering</li>
+<li>plant monitoring</li>
+<li>moisture sensing</li>
+<li>flood detection</li>
+</ul>
+<h2 id="plugging-in-the-soil-moisture-sensor">Plugging-in the soil moisture sensor</h2>
+<p align="center">
+  <img src="/images/kits/eduponics_mini/eduponics_mini_connecting_soil_moisture_sensor.jpeg" alt="connecting soil moisture sensor to eduponics mini">
+</p>
+
+<p>Plugging in the sensor is deadly easy. as we use the XH2.54 interface we can simply plug and play the sensor as shown in the picture above.
+<br/><br/>
+The sensor itself includes 3 different wires: VCC, GND and SIG (signal which is the data cable), it's important to say that the sensor itself output 5V while the ESP32 or other boards usually accept only 3.3V, if you'd like to use it in some other applications with different development boards, make sure to include a step-down  circuit from 5V to 3.3V for your electronics safety.</p>
+<h2 id="software-explanation">Software explanation</h2>
+<p>Our soil moisture sensor is analog sensor, there are some pins on the ESP32 board that can be converted from analog to digital (ADC) and we will need to work through the process of converting the pin to become analog pin so we could read the data from the sensor.
+<br/><br/>
+The soil moisture sensor is connected to IO PIN 35, we'll call the ADC function from the machine library to set the PIN as analog input.
+then, we can run .read() function directly on the PIN after configuring it, that will give us the value of the pin.
+<br/><br/>
+In order to get accurate reading, we must tell our ESP32 what kind of voltage should it expect to get during the analog input, is it 0-1V or 0-3.3V?
+as we've mentioned earlier, our sensor is 0-5V sensor but in order not to damage the ESP32 board that can accept only 3.3V input into it's own IO pins we've used a step-down converted going from 5V to 3.3V.
+<br/><br/>
+As a result, we should tell the ESP32 that it should expect voltage range of roughly 0.0V - 3.6V by using the .atten(ADC.ATTN_11DB) function for configuration.
+<br/><br/>
+Next the final step will be to print the reading out into the terminal, try to put the sensor into the air and water and see the changes in the values.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">MicroPython</label><label for="__tabbed_1_2">ESP32-Arduino</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">ADC</span><span class="p">,</span><span class="n">Pin</span>
+
+<span class="c1"># set adc (analog to digital) on pin 35</span>
+<span class="n">adc</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">35</span><span class="p">))</span>
+<span class="c1"># read analog input</span>
+<span class="n">adc</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="c1"># set 11dB input attenuation (voltage range roughly 0.0v - 3.6v)</span>
+<span class="n">adc</span><span class="o">.</span><span class="n">atten</span><span class="p">(</span><span class="n">ADC</span><span class="o">.</span><span class="n">ATTN_11DB</span><span class="p">)</span>
+<span class="c1"># print the analog results (moisture)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">adc</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="cp">#define soilMoisturePin 35</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">analogRead</span><span class="p">(</span><span class="n">soilMoisturePin</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// print sensor analog value</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Sensor value: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">value</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>After trying the example above you might ask yourself what does this analog numbers even means, some might consider them to be "random generated numbers". In the following example we are going to make a little more sense out of it.
+<br/><br/>
+We'll take the maximum value of the analog sensor which can be determined by leaving the sensor dry in the air and the minimum value by submerging the sensor completely underwater, this should give us approximately 4095 for complete dryness and 710 when the sensor is submerged underwater.</p>
+<div class="admonition info">
+<p class="admonition-title">Calibration is required</p>
+<p>While each sensor is the same you might want to calibrate it manually by following the instructions above and changing the values based on the values you get when you run the program.</p>
+</div>
+<p>The next will be to take the 2 values and change them to percentage (0% means the plant is completely dry while 100% means it's submerged in water)
+In reality, this will be impossible, the soil itself will have certain amount of resistance and capacitance.
+<br/><br/>
+It is recommended to calibrate the sensor afterwards using real life application while plotting the sensor inside of a plant / pot in wet and dry conditions.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">MicroPython</label><label for="__tabbed_2_2">ESP32-Arduino</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">ADC</span><span class="p">,</span><span class="n">Pin</span>
+
+<span class="c1"># set max val and min val of the sensor</span>
+<span class="c1"># this requires manual calibration</span>
+<span class="c1"># minVal get be recieved by putting the sensor submerged in the water</span>
+<span class="c1"># maxVal can be recieved by making sure the sensor is dry in the clear air</span>
+<span class="n">minVal</span> <span class="o">=</span> <span class="mi">710</span>
+<span class="n">maxVal</span> <span class="o">=</span> <span class="mi">4095</span>
+
+<span class="k">def</span> <span class="nf">value_in_percentage</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+    <span class="c1"># scale the value based on maxVal and minVal</span>
+    <span class="n">scale</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">/</span> <span class="p">(</span><span class="n">minVal</span> <span class="o">-</span> <span class="n">maxVal</span><span class="p">)</span>
+    <span class="c1"># get calculated scale</span>
+    <span class="n">normal_reading</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">%s%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">int</span><span class="p">((</span><span class="n">val</span> <span class="o">-</span> <span class="n">maxVal</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span><span class="s2">&quot;%&quot;</span><span class="p">))</span>
+    <span class="c1"># we can also get inverted value if needed</span>
+    <span class="n">inverted_reading</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">%s%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">int</span><span class="p">((</span><span class="n">minVal</span> <span class="o">-</span> <span class="n">val</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span><span class="s2">&quot;%&quot;</span><span class="p">))</span>
+    <span class="c1"># for this example we&#39;ll return only the normal reading</span>
+    <span class="k">return</span> <span class="n">normal_reading</span>
+
+<span class="c1"># set adc (analog to digital) on pin 35</span>
+<span class="n">adc</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">35</span><span class="p">))</span>
+<span class="c1"># read analog input</span>
+<span class="n">adc</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="c1"># set 11dB input attenuation (voltage range roughly 0.0v - 3.6v)</span>
+<span class="n">adc</span><span class="o">.</span><span class="n">atten</span><span class="p">(</span><span class="n">ADC</span><span class="o">.</span><span class="n">ATTN_11DB</span><span class="p">)</span>
+<span class="c1"># get sensor value</span>
+<span class="n">value</span> <span class="o">=</span> <span class="n">adc</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="c1"># print the analog results (moisture)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sensor value: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">value</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sensor value in percentage: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">value_in_percentage</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="cp">#define soilMoisturePin 35</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">value_in_percentage</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">){</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// set max val and min val of the sensor</span>
+<span class="w">  </span><span class="c1">// this requires manual calibration</span>
+<span class="w">  </span><span class="c1">// minVal get be recieved by putting the sensor submerged in the water</span>
+<span class="w">  </span><span class="c1">// maxVal can be recieved by making sure the sensor is dry in the clear air</span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">minVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">710</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">maxVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4095</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="c1">//scale the value based on maxVal and minVal</span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">scale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">100.00</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">minVal</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">maxVal</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="c1">//get calculated scale</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">normal_reading</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">maxVal</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">scale</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// we can also get inverted value if needed</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">inverted_reading</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">minVal</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">scale</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// for this example we&#39;ll return only the normal reading</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">normal_reading</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">analogRead</span><span class="p">(</span><span class="n">soilMoisturePin</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">estimated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value_in_percentage</span><span class="p">(</span><span class="n">value</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// print sensor analog value</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Sensor value: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">value</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// print sensor value in precentage</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Sensor value in precentage: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">estimated</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;%&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+</div>
+</div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../rtc_module/" class="md-footer__link md-footer__link--prev" aria-label="Previous: RTC Module" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              RTC Module
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../deep_sleep_wakeup/" class="md-footer__link md-footer__link--next" aria-label="Next: Deep sleep wakeup" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Deep sleep wakeup
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/STEMinds" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://facebook.com/STEMinds" target="_blank" rel="noopener" title="facebook.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/STEMinds" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": [], "search": "../../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.3a4b43e5.min.js"></script>
+      
+    
+  </body>
+</html>
