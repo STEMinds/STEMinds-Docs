@@ -1,4 +1,4 @@
-site_name: STEMinds Docs
+site_name: STEMinds Documentation
 site_url: https://docs.steminds.com/
 nav:
   - Welcome: index.md
@@ -26,12 +26,12 @@ nav:
       - 'Eduponics MQTT APP' : 'kits/eduponics_mini/advance_usage/eduponics_mqtt_app.md'
 theme:
   name: material
-  logo: https://cdn.steminds.com/docs/images/icon.svg
-  favicon: https://cdn.steminds.com/docs/images/icon.svg
+  logo: https://steminds.com/images/bulb_white.svg
+  favicon: https://steminds.com/images/bulb_white.svg
   name: material
   language: en
   icon:
-    logo: https://cdn.steminds.com/docs/images/icon.svg
+    logo: https://steminds.com/images/bulb_white.svg
   palette:
     primary: default
     accent: amber
